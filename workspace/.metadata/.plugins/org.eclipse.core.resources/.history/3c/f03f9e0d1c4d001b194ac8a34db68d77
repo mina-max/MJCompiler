@@ -1,0 +1,12 @@
+<project name = "MJCompiler" basedir = ".">
+	
+	<target name="lexerGen">
+	
+		<java jar = "lib/JFlex.jar" fork = "true ">
+			<arg value = "-h"/>
+		</java>
+			
+	
+	</target>
+	
+</project> 
