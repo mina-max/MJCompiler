@@ -1,0 +1,183 @@
+
+
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+   
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+	
+
+:}
+
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+
+
+terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
+terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
+terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT;
+terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
+terminal AND, OR, ASSIGN, INC, DEC, DOT;
+terminal Integer NUMBER;
+terminal String IDENT, CHAR, BOOL;
+terminal IF, ELSE;
+
+nonterminal Program Program;
+nonterminal DeclList DeclList;
+nonterminal Decl Decl;
+nonterminal ConstDecl ConstDecl;
+nonterminal ConstDeclList ConstDeclList;
+nonterminal ConstDeclSingle ConstDeclSingle;
+nonterminal Init Init;
+nonterminal Type Type;
+nonterminal VarDecl VarDecl;
+nonterminal VarDeclList VarDeclList;
+nonterminal VarDeclSingle VarDeclSingle;
+nonterminal ArrayOpt ArrayOpt;
+nonterminal ClassDecl ClassDecl;
+nonterminal ExtendsOpt ExtendsOpt;
+nonterminal MethodDeclList MethodDeclList;
+nonterminal MethodDecl MethodDecl;
+nonterminal ReturnType ReturnType;
+nonterminal FormPars FormPars;
+nonterminal FormParsList FormParsList;
+nonterminal FormParsSingle FormParsSingle;
+nonterminal Statement Statement;
+nonterminal DesignatorStatement DesignatorStatement;
+nonterminal DesOperators DesOperators;
+nonterminal AssignOp AssignOp;
+nonterminal ActPars ActPars;
+nonterminal ExprList ExprList;
+nonterminal Condition Condition;
+nonterminal CondTerm CondTerm;
+nonterminal CondFact CondFact;
+nonterminal RelopOpt RelopOpt;
+nonterminal Relop Relop;
+nonterminal ElseOpt ElseOpt;
+nonterminal Expr Expr;
+nonterminal Term Term;
+nonterminal Factor Factor;
+nonterminal ActParsOpt ActParsOpt;
+nonterminal ActParsOptExp ActParsOptExp;
+nonterminal ExprOpt ExprOpt;
+nonterminal CaseList CaseList;
+nonterminal Designator Designator;
+nonterminal DesList DesList;
+nonterminal DesElement DesElement;
+nonterminal StatementList StatementList;
+nonterminal AddOp AddOp;
+nonterminal MulOp MulOp;
+
+
+Program 		::= (Program) PROGRAM IDENT:I1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, D2, M3); RESULT.setLine(I1left); :};
+
+DeclList 		::= (Declarations) 	DeclList:D1 Decl:D2 {: RESULT=new Declarations(D1, D2); RESULT.setLine(D1left); :}
+				|	(NoDecl) {: RESULT=new NoDecl(); :} /* epsilon */;
+
+Decl 			::= (ConstDecl) 	ConstDecl:C1 {: RESULT=new ConstDecl(C1); RESULT.setLine(C1left); :} 
+				|	(VarDecl)		VarDecl:V1 {: RESULT=new VarDecl(V1); RESULT.setLine(V1left); :}
+				| 	(ClassDecl) 	ClassDecl:C1 {: RESULT=new ClassDecl(C1); RESULT.setLine(C1left); :};
+		
+ConstDecl 		::= (ConstDecl) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :};
+
+ConstDeclList 	::= (ConstDeclList) ConstDeclList:C1 COMMA ConstDeclSingle:C2 {: RESULT=new ConstDeclList(C1, C2); RESULT.setLine(C1left); :}
+				| 	(SingleDecl) ConstDeclSingle:C1 {: RESULT=new SingleDecl(C1); RESULT.setLine(C1left); :};
+
+ConstDeclSingle ::= IDENT:I1 EQUAL Init:I2 {: RESULT=new ConstDeclSingleDerived1(I1, I2); RESULT.setLine(I1left); :};
+
+Init 			::= NUMBER:N1 {: RESULT=new InitDerived1(N1); RESULT.setLine(N1left); :} 
+				| 	CHAR:C1 {: RESULT=new InitDerived2(C1); RESULT.setLine(C1left); :}
+				|	BOOL:B1 {: RESULT=new InitDerived3(B1); RESULT.setLine(B1left); :};
+
+Type			::= IDENT:I1 {: RESULT=new TypeDerived1(I1); RESULT.setLine(I1left); :};
+
+VarDecl 		::= (VarDecl) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDecl(T1, V2); RESULT.setLine(T1left); :};
+
+VarDeclList 	::= (VarDeclList) 	VarDeclList:V1 COMMA VarDeclSingle:V2 {: RESULT=new VarDeclList(V1, V2); RESULT.setLine(V1left); :}
+				| 	(SingleDecl) 	VarDeclSingle:V1 {: RESULT=new SingleDecl(V1); RESULT.setLine(V1left); :};
+
+VarDeclSingle 	::= IDENT:I1 ArrayOpt:A2 {: RESULT=new VarDeclSingleDerived1(I1, A2); RESULT.setLine(I1left); :};
+
+ArrayOpt		::= LBRACKET RBRACKET {: RESULT=new ArrayOptDerived1(); :}
+				| 	(Empty) {: RESULT=new Empty(); :};
+
+ClassDecl		::= CLASS IDENT:I1 ExtendsOpt:E2 LBRACE VarDecl:V3 MethodDeclList:M4 RBRACE {: RESULT=new ClassDeclDerived1(I1, E2, V3, M4); RESULT.setLine(I1left); :};
+
+ExtendsOpt		::= EXTENDS Type:T1 {: RESULT=new ExtendsOptDerived1(T1); RESULT.setLine(T1left); :}
+				|	(Empty) {: RESULT=new Empty(); :};
+
+MethodDeclList	::= MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclListDerived1(M1, M2); RESULT.setLine(M1left); :}
+				|	(Empty) {: RESULT=new Empty(); :};
+
+MethodDecl		::= ReturnType:R1 IDENT:I2 LPARENT FormPars:F3 RPARENT VarDecl:V4 LBRACE RBRACE {: RESULT=new MethodDeclDerived1(R1, I2, F3, V4); RESULT.setLine(R1left); :};
+
+ReturnType		::= Type:T1 {: RESULT=new ReturnTypeDerived1(T1); RESULT.setLine(T1left); :}
+				| 	VOID {: RESULT=new ReturnTypeDerived2(); :};
+
+FormPars		::= Type:T1 FormParsList:F2 {: RESULT=new FormParsDerived1(T1, F2); RESULT.setLine(T1left); :}
+				|	(Empty) {: RESULT=new Empty(); :};
+
+FormParsList	::= FormParsList:F1 COMMA FormParsSingle:F2 {: RESULT=new FormParsListDerived1(F1, F2); RESULT.setLine(F1left); :}
+				|	FormParsSingle:F1 {: RESULT=new FormParsListDerived2(F1); RESULT.setLine(F1left); :};
+
+FormParsSingle	::= Type:T1 IDENT:I2 ArrayOpt:A3 {: RESULT=new FormParsSingleDerived1(T1, I2, A3); RESULT.setLine(T1left); :};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+

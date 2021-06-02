@@ -73,7 +73,7 @@ import java_cup.runtime.Symbol;
 "=" 		{ return new_symbol(sym.ASSIGN, yytext()); }
 "++" 		{ return new_symbol(sym.INC, yytext()); }
 "--" 		{ return new_symbol(sym.DEC, yytext()); }
-";" 		{ return new_symbol(sym.SEMICOL, yytext()); }
+";" 		{ return new_symbol(sym.SEMI, yytext()); }
 "," 		{ return new_symbol(sym.COMMA, yytext()); }
 "." 		{ return new_symbol(sym.DOT, yytext()); }
 "[" 		{ return new_symbol(sym.LBRACKET, yytext()); }
@@ -85,11 +85,12 @@ import java_cup.runtime.Symbol;
 "?"			{ return new_symbol(sym.QUESTION, yytext()); }
 ":"			{ return new_symbol(sym.COLON, yytext()); }
 
-"'"[\040-\176]"'" 				{return new_symbol (sym.CHAR, new Character (yytext().charAt(1)));}
+"'"[\040-\176]"'" 				{ return new_symbol (sym.CHAR, new Character (yytext().charAt(1)));}
 [0-9]+  						{ return new_symbol(sym.NUMBER, new Integer (yytext())); }
-([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{ return new_symbol(sym.IDENT, yytext()); }
 "true"							{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
 "false"							{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
+([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{ return new_symbol(sym.IDENT, yytext()); }
+
 
 <YYINITIAL> "//" { yybegin(COMMENT); }
 <COMMENT> .      { yybegin(COMMENT); }

@@ -1,0 +1,224 @@
+
+
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+   
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+	
+
+:}
+
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+
+
+terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
+terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
+terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT;
+terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
+terminal AND, OR, ASSIGN, INC, DEC, DOT;
+terminal Integer NUMBER;
+terminal String IDENT, CHAR, BOOL;
+terminal IF, ELSE;
+
+nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle, Init;
+nonterminal Type, VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
+nonterminal MethodDeclList, MethodDecl, ReturnType, FormPars, FormParsList, FormParsSingle;
+nonterminal Statement, DesignatorStatement, DesOperators, AssignOp, ActPars, ExprList, Condition;
+nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, Expr, Term, Factor, ActParsOpt, ActParsOptExp;
+nonterminal ExprOpt, CaseList, Designator, DesList, DesElement, StatementList, AddOp, MulOp;
+
+
+Program 		::= (Program) PROGRAM IDENT DeclList LBRACE MethodDeclList RBRACE;
+
+DeclList 		::= (Declarations) 	DeclList Decl
+				|	(NoDecl) /* epsilon */;
+
+Decl 			::= (ConstDecl) 	ConstDecl 
+				|	(VarDecl)		VarDecl
+				| 	(ClassDecl) 	ClassDecl;
+		
+ConstDecl 		::= (ConstDecl) CONST Type ConstDeclList SEMI;
+
+ConstDeclList 	::= (ConstDeclList) ConstDeclList COMMA ConstDeclSingle
+				| 	(SingleDecl) ConstDeclSingle;
+
+ConstDeclSingle ::= IDENT EQUAL Init;
+
+Init 			::= NUMBER 
+				| 	CHAR
+				|	BOOL;
+
+Type			::= IDENT;
+
+VarDecl 		::= (VarDecl) Type VarDeclList SEMI;
+
+VarDeclList 	::= (VarDeclList) 	VarDeclList COMMA VarDeclSingle
+				| 	(SingleDecl) 	VarDeclSingle;
+
+VarDeclSingle 	::= IDENT ArrayOpt;
+
+ArrayOpt		::= LBRACKET RBRACKET
+				| 	(Empty);
+
+ClassDecl		::= CLASS IDENT ExtendsOpt LBRACE VarDecl MethodDeclList RBRACE;
+
+ExtendsOpt		::= EXTENDS Type
+				|	(Empty);
+
+MethodDeclList	::= MethodDeclList MethodDecl
+				|	(Empty);
+
+MethodDecl		::= ReturnType IDENT LPARENT FormPars RPARENT VarDecl LBRACE Statement RBRACE;
+
+ReturnType		::= Type
+				| 	VOID;
+
+FormPars		::= Type FormParsList
+				|	(Empty);
+
+FormParsList	::= FormParsList COMMA FormParsSingle
+				|	FormParsSingle;
+
+FormParsSingle	::= Type IDENT ArrayOpt;
+
+Statement		::= DesignatorStatement SEMI
+				
+				|	DO Statement WHILE LPARENT Condition RPARENT SEMI
+				| 	BREAK SEMI
+				|	CONTINUE SEMI
+				|	RETURN ExprOpt SEMI
+				|	READ LPARENT Designator RPARENT SEMI
+				|	PRINT LPARENT Expr RPARENT SEMI
+				| 	LBRACE StatementList RBRACE;
+
+DesignatorStatement ::= Designator DesOperators;
+					
+DesOperators		::= AssignOp Expr
+					|	LPARENT ActPars RPARENT
+					|	INC
+					|	DEC;
+
+AssignOp		::= ASSIGN;
+					
+ActPars			::=	ExprList
+				|	(Empty);
+
+ExprList		::= ExprList COMMA Expr
+				|	Expr;
+					
+Condition		::= Condition OR CondTerm
+				| 	CondTerm;
+
+CondTerm		::= CondTerm AND CondFact
+				|	CondFact;
+
+CondFact		::= Expr RelopOpt;
+
+RelopOpt		::= Relop Expr
+				|	(Empty);
+
+Relop			::= EQUAL | NOTEQ | GREATEREQ | GREATER | LESSEQ | LESS;
+
+ElseOpt			::= ELSE Statement
+				|	(Empty);
+
+Expr			::=	MINUS Term
+				|	Term
+				|	Expr AddOp Term;
+				
+Term			::= Term MulOp Factor
+				|	Factor;
+
+Factor			::= Designator ActParsOpt
+				|	NUMBER
+				|	CHAR
+				|	BOOL
+				|	NEW Type ActParsOptExpr
+				|	LPARENT Expr RPARENT;
+
+ActParsOpt		::= ActPars
+				|	(Empty)
+
+ActParsOptExpr	::= LPARENT ActParsOpt RPARENT
+				|	(Empty)
+				
+ExprOpt			::= Expr
+				|	(Empty);
+
+Designator		::=	IDENT DesList;
+
+DesList			::=	DesList DesElement
+				| 	(Empty);
+					
+DesElement		::= DOT IDENT
+				|	LBRACKET Expr RBRACKET;					
+
+StatementList	::= StatementList Statement
+				| 	(Empty);
+
+AddOp			::= PLUS
+				|	MINUS;
+
+MulOp			::= MUL 
+				|	DIV
+				|	MOD;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
