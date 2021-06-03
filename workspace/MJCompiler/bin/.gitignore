@@ -1,10 +1,9 @@
+/codegen/
+/lexer/
 /log4j.xml
 /mjlexer.lex
 /mjparser.cup
-/program.mj
-/rs/
-/lexer/
-/syntax/
-/semantic/
-/codegen/
 /mjparser_astbuild.cup
+/rs/
+/semantic/
+/syntax/

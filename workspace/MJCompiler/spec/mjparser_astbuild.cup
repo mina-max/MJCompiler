@@ -47,12 +47,12 @@ scan with {:
 
 terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
 terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
-terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT;
+terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
 terminal AND, OR, ASSIGN, INC, DEC, DOT;
 terminal Integer NUMBER;
-terminal String IDENT, CHAR, BOOL;
-terminal IF, ELSE;
+terminal String IDENT, CHAR;
+terminal IF, ELSE, BOOL;
 
 nonterminal Program Program;
 nonterminal DeclList DeclList;
@@ -78,8 +78,6 @@ nonterminal Statement Statement;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal DesOperators DesOperators;
 nonterminal AssignOp AssignOp;
-nonterminal ActPars ActPars;
-nonterminal ExprList ExprList;
 nonterminal Condition Condition;
 nonterminal CondTerm CondTerm;
 nonterminal CondFact CondFact;
@@ -89,8 +87,7 @@ nonterminal ElseOpt ElseOpt;
 nonterminal Expr Expr;
 nonterminal Term Term;
 nonterminal Factor Factor;
-nonterminal ActParsOpt ActParsOpt;
-nonterminal ActParsOptExp ActParsOptExp;
+nonterminal ActPars ActPars;
 nonterminal ExprOpt ExprOpt;
 nonterminal CaseList CaseList;
 nonterminal Designator Designator;
@@ -99,62 +96,146 @@ nonterminal DesElement DesElement;
 nonterminal StatementList StatementList;
 nonterminal AddOp AddOp;
 nonterminal MulOp MulOp;
+nonterminal MethodDeclListOpt MethodDeclListOpt;
+nonterminal VarDeclOnly VarDeclOnly;
+nonterminal FormParsOpt FormParsOpt;
+nonterminal ActParsOpt ActParsOpt;
 
-
-Program 		::= (Program) PROGRAM IDENT:I1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, D2, M3); RESULT.setLine(I1left); :};
+Program 		::= (ProgramDecl) PROGRAM IDENT:I1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new ProgramDecl(I1, D2, M3); RESULT.setLine(I1left); :};
 
 DeclList 		::= (Declarations) 	DeclList:D1 Decl:D2 {: RESULT=new Declarations(D1, D2); RESULT.setLine(D1left); :}
 				|	(NoDecl) {: RESULT=new NoDecl(); :} /* epsilon */;
 
-Decl 			::= (ConstDecl) 	ConstDecl:C1 {: RESULT=new ConstDecl(C1); RESULT.setLine(C1left); :} 
-				|	(VarDecl)		VarDecl:V1 {: RESULT=new VarDecl(V1); RESULT.setLine(V1left); :}
-				| 	(ClassDecl) 	ClassDecl:C1 {: RESULT=new ClassDecl(C1); RESULT.setLine(C1left); :};
+Decl 			::= (ConstDeclaration) 	ConstDecl:C1 {: RESULT=new ConstDeclaration(C1); RESULT.setLine(C1left); :} 
+				|	(VarDeclaration)	VarDecl:V1 {: RESULT=new VarDeclaration(V1); RESULT.setLine(V1left); :}
+				| 	(ClassDeclaration) 	ClassDecl:C1 {: RESULT=new ClassDeclaration(C1); RESULT.setLine(C1left); :};
 		
-ConstDecl 		::= (ConstDecl) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :};
+ConstDecl 		::= (ConstDeclExpr) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDeclExpr(T1, C2); RESULT.setLine(T1left); :};
 
-ConstDeclList 	::= (ConstDeclList) ConstDeclList:C1 COMMA ConstDeclSingle:C2 {: RESULT=new ConstDeclList(C1, C2); RESULT.setLine(C1left); :}
-				| 	(SingleDecl) ConstDeclSingle:C1 {: RESULT=new SingleDecl(C1); RESULT.setLine(C1left); :};
+ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList:C1 COMMA ConstDeclSingle:C2 {: RESULT=new ConstDeclListExpr(C1, C2); RESULT.setLine(C1left); :}
+				| 	(ConstDeclOne) ConstDeclSingle:C1 {: RESULT=new ConstDeclOne(C1); RESULT.setLine(C1left); :};
 
-ConstDeclSingle ::= IDENT:I1 EQUAL Init:I2 {: RESULT=new ConstDeclSingleDerived1(I1, I2); RESULT.setLine(I1left); :};
+ConstDeclSingle ::= (ConstDeclSingleExpr) IDENT:I1 ASSIGN Init:I2 {: RESULT=new ConstDeclSingleExpr(I1, I2); RESULT.setLine(I1left); :};
 
-Init 			::= NUMBER:N1 {: RESULT=new InitDerived1(N1); RESULT.setLine(N1left); :} 
-				| 	CHAR:C1 {: RESULT=new InitDerived2(C1); RESULT.setLine(C1left); :}
-				|	BOOL:B1 {: RESULT=new InitDerived3(B1); RESULT.setLine(B1left); :};
+Init 			::= (NumberConst) NUMBER:N1 {: RESULT=new NumberConst(N1); RESULT.setLine(N1left); :} 
+				| 	(CharConst)	 CHAR:C1 {: RESULT=new CharConst(C1); RESULT.setLine(C1left); :}
+				|	(BoolConst)	 BOOL {: RESULT=new BoolConst(); :};
 
-Type			::= IDENT:I1 {: RESULT=new TypeDerived1(I1); RESULT.setLine(I1left); :};
+Type			::= (TypeIdent) IDENT:I1 {: RESULT=new TypeIdent(I1); RESULT.setLine(I1left); :};
 
-VarDecl 		::= (VarDecl) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDecl(T1, V2); RESULT.setLine(T1left); :};
+VarDecl 		::= (VarDeclExpr) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDeclExpr(T1, V2); RESULT.setLine(T1left); :};
 
-VarDeclList 	::= (VarDeclList) 	VarDeclList:V1 COMMA VarDeclSingle:V2 {: RESULT=new VarDeclList(V1, V2); RESULT.setLine(V1left); :}
-				| 	(SingleDecl) 	VarDeclSingle:V1 {: RESULT=new SingleDecl(V1); RESULT.setLine(V1left); :};
+VarDeclList 	::= (VarDeclListExpr) 	VarDeclList:V1 COMMA VarDeclSingle:V2 {: RESULT=new VarDeclListExpr(V1, V2); RESULT.setLine(V1left); :}
+				| 	(VarDeclOne) 	VarDeclSingle:V1 {: RESULT=new VarDeclOne(V1); RESULT.setLine(V1left); :};
 
-VarDeclSingle 	::= IDENT:I1 ArrayOpt:A2 {: RESULT=new VarDeclSingleDerived1(I1, A2); RESULT.setLine(I1left); :};
+VarDeclSingle 	::= (VarDeclSingleExpr) IDENT:I1 ArrayOpt:A2 {: RESULT=new VarDeclSingleExpr(I1, A2); RESULT.setLine(I1left); :};
 
-ArrayOpt		::= LBRACKET RBRACKET {: RESULT=new ArrayOptDerived1(); :}
-				| 	(Empty) {: RESULT=new Empty(); :};
+VarDeclOnly		::=	(VarDeclOnlyExpr) VarDeclOnly:V1 VarDecl:V2 {: RESULT=new VarDeclOnlyExpr(V1, V2); RESULT.setLine(V1left); :}
+			  	|	(NoVars) {: RESULT=new NoVars(); :} /*epsilon*/; 
 
-ClassDecl		::= CLASS IDENT:I1 ExtendsOpt:E2 LBRACE VarDecl:V3 MethodDeclList:M4 RBRACE {: RESULT=new ClassDeclDerived1(I1, E2, V3, M4); RESULT.setLine(I1left); :};
+ArrayOpt		::=	(Array) LBRACKET RBRACKET {: RESULT=new Array(); :}
+				| 	(NotArray) {: RESULT=new NotArray(); :};
 
-ExtendsOpt		::= EXTENDS Type:T1 {: RESULT=new ExtendsOptDerived1(T1); RESULT.setLine(T1left); :}
-				|	(Empty) {: RESULT=new Empty(); :};
+ClassDecl		::= (ClassDeclExpr) CLASS IDENT:I1 ExtendsOpt:E2 LBRACE VarDeclOnly:V3 MethodDeclListOpt:M4 RBRACE {: RESULT=new ClassDeclExpr(I1, E2, V3, M4); RESULT.setLine(I1left); :};
 
-MethodDeclList	::= MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclListDerived1(M1, M2); RESULT.setLine(M1left); :}
-				|	(Empty) {: RESULT=new Empty(); :};
+ExtendsOpt		::= (ParentClass) EXTENDS Type:T1 {: RESULT=new ParentClass(T1); RESULT.setLine(T1left); :}
+				|	(NoParentClass) {: RESULT=new NoParentClass(); :};
 
-MethodDecl		::= ReturnType:R1 IDENT:I2 LPARENT FormPars:F3 RPARENT VarDecl:V4 LBRACE RBRACE {: RESULT=new MethodDeclDerived1(R1, I2, F3, V4); RESULT.setLine(R1left); :};
+MethodDeclList	::= (MethodDeclListExpr) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclListExpr(M1, M2); RESULT.setLine(M1left); :}
+				|	(NoMethodDeclList) {: RESULT=new NoMethodDeclList(); :};
 
-ReturnType		::= Type:T1 {: RESULT=new ReturnTypeDerived1(T1); RESULT.setLine(T1left); :}
-				| 	VOID {: RESULT=new ReturnTypeDerived2(); :};
-
-FormPars		::= Type:T1 FormParsList:F2 {: RESULT=new FormParsDerived1(T1, F2); RESULT.setLine(T1left); :}
-				|	(Empty) {: RESULT=new Empty(); :};
-
-FormParsList	::= FormParsList:F1 COMMA FormParsSingle:F2 {: RESULT=new FormParsListDerived1(F1, F2); RESULT.setLine(F1left); :}
-				|	FormParsSingle:F1 {: RESULT=new FormParsListDerived2(F1); RESULT.setLine(F1left); :};
-
-FormParsSingle	::= Type:T1 IDENT:I2 ArrayOpt:A3 {: RESULT=new FormParsSingleDerived1(T1, I2, A3); RESULT.setLine(T1left); :};
+MethodDecl		::= (MethodDeclExpr) ReturnType:R1 IDENT:I2 LPARENT FormParsOpt:F3 RPARENT VarDeclOnly:V4 LBRACE StatementList:S5 RBRACE {: RESULT=new MethodDeclExpr(R1, I2, F3, V4, S5); RESULT.setLine(R1left); :};
 
 
+MethodDeclListOpt ::= (MethodDeclListOptExpr) LBRACE MethodDeclList:M1 RBRACE {: RESULT=new MethodDeclListOptExpr(M1); RESULT.setLine(M1left); :}
+				  |   (NoMethodDeclListOpt) {: RESULT=new NoMethodDeclListOpt(); :};
+
+ReturnType		::= (ReturnTypeExpr) Type:T1 {: RESULT=new ReturnTypeExpr(T1); RESULT.setLine(T1left); :}
+				| 	(ReturnVoid) VOID {: RESULT=new ReturnVoid(); :};
+
+FormParsOpt		::= (FormParsListOptExpr) FormParsList:F1 {: RESULT=new FormParsListOptExpr(F1); RESULT.setLine(F1left); :}
+				| 	(NoFormPars) {: RESULT=new NoFormPars(); :};
+
+FormParsList	::= (FormParsListExpr) 	FormParsList:F1 COMMA FormParsSingle:F2 {: RESULT=new FormParsListExpr(F1, F2); RESULT.setLine(F1left); :}
+				|	(FormParsOne)  		FormParsSingle:F1 {: RESULT=new FormParsOne(F1); RESULT.setLine(F1left); :};
+
+FormParsSingle	::= (FormParsSingleExpr) Type:T1 IDENT:I2 ArrayOpt:A3 {: RESULT=new FormParsSingleExpr(T1, I2, A3); RESULT.setLine(T1left); :};
+
+Statement		::= (DesignatorStatementExpr) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStatementExpr(D1); RESULT.setLine(D1left); :}
+				|	(DoWhileStatement)	DO Statement:S1 WHILE LPARENT Condition:C2 RPARENT SEMI {: RESULT=new DoWhileStatement(S1, C2); RESULT.setLine(S1left); :}
+				|	(BreakStatement)	BREAK SEMI {: RESULT=new BreakStatement(); :}
+				|	(ContinueStatement) CONTINUE SEMI {: RESULT=new ContinueStatement(); :}
+				|	(ReturnStatement)	RETURN ExprOpt:E1 SEMI {: RESULT=new ReturnStatement(E1); RESULT.setLine(E1left); :}
+				|	(ReadStatement)		READ LPARENT Designator:D1 RPARENT SEMI {: RESULT=new ReadStatement(D1); RESULT.setLine(D1left); :}
+				| 	(ListStatement)		LBRACE StatementList:S1 RBRACE {: RESULT=new ListStatement(S1); RESULT.setLine(S1left); :};
+
+StatementList	::= (StatementListExpr) StatementList:S1 Statement:S2 {: RESULT=new StatementListExpr(S1, S2); RESULT.setLine(S1left); :}
+				| 	(NoStatement) {: RESULT=new NoStatement(); :};
+
+DesignatorStatement ::= (AssignDes) Designator:D1 AssignOp:A2 Expr:E3 {: RESULT=new AssignDes(D1, A2, E3); RESULT.setLine(D1left); :}
+					| 	(FuncDes)	Designator:D1 LPARENT ActParsOpt:A2 RPARENT {: RESULT=new FuncDes(D1, A2); RESULT.setLine(D1left); :}
+					|	(IncDes)	Designator:D1 INC {: RESULT=new IncDes(D1); RESULT.setLine(D1left); :}
+					|	(DecDes)	Designator:D1 DEC {: RESULT=new DecDes(D1); RESULT.setLine(D1left); :};
+
+Designator		::= (DesignatorName) IDENT:I1 DesList:D2 {: RESULT=new DesignatorName(I1, D2); RESULT.setLine(I1left); :};
+
+DesList			::=	(DesListExpr) DesList:D1 DesElement:D2 {: RESULT=new DesListExpr(D1, D2); RESULT.setLine(D1left); :}
+				| 	(NoDesList) {: RESULT=new NoDesList(); :};
+					
+DesElement		::= (FieldIdent) DOT IDENT:I1 {: RESULT=new FieldIdent(I1); RESULT.setLine(I1left); :}
+				|	(ArrayIdent) LBRACKET Expr:E1 RBRACKET {: RESULT=new ArrayIdent(E1); RESULT.setLine(E1left); :};		
+
+AssignOp		::= (AssignOperator) 	ASSIGN {: RESULT=new AssignOperator(); :};
+
+ActPars			::= (ExprList) 	ActPars:A1 COMMA Expr:E2 {: RESULT=new ExprList(A1, E2); RESULT.setLine(A1left); :}
+				|	(ExprPar) 		Expr:E1 {: RESULT=new ExprPar(E1); RESULT.setLine(E1left); :};
+					
+Condition		::= (CondExpr) 			Condition:C1 OR CondTerm:C2 {: RESULT=new CondExpr(C1, C2); RESULT.setLine(C1left); :}
+				| 	(CondTermSingle)	CondTerm:C1 {: RESULT=new CondTermSingle(C1); RESULT.setLine(C1left); :};
+
+CondTerm		::= (CondTermExpr) 			CondTerm:C1 AND CondFact:C2 {: RESULT=new CondTermExpr(C1, C2); RESULT.setLine(C1left); :}
+				|	(CondFactSingle)	CondFact:C1 {: RESULT=new CondFactSingle(C1); RESULT.setLine(C1left); :};
+
+CondFact		::= (CondFactExpr)	Expr:E1 RelopOpt:R2 {: RESULT=new CondFactExpr(E1, R2); RESULT.setLine(E1left); :};
+
+RelopOpt		::= (RelopOptExpr) Relop:R1 Expr:E2 {: RESULT=new RelopOptExpr(R1, E2); RESULT.setLine(R1left); :}
+				|	(NoRelop) {: RESULT=new NoRelop(); :};
+
+Relop			::= (EqualRel)		EQUAL {: RESULT=new EqualRel(); :} 
+				|	(NotEqualRel)	NOTEQ {: RESULT=new NotEqualRel(); :} 
+				| 	(GreaterEqRel)	GREATEREQ {: RESULT=new GreaterEqRel(); :} 
+				|	(GreaterRel)	GREATER {: RESULT=new GreaterRel(); :} 
+				| 	(LessEqRel)		LESSEQ {: RESULT=new LessEqRel(); :} 
+				| 	(LessRel)		LESS {: RESULT=new LessRel(); :};
+
+Expr			::= (NegativeTerm)	MINUS Term:T1 {: RESULT=new NegativeTerm(T1); RESULT.setLine(T1left); :}
+				|	(PositiveTerm)	Term:T1 {: RESULT=new PositiveTerm(T1); RESULT.setLine(T1left); :}
+				|	(NotFirstTerm)	Expr:E1 AddOp:A2 Term:T3 {: RESULT=new NotFirstTerm(E1, A2, T3); RESULT.setLine(E1left); :};
+
+Term			::= (TermExpr)		Term:T1 MulOp:M2 Factor:F3 {: RESULT=new TermExpr(T1, M2, F3); RESULT.setLine(T1left); :}
+				|	(TermFactor)	Factor:F1 {: RESULT=new TermFactor(F1); RESULT.setLine(F1left); :};
+				
+ExprOpt			::= (Expression) Expr:E1 {: RESULT=new Expression(E1); RESULT.setLine(E1left); :}
+				|	(NoExpression) {: RESULT=new NoExpression(); :};
+
+Factor			::= (DesFactor) 		Designator:D1 {: RESULT=new DesFactor(D1); RESULT.setLine(D1left); :}
+				|	(DesFactorPars) 	Designator:D1 LPARENT ActParsOpt:A2 RPARENT {: RESULT=new DesFactorPars(D1, A2); RESULT.setLine(D1left); :}
+				|	(NumFactor) 		NUMBER:N1 {: RESULT=new NumFactor(N1); RESULT.setLine(N1left); :}
+				|	(CharFactor)		CHAR:C1 {: RESULT=new CharFactor(C1); RESULT.setLine(C1left); :}
+				|	(BoolFactor)		BOOL {: RESULT=new BoolFactor(); :}
+				|	(NewArrayFactor)	NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new NewArrayFactor(T1, E2); RESULT.setLine(T1left); :}
+				|	(NewFactor)			NEW Type:T1 {: RESULT=new NewFactor(T1); RESULT.setLine(T1left); :} 
+				|	(ExprFactor)		LPARENT Expr:E1 RPARENT {: RESULT=new ExprFactor(E1); RESULT.setLine(E1left); :};
+
+ActParsOpt		::= (ActParsExpr) ActPars:A1 {: RESULT=new ActParsExpr(A1); RESULT.setLine(A1left); :} 
+				|	(NoActPars) {: RESULT=new NoActPars(); :};
+
+AddOp			::= (Plus)  PLUS {: RESULT=new Plus(); :}
+				|	(Minus) MINUS {: RESULT=new Minus(); :};
+
+MulOp			::= (Mul) MUL {: RESULT=new Mul(); :}
+				|	(Div) DIV {: RESULT=new Div(); :}
+				|	(Mod) MOD {: RESULT=new Mod(); :};
 
 
 

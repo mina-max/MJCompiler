@@ -47,155 +47,156 @@ scan with {:
 
 terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
 terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
-terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT;
+terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
 terminal AND, OR, ASSIGN, INC, DEC, DOT;
 terminal Integer NUMBER;
-terminal String IDENT, CHAR, BOOL;
-terminal IF, ELSE;
+terminal String IDENT, CHAR;
+terminal IF, ELSE, BOOL;
 
 nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle, Init;
 nonterminal Type, VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
 nonterminal MethodDeclList, MethodDecl, ReturnType, FormPars, FormParsList, FormParsSingle;
-nonterminal Statement, DesignatorStatement, DesOperators, AssignOp, ActPars, ExprList, Condition;
-nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, Expr, Term, Factor, ActParsOpt, ActParsOptExp;
-nonterminal ExprOpt, CaseList, Designator, DesList, DesElement, StatementList, AddOp, MulOp;
+nonterminal Statement, DesignatorStatement, DesOperators, AssignOp, Condition;
+nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, Expr, Term, Factor, ActPars;
+nonterminal ExprOpt, CaseList, Designator, DesList, DesElement, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
+nonterminal FormParsOpt, ActParsOpt;
 
-
-Program 		::= (Program) PROGRAM IDENT DeclList LBRACE MethodDeclList RBRACE;
+Program 		::= (ProgramDecl) PROGRAM IDENT DeclList LBRACE MethodDeclList RBRACE;
 
 DeclList 		::= (Declarations) 	DeclList Decl
 				|	(NoDecl) /* epsilon */;
 
-Decl 			::= (ConstDecl) 	ConstDecl 
-				|	(VarDecl)		VarDecl
-				| 	(ClassDecl) 	ClassDecl;
+Decl 			::= (ConstDeclaration) 	ConstDecl 
+				|	(VarDeclaration)	VarDecl
+				| 	(ClassDeclaration) 	ClassDecl;
 		
-ConstDecl 		::= (ConstDecl) CONST Type ConstDeclList SEMI;
+ConstDecl 		::= (ConstDeclExpr) CONST Type ConstDeclList SEMI;
 
-ConstDeclList 	::= (ConstDeclList) ConstDeclList COMMA ConstDeclSingle
-				| 	(SingleDecl) ConstDeclSingle;
+ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList COMMA ConstDeclSingle
+				| 	(ConstDeclOne) ConstDeclSingle;
 
-ConstDeclSingle ::= IDENT EQUAL Init;
+ConstDeclSingle ::= (ConstDeclSingleExpr) IDENT ASSIGN Init;
 
-Init 			::= NUMBER 
-				| 	CHAR
-				|	BOOL;
+Init 			::= (NumberConst) NUMBER 
+				| 	(CharConst)	 CHAR
+				|	(BoolConst)	 BOOL;
 
-Type			::= IDENT;
+Type			::= (TypeIdent) IDENT;
 
-VarDecl 		::= (VarDecl) Type VarDeclList SEMI;
+VarDecl 		::= (VarDeclExpr) Type VarDeclList SEMI;
 
-VarDeclList 	::= (VarDeclList) 	VarDeclList COMMA VarDeclSingle
-				| 	(SingleDecl) 	VarDeclSingle;
+VarDeclList 	::= (VarDeclListExpr) 	VarDeclList COMMA VarDeclSingle
+				| 	(VarDeclOne) 	VarDeclSingle;
 
-VarDeclSingle 	::= IDENT ArrayOpt;
+VarDeclSingle 	::= (VarDeclSingleExpr) IDENT ArrayOpt;
 
-ArrayOpt		::= LBRACKET RBRACKET
-				| 	(Empty);
+VarDeclOnly		::=	(VarDeclOnlyExpr) VarDeclOnly VarDecl
+			  	|	(NoVars) /*epsilon*/; 
 
-ClassDecl		::= CLASS IDENT ExtendsOpt LBRACE VarDecl MethodDeclList RBRACE;
+ArrayOpt		::=	(Array) LBRACKET RBRACKET
+				| 	(NotArray);
 
-ExtendsOpt		::= EXTENDS Type
-				|	(Empty);
+ClassDecl		::= (ClassDeclExpr) CLASS IDENT ExtendsOpt LBRACE VarDeclOnly MethodDeclListOpt RBRACE;
 
-MethodDeclList	::= MethodDeclList MethodDecl
-				|	(Empty);
+ExtendsOpt		::= (ParentClass) EXTENDS Type
+				|	(NoParentClass);
 
-MethodDecl		::= ReturnType IDENT LPARENT FormPars RPARENT VarDecl LBRACE Statement RBRACE;
+MethodDeclList	::= (MethodDeclListExpr) MethodDeclList MethodDecl
+				|	(NoMethodDeclList);
 
-ReturnType		::= Type
-				| 	VOID;
+MethodDecl		::= (MethodDeclExpr) ReturnType IDENT LPARENT FormParsOpt RPARENT VarDeclOnly LBRACE StatementList RBRACE;
 
-FormPars		::= Type FormParsList
-				|	(Empty);
 
-FormParsList	::= FormParsList COMMA FormParsSingle
-				|	FormParsSingle;
+MethodDeclListOpt ::= (MethodDeclListOptExpr) LBRACE MethodDeclList RBRACE
+				  |   (NoMethodDeclListOpt);
 
-FormParsSingle	::= Type IDENT ArrayOpt;
+ReturnType		::= (ReturnTypeExpr) Type
+				| 	(ReturnVoid) VOID;
 
-Statement		::= DesignatorStatement SEMI
+FormParsOpt		::= (FormParsListOptExpr) FormParsList
+				| 	(NoFormPars);
+
+FormParsList	::= (FormParsListExpr) 	FormParsList COMMA FormParsSingle
+				|	(FormParsOne)  		FormParsSingle;
+
+FormParsSingle	::= (FormParsSingleExpr) Type IDENT ArrayOpt;
+
+Statement		::= (DesignatorStatementExpr) DesignatorStatement SEMI
+				|	(DoWhileStatement)	DO Statement WHILE LPARENT Condition RPARENT SEMI
+				|	(BreakStatement)	BREAK SEMI
+				|	(ContinueStatement) CONTINUE SEMI
+				|	(ReturnStatement)	RETURN ExprOpt SEMI
+				|	(ReadStatement)		READ LPARENT Designator RPARENT SEMI
+				| 	(ListStatement)		LBRACE StatementList RBRACE;
+
+StatementList	::= (StatementListExpr) StatementList Statement
+				| 	(NoStatement);
+
+DesignatorStatement ::= (AssignDes) Designator AssignOp Expr
+					| 	(FuncDes)	Designator LPARENT ActParsOpt RPARENT
+					|	(IncDes)	Designator INC
+					|	(DecDes)	Designator DEC;
+
+Designator		::= (DesignatorName) IDENT DesList;
+
+DesList			::=	(DesListExpr) DesList DesElement
+				| 	(NoDesList);
+					
+DesElement		::= (FieldIdent) DOT IDENT
+				|	(ArrayIdent) LBRACKET Expr RBRACKET;		
+
+AssignOp		::= (AssignOperator) 	ASSIGN;
+
+ActPars			::= (ExprList) 	ActPars COMMA Expr
+				|	(ExprPar) 		Expr;
+					
+Condition		::= (CondExpr) 			Condition OR CondTerm
+				| 	(CondTermSingle)	CondTerm;
+
+CondTerm		::= (CondTermExpr) 			CondTerm AND CondFact
+				|	(CondFactSingle)	CondFact;
+
+CondFact		::= (CondFactExpr)	Expr RelopOpt;
+
+RelopOpt		::= (RelopOptExpr) Relop Expr
+				|	(NoRelop);
+
+Relop			::= (EqualRel)		EQUAL 
+				|	(NotEqualRel)	NOTEQ 
+				| 	(GreaterEqRel)	GREATEREQ 
+				|	(GreaterRel)	GREATER 
+				| 	(LessEqRel)		LESSEQ 
+				| 	(LessRel)		LESS;
+
+Expr			::= (NegativeTerm)	MINUS Term
+				|	(PositiveTerm)	Term
+				|	(NotFirstTerm)	Expr AddOp Term;
+
+Term			::= (TermExpr)		Term MulOp Factor
+				|	(TermFactor)	Factor;
 				
-				|	DO Statement WHILE LPARENT Condition RPARENT SEMI
-				| 	BREAK SEMI
-				|	CONTINUE SEMI
-				|	RETURN ExprOpt SEMI
-				|	READ LPARENT Designator RPARENT SEMI
-				|	PRINT LPARENT Expr RPARENT SEMI
-				| 	LBRACE StatementList RBRACE;
+ExprOpt			::= (Expression) Expr
+				|	(NoExpression);
 
-DesignatorStatement ::= Designator DesOperators;
-					
-DesOperators		::= AssignOp Expr
-					|	LPARENT ActPars RPARENT
-					|	INC
-					|	DEC;
+Factor			::= (DesFactor) 		Designator
+				|	(DesFactorPars) 	Designator LPARENT ActParsOpt RPARENT
+				|	(NumFactor) 		NUMBER
+				|	(CharFactor)		CHAR
+				|	(BoolFactor)		BOOL
+				|	(NewArrayFactor)	NEW Type LBRACKET Expr RBRACKET
+				|	(NewFactor)			NEW Type 
+				|	(ExprFactor)		LPARENT Expr RPARENT;
 
-AssignOp		::= ASSIGN;
-					
-ActPars			::=	ExprList
-				|	(Empty);
+ActParsOpt		::= (ActParsExpr) ActPars 
+				|	(NoActPars);
 
-ExprList		::= ExprList COMMA Expr
-				|	Expr;
-					
-Condition		::= Condition OR CondTerm
-				| 	CondTerm;
+AddOp			::= (Plus)  PLUS
+				|	(Minus) MINUS;
 
-CondTerm		::= CondTerm AND CondFact
-				|	CondFact;
-
-CondFact		::= Expr RelopOpt;
-
-RelopOpt		::= Relop Expr
-				|	(Empty);
-
-Relop			::= EQUAL | NOTEQ | GREATEREQ | GREATER | LESSEQ | LESS;
-
-ElseOpt			::= ELSE Statement
-				|	(Empty);
-
-Expr			::=	MINUS Term
-				|	Term
-				|	Expr AddOp Term;
-				
-Term			::= Term MulOp Factor
-				|	Factor;
-
-Factor			::= Designator ActParsOpt
-				|	NUMBER
-				|	CHAR
-				|	BOOL
-				|	NEW Type ActParsOptExpr
-				|	LPARENT Expr RPARENT;
-
-ActParsOpt		::= ActPars
-				|	(Empty)
-
-ActParsOptExpr	::= LPARENT ActParsOpt RPARENT
-				|	(Empty)
-				
-ExprOpt			::= Expr
-				|	(Empty);
-
-Designator		::=	IDENT DesList;
-
-DesList			::=	DesList DesElement
-				| 	(Empty);
-					
-DesElement		::= DOT IDENT
-				|	LBRACKET Expr RBRACKET;					
-
-StatementList	::= StatementList Statement
-				| 	(Empty);
-
-AddOp			::= PLUS
-				|	MINUS;
-
-MulOp			::= MUL 
-				|	DIV
-				|	MOD;
+MulOp			::= (Mul) MUL
+				|	(Div) DIV
+				|	(Mod) MOD;
 
 
 
