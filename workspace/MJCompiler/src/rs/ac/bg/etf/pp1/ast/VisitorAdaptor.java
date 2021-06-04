@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/5/2021 23:44:15
+// 4/5/2021 12:43:55
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -16,11 +16,13 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesList DesList) { }
     public void visit(Relop Relop) { }
     public void visit(MethodDeclListOpt MethodDeclListOpt) { }
+    public void visit(PrintParamOpt PrintParamOpt) { }
     public void visit(StatementList StatementList) { }
     public void visit(ExprOpt ExprOpt) { }
     public void visit(Factor Factor) { }
     public void visit(CondTerm CondTerm) { }
     public void visit(DesElement DesElement) { }
+    public void visit(ConditionCorrect ConditionCorrect) { }
     public void visit(DeclList DeclList) { }
     public void visit(Designator Designator) { }
     public void visit(ArrayOpt ArrayOpt) { }
@@ -58,6 +60,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Mul Mul) { visit(); }
     public void visit(Minus Minus) { visit(); }
     public void visit(Plus Plus) { visit(); }
+    public void visit(NoPrintParam NoPrintParam) { visit(); }
+    public void visit(PrintParam PrintParam) { visit(); }
     public void visit(NoActPars NoActPars) { visit(); }
     public void visit(ActParsExpr ActParsExpr) { visit(); }
     public void visit(ExprFactor ExprFactor) { visit(); }
@@ -88,8 +92,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondTermExpr CondTermExpr) { visit(); }
     public void visit(CondTermSingle CondTermSingle) { visit(); }
     public void visit(CondExpr CondExpr) { visit(); }
+    public void visit(ErrorCondition ErrorCondition) { visit(); }
+    public void visit(CorrectCondition CorrectCondition) { visit(); }
     public void visit(ExprPar ExprPar) { visit(); }
     public void visit(ExprList ExprList) { visit(); }
+    public void visit(AssignError AssignError) { visit(); }
     public void visit(AssignOperator AssignOperator) { visit(); }
     public void visit(ArrayIdent ArrayIdent) { visit(); }
     public void visit(FieldIdent FieldIdent) { visit(); }
@@ -103,13 +110,17 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NoStatement NoStatement) { visit(); }
     public void visit(StatementListExpr StatementListExpr) { visit(); }
     public void visit(ListStatement ListStatement) { visit(); }
+    public void visit(PrintStatement PrintStatement) { visit(); }
     public void visit(ReadStatement ReadStatement) { visit(); }
     public void visit(ReturnStatement ReturnStatement) { visit(); }
     public void visit(ContinueStatement ContinueStatement) { visit(); }
     public void visit(BreakStatement BreakStatement) { visit(); }
     public void visit(DoWhileStatement DoWhileStatement) { visit(); }
+    public void visit(IfElseCondition IfElseCondition) { visit(); }
+    public void visit(IfCondition IfCondition) { visit(); }
     public void visit(DesignatorStatementExpr DesignatorStatementExpr) { visit(); }
     public void visit(FormParsSingleExpr FormParsSingleExpr) { visit(); }
+    public void visit(FormParsListError FormParsListError) { visit(); }
     public void visit(FormParsOne FormParsOne) { visit(); }
     public void visit(FormParsListExpr FormParsListExpr) { visit(); }
     public void visit(NoFormPars NoFormPars) { visit(); }
@@ -129,8 +140,10 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NoVars NoVars) { visit(); }
     public void visit(VarDeclOnlyExpr VarDeclOnlyExpr) { visit(); }
     public void visit(VarDeclSingleExpr VarDeclSingleExpr) { visit(); }
+    public void visit(ErrorVarDeclList ErrorVarDeclList) { visit(); }
     public void visit(VarDeclOne VarDeclOne) { visit(); }
     public void visit(VarDeclListExpr VarDeclListExpr) { visit(); }
+    public void visit(ErrorVarDecl ErrorVarDecl) { visit(); }
     public void visit(VarDeclExpr VarDeclExpr) { visit(); }
     public void visit(TypeIdent TypeIdent) { visit(); }
     public void visit(BoolConst BoolConst) { visit(); }

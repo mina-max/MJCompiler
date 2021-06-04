@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.Symbol;
+import rs.ac.bg.etf.pp1.test.CompilerError;
 
 %%
 
@@ -15,6 +16,7 @@ import java_cup.runtime.Symbol;
 	private Symbol new_symbol(int type, Object value) {
 		return new Symbol(type, yyline+1, yycolumn, value);
 	}
+
 
 
 %}
@@ -98,4 +100,4 @@ import java_cup.runtime.Symbol;
 
 
 
-. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
+. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); return new_symbol(sym.ERROR, yytext()); }
