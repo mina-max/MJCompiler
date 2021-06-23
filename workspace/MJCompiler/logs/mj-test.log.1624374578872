@@ -1,0 +1,51 @@
+INFO  17:08:59,212 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  17:08:59,281 - #2 program
+INFO  17:08:59,281 - #46 mimi
+INFO  17:08:59,281 - #46 int
+INFO  17:08:59,283 - #46 a
+INFO  17:08:59,283 - #14 ,
+INFO  17:08:59,285 - #46 k
+INFO  17:08:59,285 - #12 ;
+INFO  17:08:59,286 - #9 class
+INFO  17:08:59,286 - #46 Mina
+INFO  17:08:59,286 - #20 {
+INFO  17:08:59,288 - #46 int
+INFO  17:08:59,289 - #46 b
+INFO  17:08:59,289 - #14 ,
+INFO  17:08:59,289 - #46 c
+INFO  17:08:59,289 - #14 ,
+INFO  17:08:59,289 - #46 d
+INFO  17:08:59,289 - #12 ;
+INFO  17:08:59,290 - #21 }
+INFO  17:08:59,291 - #20 {
+INFO  17:08:59,292 - #16 void
+INFO  17:08:59,293 - #46 f
+INFO  17:08:59,293 - #24 (
+INFO  17:08:59,294 - #46 char
+INFO  17:08:59,294 - #46 ch
+INFO  17:08:59,294 - #14 ,
+INFO  17:08:59,296 - #46 int
+INFO  17:08:59,296 - #46 a
+INFO  17:08:59,296 - #14 ,
+INFO  17:08:59,296 - #46 int
+INFO  17:08:59,296 - #46 arg
+INFO  17:08:59,296 - #25 )
+INFO  17:08:59,297 - #46 int
+INFO  17:08:59,298 - #46 x
+INFO  17:08:59,298 - #12 ;
+INFO  17:08:59,298 - #20 {
+INFO  17:08:59,298 - #46 x
+INFO  17:08:59,299 - #41 =
+INFO  17:08:59,300 - #46 arg
+INFO  17:08:59,302 - #12 ;
+INFO  17:08:59,302 - #46 mimimi
+INFO  17:08:59,303 - #42 ++
+INFO  17:08:59,303 - #12 ;
+INFO  17:08:59,303 - #17 continue
+INFO  17:08:59,303 - #12 ;
+INFO  17:08:59,303 - #21 }
+INFO  17:08:59,304 - #21 }
+INFO  17:08:59,307 - ===================================
+ERROR 17:08:59,315 - Simbol 'mimimi' nije definisan - Greska na liniji 11
+ERROR 17:08:59,315 - IncDesignator mora biti tipa integer - Greska na liniji 11
+ERROR 17:08:59,315 - Continue moze da se koristi samo unutar Do-While petlje

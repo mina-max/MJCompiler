@@ -1,0 +1,73 @@
+INFO  14:57:49,816 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  14:57:49,924 - #2 program
+INFO  14:57:49,924 - #46 p
+INFO  14:57:49,924 - #8 const
+INFO  14:57:49,925 - #46 int
+INFO  14:57:49,925 - #46 i
+INFO  14:57:49,925 - #41 =
+INFO  14:57:49,925 - #45 2
+INFO  14:57:49,926 - #12 ;
+INFO  14:57:49,926 - #20 {
+INFO  14:57:49,926 - #16 void
+INFO  14:57:49,927 - #46 mina
+INFO  14:57:49,928 - #24 (
+INFO  14:57:49,928 - #25 )
+INFO  14:57:49,929 - #20 {
+INFO  14:57:49,930 - #15 print
+INFO  14:57:49,930 - #24 (
+INFO  14:57:49,930 - #45 2
+INFO  14:57:49,930 - #25 )
+INFO  14:57:49,932 - #12 ;
+INFO  14:57:49,932 - #21 }
+INFO  14:57:49,932 - #21 }
+INFO  14:57:49,933 - ProgramDecl(
+ p
+  Declarations(
+    NoDecl(
+    ) [NoDecl]
+    ConstDeclaration(
+      ConstDeclExpr(
+        TypeIdent(
+         int
+        ) [TypeIdent]
+        ConstDeclOne(
+          ConstDeclSingleExpr(
+           i
+            NumberConst(
+             2
+            ) [NumberConst]
+          ) [ConstDeclSingleExpr]
+        ) [ConstDeclOne]
+      ) [ConstDeclExpr]
+    ) [ConstDeclaration]
+  ) [Declarations]
+  MethodDeclListExpr(
+    NoMethodDeclList(
+    ) [NoMethodDeclList]
+    MethodDeclExpr(
+      ReturnVoid(
+      ) [ReturnVoid]
+     mina
+      NoFormPars(
+      ) [NoFormPars]
+      NoVars(
+      ) [NoVars]
+      StatementListExpr(
+        NoStatement(
+        ) [NoStatement]
+        PrintStatement(
+          PositiveTerm(
+            TermFactor(
+              NumFactor(
+               2
+              ) [NumFactor]
+            ) [TermFactor]
+          ) [PositiveTerm]
+          NoPrintParam(
+          ) [NoPrintParam]
+        ) [PrintStatement]
+      ) [StatementListExpr]
+    ) [MethodDeclExpr]
+  ) [MethodDeclListExpr]
+) [ProgramDecl]
+INFO  14:57:49,933 - ===================================

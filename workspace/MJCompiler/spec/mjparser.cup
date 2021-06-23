@@ -2,6 +2,7 @@ package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.*;
 import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
 
@@ -47,22 +48,27 @@ terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
 terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
 terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
-terminal AND, OR, ASSIGN, INC, DEC, DOT;
+terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
 terminal Integer NUMBER;
 terminal String IDENT, CHAR;
 terminal IF, ELSE, BOOL;
 
 nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle, Init;
-nonterminal Type, VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
+nonterminal VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
 nonterminal MethodDeclList, MethodDecl, ReturnType, FormPars, FormParsList, FormParsSingle;
-nonterminal Statement, DesignatorStatement, DesOperators, AssignOp, Condition;
-nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, Expr, Term, Factor, ActPars;
-nonterminal ExprOpt, CaseList, Designator, DesList, DesElement, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
-nonterminal FormParsOpt, ActParsOpt, PrintParamOpt, ConditionCorrect;
+nonterminal Statement, DesignatorStatement, DesOperators, AssignOp;
+nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, Term, Factor, ActPars;
+nonterminal CaseList, DesList, DesElement, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
+nonterminal FormParsOpt, ActParsOpt, PrintParamOpt, ConditionCorrect, MethodBody, MethodSign, Do;
+
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition;
 
 precedence left ELSE;
 
-Program 		::= (ProgramDecl) PROGRAM IDENT DeclList LBRACE MethodDeclList RBRACE;
+Program 		::= (Program) PROGRAM ProgName DeclList LBRACE MethodDeclList RBRACE;
+
+ProgName		::= (ProgName) IDENT:progName;
 
 DeclList 		::= (Declarations) 	DeclList Decl
 				|	(NoDecl) /* epsilon */;
@@ -71,18 +77,18 @@ Decl 			::= (ConstDeclaration) 	ConstDecl
 				|	(VarDeclaration)	VarDecl
 				| 	(ClassDeclaration) 	ClassDecl;
 		
-ConstDecl 		::= (ConstDeclExpr) CONST Type ConstDeclList SEMI;
+ConstDecl 		::= (ConstDecl) CONST Type ConstDeclList SEMI;
 
 ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList COMMA ConstDeclSingle
 				| 	(ConstDeclOne) ConstDeclSingle;
 
-ConstDeclSingle ::= (ConstDeclSingleExpr) IDENT ASSIGN Init;
+ConstDeclSingle ::= (ConstDeclSingle) IDENT:constName ASSIGN Init;
 
 Init 			::= (NumberConst) NUMBER 
 				| 	(CharConst)	 CHAR
 				|	(BoolConst)	 BOOL;
 
-Type			::= (TypeIdent) IDENT;
+Type			::= (Type) IDENT:typeName;
 
 VarDecl 		::= (VarDeclExpr) Type VarDeclList SEMI
 				|	(ErrorVarDecl) error;
@@ -91,7 +97,7 @@ VarDeclList 	::= (VarDeclListExpr) 	VarDeclList COMMA VarDeclSingle
 				| 	(VarDeclOne) 	VarDeclSingle
 				|	(ErrorVarDeclList)	error;
 
-VarDeclSingle 	::= (VarDeclSingleExpr) IDENT ArrayOpt;
+VarDeclSingle 	::= (VarDeclSingle) IDENT:varName ArrayOpt;
 
 VarDeclOnly		::=	(VarDeclOnlyExpr) VarDeclOnly VarDecl
 			  	|	(NoVars) /*epsilon*/; 
@@ -99,7 +105,9 @@ VarDeclOnly		::=	(VarDeclOnlyExpr) VarDeclOnly VarDecl
 ArrayOpt		::=	(Array) LBRACKET RBRACKET
 				| 	(NotArray) /* epsilon */;
 
-ClassDecl		::= (ClassDeclExpr) CLASS IDENT ExtendsOpt LBRACE VarDeclOnly MethodDeclListOpt RBRACE;
+ClassDecl		::= (ClassDecl) CLASS ClassName ExtendsOpt LBRACE VarDeclOnly MethodDeclListOpt RBRACE;
+
+ClassName		::= (ClassName) IDENT:className;
 
 ExtendsOpt		::= (ParentClass) EXTENDS Type
 				|	(NoParentClass) /* epsilon */;
@@ -107,10 +115,17 @@ ExtendsOpt		::= (ParentClass) EXTENDS Type
 MethodDeclList	::= (MethodDeclListExpr) MethodDeclList MethodDecl
 				|	(NoMethodDeclList) /* epsilon */;
 
-MethodDecl		::= (MethodDeclExpr) ReturnType IDENT LPARENT FormParsOpt RPARENT VarDeclOnly LBRACE StatementList RBRACE;
+MethodDecl		::= (MethodDecl) ReturnType MethodSign MethodBody;
+
+MethodSign		::= (MethodSign) MethodName LPARENT FormParsOpt RPARENT;
+
+MethodBody		::= (MethodBody) VarDeclOnly LBRACE StatementList RBRACE;
+
+MethodName		::= (MethodName) IDENT:methodName;
 
 MethodDeclListOpt ::= (MethodDeclListOptExpr) LBRACE MethodDeclList RBRACE
 				  |   (NoMethodDeclListOpt) /* epsilon */;
+				  
 
 ReturnType		::= (ReturnTypeExpr) Type
 				| 	(ReturnVoid) VOID;
@@ -122,28 +137,31 @@ FormParsList	::= (FormParsListExpr) 	FormParsList COMMA FormParsSingle
 				|	(FormParsOne)  		FormParsSingle
 				|	(FormParsListError)	error;
 
-FormParsSingle	::= (FormParsSingleExpr) Type IDENT ArrayOpt;
+FormParsSingle	::= (FormParsSingle) Type IDENT:formParName ArrayOpt;
 
 Statement		::= (DesignatorStatementExpr) DesignatorStatement SEMI
 				|	(IfCondition)		IF ConditionCorrect Statement
 				|	(IfElseCondition)	IF ConditionCorrect Statement ELSE Statement
-				|	(DoWhileStatement)	DO Statement WHILE LPARENT Condition RPARENT SEMI
+				|	(DoWhileStatement)	Do Statement WHILE LPARENT Condition RPARENT SEMI
+				|	(YieldStatement)	YIELD Expr SEMI
 				|	(BreakStatement)	BREAK SEMI
 				|	(ContinueStatement) CONTINUE SEMI
-				|	(ReturnStatement)	RETURN ExprOpt SEMI
+				|	(ReturnStatement)	RETURN ReturnExprOpt SEMI
 				|	(ReadStatement)		READ LPARENT Designator RPARENT SEMI
 				|	(PrintStatement)	PRINT LPARENT Expr PrintParamOpt RPARENT SEMI
 				| 	(ListStatement)		LBRACE StatementList RBRACE;
 
 StatementList	::= (StatementListExpr) StatementList Statement
 				| 	(NoStatement) /* epsilon */;
+				
+Do				::= (DoStatement)	DO;
 
 DesignatorStatement ::= (AssignDes) Designator AssignOp Expr
 					| 	(FuncDes)	Designator LPARENT ActParsOpt RPARENT
 					|	(IncDes)	Designator INC
 					|	(DecDes)	Designator DEC;
 
-Designator		::= (DesignatorName) IDENT DesList;
+Designator		::= (Designator) IDENT:desName DesList;
 
 DesList			::=	(DesListExpr) DesList DesElement
 				| 	(NoDesList) /* epsilon */;
@@ -159,7 +177,7 @@ ActPars			::= (ExprList) 	ActPars COMMA Expr
 				
 ConditionCorrect::= (CorrectCondition) LPARENT Condition RPARENT
 			     |	(ErrorCondition) LPARENT error RPARENT:l
-			     {:parser.report_error("Izvrsen oporavak od greske na liniji, " + lleft, null); :};
+			     {:parser.report_error("Izvrsen oporavak od greske na liniji " + lleft, null); :};
 					
 Condition		::= (CondExpr) 			Condition OR CondTerm
 				| 	(CondTermSingle)	CondTerm;
@@ -186,7 +204,7 @@ Expr			::= (NegativeTerm)	MINUS Term
 Term			::= (TermExpr)		Term MulOp Factor
 				|	(TermFactor)	Factor;
 				
-ExprOpt			::= (Expression) Expr
+ReturnExprOpt	::= (RetExpr) Expr
 				|	(NoExpression) /* epsilon */;
 
 Factor			::= (DesFactor) 		Designator

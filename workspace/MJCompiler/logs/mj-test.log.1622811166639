@@ -1,0 +1,16 @@
+INFO  14:51:46,165 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  14:51:46,282 - #2 program
+INFO  14:51:46,282 - #46 p
+INFO  14:51:46,282 - #20 {
+INFO  14:51:46,283 - #48 if
+ERROR 14:51:46,283 - 
+Sintaksna greska na liniji 4
+INFO  14:51:46,283 - #24 (
+INFO  14:51:46,283 - #25 )
+INFO  14:51:46,283 - #15 print
+INFO  14:51:46,284 - #24 (
+INFO  14:51:46,284 - #45 2
+INFO  14:51:46,284 - #25 )
+INFO  14:51:46,284 - #12 ;
+INFO  14:51:46,284 - #21 }
+ERROR 14:51:46,285 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 5

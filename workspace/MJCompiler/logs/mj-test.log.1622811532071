@@ -1,0 +1,111 @@
+INFO  14:58:22,781 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  14:58:22,902 - #2 program
+INFO  14:58:22,903 - #46 p
+INFO  14:58:22,903 - #8 const
+INFO  14:58:22,904 - #46 int
+INFO  14:58:22,904 - #46 i
+INFO  14:58:22,904 - #41 =
+INFO  14:58:22,904 - #45 2
+INFO  14:58:22,904 - #12 ;
+INFO  14:58:22,904 - #20 {
+INFO  14:58:22,904 - #16 void
+INFO  14:58:22,905 - #46 mina
+INFO  14:58:22,906 - #24 (
+INFO  14:58:22,906 - #25 )
+INFO  14:58:22,907 - #20 {
+INFO  14:58:22,908 - #48 if
+INFO  14:58:22,909 - #24 (
+INFO  14:58:22,909 - #46 i
+INFO  14:58:22,909 - #28 ==
+INFO  14:58:22,910 - #45 2
+INFO  14:58:22,911 - #25 )
+INFO  14:58:22,912 - #15 print
+INFO  14:58:22,914 - #24 (
+INFO  14:58:22,914 - #45 2
+INFO  14:58:22,915 - #25 )
+INFO  14:58:22,918 - #12 ;
+INFO  14:58:22,918 - #21 }
+INFO  14:58:22,919 - #21 }
+INFO  14:58:22,921 - ProgramDecl(
+ p
+  Declarations(
+    NoDecl(
+    ) [NoDecl]
+    ConstDeclaration(
+      ConstDeclExpr(
+        TypeIdent(
+         int
+        ) [TypeIdent]
+        ConstDeclOne(
+          ConstDeclSingleExpr(
+           i
+            NumberConst(
+             2
+            ) [NumberConst]
+          ) [ConstDeclSingleExpr]
+        ) [ConstDeclOne]
+      ) [ConstDeclExpr]
+    ) [ConstDeclaration]
+  ) [Declarations]
+  MethodDeclListExpr(
+    NoMethodDeclList(
+    ) [NoMethodDeclList]
+    MethodDeclExpr(
+      ReturnVoid(
+      ) [ReturnVoid]
+     mina
+      NoFormPars(
+      ) [NoFormPars]
+      NoVars(
+      ) [NoVars]
+      StatementListExpr(
+        NoStatement(
+        ) [NoStatement]
+        IfCondition(
+          CorrectCondition(
+            CondTermSingle(
+              CondFactSingle(
+                CondFactExpr(
+                  PositiveTerm(
+                    TermFactor(
+                      DesFactor(
+                        DesignatorName(
+                         i
+                          NoDesList(
+                          ) [NoDesList]
+                        ) [DesignatorName]
+                      ) [DesFactor]
+                    ) [TermFactor]
+                  ) [PositiveTerm]
+                  RelopOptExpr(
+                    EqualRel(
+                    ) [EqualRel]
+                    PositiveTerm(
+                      TermFactor(
+                        NumFactor(
+                         2
+                        ) [NumFactor]
+                      ) [TermFactor]
+                    ) [PositiveTerm]
+                  ) [RelopOptExpr]
+                ) [CondFactExpr]
+              ) [CondFactSingle]
+            ) [CondTermSingle]
+          ) [CorrectCondition]
+          PrintStatement(
+            PositiveTerm(
+              TermFactor(
+                NumFactor(
+                 2
+                ) [NumFactor]
+              ) [TermFactor]
+            ) [PositiveTerm]
+            NoPrintParam(
+            ) [NoPrintParam]
+          ) [PrintStatement]
+        ) [IfCondition]
+      ) [StatementListExpr]
+    ) [MethodDeclExpr]
+  ) [MethodDeclListExpr]
+) [ProgramDecl]
+INFO  14:58:22,922 - ===================================

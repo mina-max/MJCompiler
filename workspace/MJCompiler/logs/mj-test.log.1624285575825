@@ -1,0 +1,97 @@
+INFO  13:30:48,539 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  13:30:48,615 - #2 program
+INFO  13:30:48,615 - #46 mimi
+INFO  13:30:48,616 - #46 int
+INFO  13:30:48,618 - #46 a
+INFO  13:30:48,619 - #14 ,
+INFO  13:30:48,621 - #46 k
+INFO  13:30:48,621 - #12 ;
+INFO  13:30:48,622 - #9 class
+INFO  13:30:48,622 - #46 Mina
+INFO  13:30:48,622 - #20 {
+INFO  13:30:48,624 - #46 int
+INFO  13:30:48,625 - #46 b
+INFO  13:30:48,625 - #14 ,
+INFO  13:30:48,625 - #46 c
+INFO  13:30:48,625 - #14 ,
+INFO  13:30:48,625 - #46 d
+INFO  13:30:48,625 - #12 ;
+INFO  13:30:48,625 - #21 }
+INFO  13:30:48,626 - #20 {
+INFO  13:30:48,628 - #21 }
+INFO  13:30:48,630 - Program(
+  ProgName(
+   mimi
+  ) [ProgName]
+  Declarations(
+    Declarations(
+      NoDecl(
+      ) [NoDecl]
+      VarDeclaration(
+        VarDeclExpr(
+          Type(
+           int
+          ) [Type]
+          VarDeclListExpr(
+            VarDeclOne(
+              VarDeclSingle(
+               a
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclOne]
+            VarDeclSingle(
+             k
+              NotArray(
+              ) [NotArray]
+            ) [VarDeclSingle]
+          ) [VarDeclListExpr]
+        ) [VarDeclExpr]
+      ) [VarDeclaration]
+    ) [Declarations]
+    ClassDeclaration(
+      ClassDecl(
+        ClassName(
+         Mina
+        ) [ClassName]
+        NoParentClass(
+        ) [NoParentClass]
+        VarDeclOnlyExpr(
+          NoVars(
+          ) [NoVars]
+          VarDeclExpr(
+            Type(
+             int
+            ) [Type]
+            VarDeclListExpr(
+              VarDeclListExpr(
+                VarDeclOne(
+                  VarDeclSingle(
+                   b
+                    NotArray(
+                    ) [NotArray]
+                  ) [VarDeclSingle]
+                ) [VarDeclOne]
+                VarDeclSingle(
+                 c
+                  NotArray(
+                  ) [NotArray]
+                ) [VarDeclSingle]
+              ) [VarDeclListExpr]
+              VarDeclSingle(
+               d
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclListExpr]
+          ) [VarDeclExpr]
+        ) [VarDeclOnlyExpr]
+        NoMethodDeclListOpt(
+        ) [NoMethodDeclListOpt]
+      ) [ClassDecl]
+    ) [ClassDeclaration]
+  ) [Declarations]
+  NoMethodDeclList(
+  ) [NoMethodDeclList]
+) [Program]
+INFO  13:30:48,632 - ===================================

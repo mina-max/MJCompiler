@@ -4,18 +4,13 @@
 	<target name="delete">
 		<delete>
 			<fileset dir="src/rs/ac/bg/etf/pp1">
-				<exclude name="sym_old.java" />
 				<exclude name="util/Log4JUtils.java" />
+				<exclude name="test/Compiler.java"/>
+				<exclude name="test/CompilerError.java"/>
 				<exclude name="Yylex.java" />
-				<exclude name="MJParser.java" />
-				<exclude name="MJCompiler.java" />
-				<exclude name="RuleVisitor.java" />
-			</fileset>
-		</delete>
-		<delete>
-			<fileset dir="src/rs/ac/bg/etf/pp1/test">
-				<exclude name="Compiler.java" />
-				<exclude name="CompilerError.java"/>
+				<exclude name="MyCompiler.java" />
+				<exclude name="SemanticAnalyzer.java" />
+				<exclude name="MySymbolTable.java" />
 			</fileset>
 		</delete>
 		<delete>
@@ -34,7 +29,7 @@
 		</java>
 	</target>
 
-	<target name="parserGen" depends="delete">
+	<target name="parserGen" depends="lexerGen">
 		<java jar="lib/cup_v10k.jar" fork="true">
 			<arg value="-destdir" />
 			<arg value="src/rs/ac/bg/etf/pp1" />
@@ -59,6 +54,7 @@
 				<pathelement path="lib/JFlex.jar" />
 				<pathelement path="lib/cup_v10k.jar" />
 				<pathelement path="lib/log4j-1.2.17.jar" />
+				<pathelement path="lib/symboltable-1-1.jar" />
 			</classpath>
 		</javac>
 

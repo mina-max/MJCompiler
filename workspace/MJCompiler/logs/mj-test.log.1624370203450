@@ -1,0 +1,48 @@
+INFO  15:35:50,392 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  15:35:50,471 - #2 program
+INFO  15:35:50,471 - #46 mimi
+INFO  15:35:50,471 - #46 int
+INFO  15:35:50,473 - #46 a
+INFO  15:35:50,474 - #14 ,
+INFO  15:35:50,476 - #46 k
+INFO  15:35:50,476 - #12 ;
+INFO  15:35:50,476 - #9 class
+INFO  15:35:50,477 - #46 Mina
+INFO  15:35:50,477 - #20 {
+INFO  15:35:50,479 - #46 int
+INFO  15:35:50,479 - #46 b
+INFO  15:35:50,480 - #14 ,
+INFO  15:35:50,480 - #46 c
+INFO  15:35:50,480 - #14 ,
+INFO  15:35:50,480 - #46 d
+INFO  15:35:50,480 - #12 ;
+INFO  15:35:50,480 - #21 }
+INFO  15:35:50,481 - #20 {
+INFO  15:35:50,482 - #16 void
+INFO  15:35:50,483 - #46 f
+INFO  15:35:50,485 - #24 (
+INFO  15:35:50,485 - #46 char
+INFO  15:35:50,485 - #46 ch
+INFO  15:35:50,485 - #14 ,
+INFO  15:35:50,486 - #46 int
+INFO  15:35:50,487 - #46 a
+INFO  15:35:50,487 - #14 ,
+INFO  15:35:50,487 - #46 int
+INFO  15:35:50,487 - #46 arg
+INFO  15:35:50,487 - #25 )
+INFO  15:35:50,487 - #46 int
+INFO  15:35:50,488 - #46 x
+INFO  15:35:50,488 - #12 ;
+INFO  15:35:50,488 - #20 {
+INFO  15:35:50,488 - #46 x
+INFO  15:35:50,489 - #41 =
+INFO  15:35:50,491 - #46 arg
+INFO  15:35:50,492 - #12 ;
+INFO  15:35:50,493 - #46 f
+INFO  15:35:50,493 - #42 ++
+INFO  15:35:50,493 - #12 ;
+INFO  15:35:50,493 - #21 }
+INFO  15:35:50,493 - #21 }
+INFO  15:35:50,497 - ===================================
+ERROR 15:35:50,505 - IncDesignator mora oznacavati promenljivu, polje ili element niza na liniji 11
+ERROR 15:35:50,505 - IncDesignator mora biti tipa integer na liniji 11

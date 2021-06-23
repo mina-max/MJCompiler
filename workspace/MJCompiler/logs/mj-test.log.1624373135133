@@ -1,0 +1,48 @@
+INFO  16:40:04,056 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  16:40:04,132 - #2 program
+INFO  16:40:04,132 - #46 mimi
+INFO  16:40:04,132 - #46 int
+INFO  16:40:04,134 - #46 a
+INFO  16:40:04,135 - #14 ,
+INFO  16:40:04,137 - #46 k
+INFO  16:40:04,137 - #12 ;
+INFO  16:40:04,137 - #9 class
+INFO  16:40:04,138 - #46 Mina
+INFO  16:40:04,138 - #20 {
+INFO  16:40:04,139 - #46 int
+INFO  16:40:04,141 - #46 b
+INFO  16:40:04,141 - #14 ,
+INFO  16:40:04,141 - #46 c
+INFO  16:40:04,141 - #14 ,
+INFO  16:40:04,141 - #46 d
+INFO  16:40:04,142 - #12 ;
+INFO  16:40:04,142 - #21 }
+INFO  16:40:04,143 - #20 {
+INFO  16:40:04,144 - #16 void
+INFO  16:40:04,145 - #46 f
+INFO  16:40:04,148 - #24 (
+INFO  16:40:04,148 - #46 char
+INFO  16:40:04,149 - #46 ch
+INFO  16:40:04,149 - #14 ,
+INFO  16:40:04,150 - #46 int
+INFO  16:40:04,150 - #46 a
+INFO  16:40:04,150 - #14 ,
+INFO  16:40:04,150 - #46 int
+INFO  16:40:04,151 - #46 arg
+INFO  16:40:04,151 - #25 )
+INFO  16:40:04,151 - #46 int
+INFO  16:40:04,152 - #46 x
+INFO  16:40:04,152 - #12 ;
+INFO  16:40:04,152 - #20 {
+INFO  16:40:04,152 - #46 x
+INFO  16:40:04,153 - #41 =
+INFO  16:40:04,155 - #46 arg
+INFO  16:40:04,156 - #12 ;
+INFO  16:40:04,156 - #46 mimimi
+INFO  16:40:04,157 - #42 ++
+INFO  16:40:04,157 - #12 ;
+INFO  16:40:04,157 - #21 }
+INFO  16:40:04,157 - #21 }
+INFO  16:40:04,161 - ===================================
+ERROR 16:40:04,170 - Simbol 'mimimi' nije definisan - Greska na liniji 11
+ERROR 16:40:04,170 - IncDesignator mora biti tipa integer - Greska na liniji 11

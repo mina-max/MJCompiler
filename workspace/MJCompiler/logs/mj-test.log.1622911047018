@@ -1,0 +1,70 @@
+INFO  18:36:35,144 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  18:36:35,286 - #2 program
+INFO  18:36:35,287 - #46 p
+INFO  18:36:35,287 - #46 int
+INFO  18:36:35,289 - #46 a
+INFO  18:36:35,290 - #12 ;
+INFO  18:36:35,293 - #9 class
+INFO  18:36:35,294 - #46 Mina
+INFO  18:36:35,294 - #20 {
+INFO  18:36:35,296 - #46 int
+INFO  18:36:35,297 - #46 b
+INFO  18:36:35,297 - #12 ;
+INFO  18:36:35,297 - #21 }
+INFO  18:36:35,299 - #20 {
+INFO  18:36:35,300 - #21 }
+INFO  18:36:35,302 - Program(
+  ProgName(
+   p
+  ) [ProgName]
+  Declarations(
+    Declarations(
+      NoDecl(
+      ) [NoDecl]
+      VarDeclaration(
+        VarDeclExpr(
+          Type(
+           int
+          ) [Type]
+          VarDeclOne(
+            VarDeclSingle(
+             a
+              NotArray(
+              ) [NotArray]
+            ) [VarDeclSingle]
+          ) [VarDeclOne]
+        ) [VarDeclExpr]
+      ) [VarDeclaration]
+    ) [Declarations]
+    ClassDeclaration(
+      ClassDecl(
+        ClassName(
+         Mina
+        ) [ClassName]
+        NoParentClass(
+        ) [NoParentClass]
+        VarDeclOnlyExpr(
+          NoVars(
+          ) [NoVars]
+          VarDeclExpr(
+            Type(
+             int
+            ) [Type]
+            VarDeclOne(
+              VarDeclSingle(
+               b
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclOne]
+          ) [VarDeclExpr]
+        ) [VarDeclOnlyExpr]
+        NoMethodDeclListOpt(
+        ) [NoMethodDeclListOpt]
+      ) [ClassDecl]
+    ) [ClassDeclaration]
+  ) [Declarations]
+  NoMethodDeclList(
+  ) [NoMethodDeclList]
+) [Program]
+INFO  18:36:35,304 - ===================================

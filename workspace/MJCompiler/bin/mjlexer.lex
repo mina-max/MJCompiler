@@ -57,7 +57,7 @@ import rs.ac.bg.etf.pp1.test.CompilerError;
 "extends" 	{ return new_symbol(sym.EXTENDS, yytext()); }
 "continue" 	{ return new_symbol(sym.CONTINUE, yytext()); }
 "case" 		{ return new_symbol(sym.CASE, yytext()); }
-
+"yield" 	{ return new_symbol(sym.YIELD, yytext()); }
 
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
 "-" 		{ return new_symbol(sym.MINUS, yytext()); }
@@ -87,6 +87,10 @@ import rs.ac.bg.etf.pp1.test.CompilerError;
 "?"			{ return new_symbol(sym.QUESTION, yytext()); }
 ":"			{ return new_symbol(sym.COLON, yytext()); }
 
+<YYINITIAL> "//" { yybegin(COMMENT); }
+<COMMENT> .      { yybegin(COMMENT); }
+<COMMENT> "\r\n" { yybegin(YYINITIAL); }
+
 "'"[\040-\176]"'" 				{ return new_symbol (sym.CHAR, new Character (yytext().charAt(1)));}
 [0-9]+  						{ return new_symbol(sym.NUMBER, new Integer (yytext())); }
 "true"							{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
@@ -94,10 +98,6 @@ import rs.ac.bg.etf.pp1.test.CompilerError;
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{ return new_symbol(sym.IDENT, yytext()); }
 
 
-<YYINITIAL> "//" { yybegin(COMMENT); }
-<COMMENT> .      { yybegin(COMMENT); }
-<COMMENT> "\r\n" { yybegin(YYINITIAL); }
+. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
 
 
-
-. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); return new_symbol(sym.ERROR, yytext()); }

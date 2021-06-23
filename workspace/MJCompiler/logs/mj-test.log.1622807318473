@@ -1,0 +1,36 @@
+INFO  13:48:24,701 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  13:48:24,822 - #2 program
+INFO  13:48:24,822 - #46 p
+INFO  13:48:24,822 - #8 const
+INFO  13:48:24,823 - #46 int
+INFO  13:48:24,823 - #46 size
+INFO  13:48:24,823 - #41 =
+INFO  13:48:24,823 - #45 10
+INFO  13:48:24,823 - #12 ;
+INFO  13:48:24,823 - #20 {
+INFO  13:48:24,824 - #21 }
+INFO  13:48:24,825 - ProgramDecl(
+ p
+  Declarations(
+    NoDecl(
+    ) [NoDecl]
+    ConstDeclaration(
+      ConstDeclExpr(
+        TypeIdent(
+         int
+        ) [TypeIdent]
+        ConstDeclOne(
+          ConstDeclSingleExpr(
+           size
+            NumberConst(
+             10
+            ) [NumberConst]
+          ) [ConstDeclSingleExpr]
+        ) [ConstDeclOne]
+      ) [ConstDeclExpr]
+    ) [ConstDeclaration]
+  ) [Declarations]
+  NoMethodDeclList(
+  ) [NoMethodDeclList]
+) [ProgramDecl]
+INFO  13:48:24,825 - ===================================

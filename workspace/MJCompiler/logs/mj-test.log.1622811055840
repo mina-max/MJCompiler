@@ -1,0 +1,30 @@
+INFO  13:54:20,290 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  13:54:20,414 - #2 program
+INFO  13:54:20,415 - #46 p
+INFO  13:54:20,415 - #46 int
+INFO  13:54:20,416 - #46 size
+INFO  13:54:20,416 - #41 =
+ERROR 13:54:20,416 - 
+Sintaksna greska na liniji 2
+INFO  13:54:20,416 - #12 ;
+INFO  13:54:20,416 - #20 {
+INFO  13:54:20,416 - #21 }
+INFO  13:54:20,419 - ProgramDecl(
+ p
+  Declarations(
+    NoDecl(
+    ) [NoDecl]
+    VarDeclaration(
+      VarDeclExpr(
+        TypeIdent(
+         int
+        ) [TypeIdent]
+        ErrorVarDeclList(
+        ) [ErrorVarDeclList]
+      ) [VarDeclExpr]
+    ) [VarDeclaration]
+  ) [Declarations]
+  NoMethodDeclList(
+  ) [NoMethodDeclList]
+) [ProgramDecl]
+INFO  13:54:20,420 - ===================================

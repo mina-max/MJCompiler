@@ -1,0 +1,205 @@
+INFO  16:28:33,390 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  16:28:33,466 - #2 program
+INFO  16:28:33,466 - #46 mimi
+INFO  16:28:33,466 - #46 int
+INFO  16:28:33,468 - #46 a
+INFO  16:28:33,469 - #14 ,
+INFO  16:28:33,471 - #46 k
+INFO  16:28:33,471 - #12 ;
+INFO  16:28:33,471 - #9 class
+INFO  16:28:33,471 - #46 Mina
+INFO  16:28:33,472 - #20 {
+INFO  16:28:33,474 - #46 int
+INFO  16:28:33,475 - #46 b
+INFO  16:28:33,475 - #14 ,
+INFO  16:28:33,475 - #46 c
+INFO  16:28:33,475 - #14 ,
+INFO  16:28:33,475 - #46 d
+INFO  16:28:33,476 - #12 ;
+INFO  16:28:33,476 - #21 }
+INFO  16:28:33,477 - #20 {
+INFO  16:28:33,477 - #16 void
+INFO  16:28:33,478 - #46 f
+INFO  16:28:33,479 - #24 (
+INFO  16:28:33,480 - #46 char
+INFO  16:28:33,480 - #46 ch
+INFO  16:28:33,480 - #14 ,
+INFO  16:28:33,480 - #46 int
+INFO  16:28:33,480 - #46 a
+INFO  16:28:33,481 - #14 ,
+INFO  16:28:33,481 - #46 int
+INFO  16:28:33,481 - #46 arg
+INFO  16:28:33,481 - #25 )
+INFO  16:28:33,481 - #46 int
+INFO  16:28:33,482 - #46 x
+INFO  16:28:33,482 - #12 ;
+INFO  16:28:33,482 - #20 {
+INFO  16:28:33,482 - #46 x
+INFO  16:28:33,483 - #41 =
+INFO  16:28:33,483 - #46 arg
+INFO  16:28:33,485 - #12 ;
+INFO  16:28:33,485 - #21 }
+INFO  16:28:33,486 - #21 }
+INFO  16:28:33,487 - Program(
+  ProgName(
+   mimi
+  ) [ProgName]
+  Declarations(
+    Declarations(
+      NoDecl(
+      ) [NoDecl]
+      VarDeclaration(
+        VarDeclExpr(
+          Type(
+           int
+          ) [Type]
+          VarDeclListExpr(
+            VarDeclOne(
+              VarDeclSingle(
+               a
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclOne]
+            VarDeclSingle(
+             k
+              NotArray(
+              ) [NotArray]
+            ) [VarDeclSingle]
+          ) [VarDeclListExpr]
+        ) [VarDeclExpr]
+      ) [VarDeclaration]
+    ) [Declarations]
+    ClassDeclaration(
+      ClassDecl(
+        ClassName(
+         Mina
+        ) [ClassName]
+        NoParentClass(
+        ) [NoParentClass]
+        VarDeclOnlyExpr(
+          NoVars(
+          ) [NoVars]
+          VarDeclExpr(
+            Type(
+             int
+            ) [Type]
+            VarDeclListExpr(
+              VarDeclListExpr(
+                VarDeclOne(
+                  VarDeclSingle(
+                   b
+                    NotArray(
+                    ) [NotArray]
+                  ) [VarDeclSingle]
+                ) [VarDeclOne]
+                VarDeclSingle(
+                 c
+                  NotArray(
+                  ) [NotArray]
+                ) [VarDeclSingle]
+              ) [VarDeclListExpr]
+              VarDeclSingle(
+               d
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclListExpr]
+          ) [VarDeclExpr]
+        ) [VarDeclOnlyExpr]
+        NoMethodDeclListOpt(
+        ) [NoMethodDeclListOpt]
+      ) [ClassDecl]
+    ) [ClassDeclaration]
+  ) [Declarations]
+  MethodDeclListExpr(
+    NoMethodDeclList(
+    ) [NoMethodDeclList]
+    MethodDeclExpr(
+      ReturnVoid(
+      ) [ReturnVoid]
+      MethodSign(
+        MethodName(
+         f
+        ) [MethodName]
+        FormParsListOptExpr(
+          FormParsListExpr(
+            FormParsListExpr(
+              FormParsOne(
+                FormParsSingleExpr(
+                  Type(
+                   char
+                  ) [Type]
+                 ch
+                  NotArray(
+                  ) [NotArray]
+                ) [FormParsSingleExpr]
+              ) [FormParsOne]
+              FormParsSingleExpr(
+                Type(
+                 int
+                ) [Type]
+               a
+                NotArray(
+                ) [NotArray]
+              ) [FormParsSingleExpr]
+            ) [FormParsListExpr]
+            FormParsSingleExpr(
+              Type(
+               int
+              ) [Type]
+             arg
+              NotArray(
+              ) [NotArray]
+            ) [FormParsSingleExpr]
+          ) [FormParsListExpr]
+        ) [FormParsListOptExpr]
+      ) [MethodSign]
+      BodyMethod(
+        VarDeclOnlyExpr(
+          NoVars(
+          ) [NoVars]
+          VarDeclExpr(
+            Type(
+             int
+            ) [Type]
+            VarDeclOne(
+              VarDeclSingle(
+               x
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclOne]
+          ) [VarDeclExpr]
+        ) [VarDeclOnlyExpr]
+        StatementListExpr(
+          NoStatement(
+          ) [NoStatement]
+          DesignatorStatementExpr(
+            AssignDes(
+              DesignatorName(
+               x
+                NoDesList(
+                ) [NoDesList]
+              ) [DesignatorName]
+              AssignOperator(
+              ) [AssignOperator]
+              PositiveTerm(
+                TermFactor(
+                  DesFactor(
+                    DesignatorName(
+                     arg
+                      NoDesList(
+                      ) [NoDesList]
+                    ) [DesignatorName]
+                  ) [DesFactor]
+                ) [TermFactor]
+              ) [PositiveTerm]
+            ) [AssignDes]
+          ) [DesignatorStatementExpr]
+        ) [StatementListExpr]
+      ) [BodyMethod]
+    ) [MethodDeclExpr]
+  ) [MethodDeclListExpr]
+) [Program]
+INFO  16:28:33,489 - ===================================

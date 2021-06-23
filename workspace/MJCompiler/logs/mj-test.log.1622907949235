@@ -1,0 +1,34 @@
+INFO  16:47:13,402 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  16:47:13,493 - #2 program
+INFO  16:47:13,493 - #46 p
+INFO  16:47:13,493 - #46 int
+INFO  16:47:13,495 - #46 a
+INFO  16:47:13,496 - #12 ;
+INFO  16:47:13,499 - #20 {
+INFO  16:47:13,499 - #21 }
+INFO  16:47:13,501 - Program(
+  ProgName(
+   p
+  ) [ProgName]
+  Declarations(
+    NoDecl(
+    ) [NoDecl]
+    VarDeclaration(
+      VarDeclExpr(
+        Type(
+         int
+        ) [Type]
+        VarDeclOne(
+          VarDeclSingle(
+           a
+            NotArray(
+            ) [NotArray]
+          ) [VarDeclSingle]
+        ) [VarDeclOne]
+      ) [VarDeclExpr]
+    ) [VarDeclaration]
+  ) [Declarations]
+  NoMethodDeclList(
+  ) [NoMethodDeclList]
+) [Program]
+INFO  16:47:13,501 - ===================================
