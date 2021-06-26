@@ -50,8 +50,10 @@ terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
 terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
 terminal Integer NUMBER;
-terminal String IDENT, CHAR;
-terminal IF, ELSE, BOOL;
+terminal Character CHAR;
+terminal Boolean BOOL;
+terminal String IDENT;
+terminal IF, ELSE;
 
 nonterminal Program Program;
 nonterminal DeclList DeclList;
@@ -76,14 +78,11 @@ nonterminal Statement Statement;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal DesOperators DesOperators;
 nonterminal AssignOp AssignOp;
-nonterminal Condition Condition;
 nonterminal CondTerm CondTerm;
 nonterminal CondFact CondFact;
 nonterminal RelopOpt RelopOpt;
 nonterminal Relop Relop;
 nonterminal ElseOpt ElseOpt;
-nonterminal Term Term;
-nonterminal Factor Factor;
 nonterminal ActPars ActPars;
 nonterminal CaseList CaseList;
 nonterminal DesList DesList;
@@ -102,8 +101,8 @@ nonterminal MethodSign MethodSign;
 nonterminal Do Do;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr;
-
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor;
 precedence left ELSE;
 
 Program 		::= (Program) PROGRAM ProgName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
@@ -124,9 +123,8 @@ ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList:C1 COMMA ConstDeclSingle:C2
 
 ConstDeclSingle ::= (ConstDeclSingle) IDENT:constName ASSIGN Init:I1 {: RESULT=new ConstDeclSingle(constName, I1); RESULT.setLine(constNameleft); :};
 
-Init 			::= (NumberConst) NUMBER:N1 {: RESULT=new NumberConst(N1); RESULT.setLine(N1left); :} 
-				| 	(CharConst)	 CHAR:C1 {: RESULT=new CharConst(C1); RESULT.setLine(C1left); :}
-				|	(BoolConst)	 BOOL {: RESULT=new BoolConst(); :};
+Init 			::=  	(CharConst)	 CHAR:character {: RESULT=new CharConst(character); RESULT.setLine(characterleft); :}
+				|	(NumberConst) NUMBER:number {: RESULT=new NumberConst(number); RESULT.setLine(numberleft); :};
 
 Type			::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(typeNameleft); :};
 
@@ -225,10 +223,8 @@ Condition		::= (CondExpr) 			Condition:C1 OR CondTerm:C2 {: RESULT=new CondExpr(
 CondTerm		::= (CondTermExpr) 		CondTerm:C1 AND CondFact:C2 {: RESULT=new CondTermExpr(C1, C2); RESULT.setLine(C1left); :}
 				|	(CondFactSingle)	CondFact:C1 {: RESULT=new CondFactSingle(C1); RESULT.setLine(C1left); :};
 
-CondFact		::= (CondFactExpr)	Expr:E1 RelopOpt:R2 {: RESULT=new CondFactExpr(E1, R2); RESULT.setLine(E1left); :};
-
-RelopOpt		::= (RelopOptExpr) Relop:R1 Expr:E2 {: RESULT=new RelopOptExpr(R1, E2); RESULT.setLine(R1left); :}
-				|	(NoRelop) {: RESULT=new NoRelop(); :} /* epsilon */;
+CondFact		::= (CondFactRelop)	Expr:E1 Relop:R2 Expr:E3 {: RESULT=new CondFactRelop(E1, R2, E3); RESULT.setLine(E1left); :}
+				|	(CondFactNoRelop) Expr:E1 {: RESULT=new CondFactNoRelop(E1); RESULT.setLine(E1left); :};
 
 Relop			::= (EqualRel)		EQUAL {: RESULT=new EqualRel(); :} 
 				|	(NotEqualRel)	NOTEQ {: RESULT=new NotEqualRel(); :} 
@@ -251,7 +247,7 @@ Factor			::= (DesFactor) 		Designator:D1 {: RESULT=new DesFactor(D1); RESULT.set
 				|	(DesFactorPars) 	Designator:D1 LPARENT ActParsOpt:A2 RPARENT {: RESULT=new DesFactorPars(D1, A2); RESULT.setLine(D1left); :}
 				|	(NumFactor) 		NUMBER:N1 {: RESULT=new NumFactor(N1); RESULT.setLine(N1left); :}
 				|	(CharFactor)		CHAR:C1 {: RESULT=new CharFactor(C1); RESULT.setLine(C1left); :}
-				|	(BoolFactor)		BOOL {: RESULT=new BoolFactor(); :}
+				
 				|	(NewArrayFactor)	NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new NewArrayFactor(T1, E2); RESULT.setLine(T1left); :}
 				|	(NewFactor)			NEW Type:T1 {: RESULT=new NewFactor(T1); RESULT.setLine(T1left); :} 
 				|	(ExprFactor)		LPARENT Expr:E1 RPARENT {: RESULT=new ExprFactor(E1); RESULT.setLine(E1left); :};

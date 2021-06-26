@@ -50,20 +50,22 @@ terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
 terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
 terminal Integer NUMBER;
-terminal String IDENT, CHAR;
-terminal IF, ELSE, BOOL;
+terminal Character CHAR;
+terminal Boolean BOOL;
+terminal String IDENT;
+terminal IF, ELSE;
 
 nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle, Init;
 nonterminal VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
 nonterminal MethodDeclList, MethodDecl, ReturnType, FormPars, FormParsList, FormParsSingle;
 nonterminal Statement, DesignatorStatement, DesOperators, AssignOp;
-nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, Term, Factor, ActPars;
+nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, ActPars;
 nonterminal CaseList, DesList, DesElement, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
 nonterminal FormParsOpt, ActParsOpt, PrintParamOpt, ConditionCorrect, MethodBody, MethodSign, Do;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition;
-
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor;
 precedence left ELSE;
 
 Program 		::= (Program) PROGRAM ProgName DeclList LBRACE MethodDeclList RBRACE;
@@ -84,9 +86,8 @@ ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList COMMA ConstDeclSingle
 
 ConstDeclSingle ::= (ConstDeclSingle) IDENT:constName ASSIGN Init;
 
-Init 			::= (NumberConst) NUMBER 
-				| 	(CharConst)	 CHAR
-				|	(BoolConst)	 BOOL;
+Init 			::=  	(CharConst)	 CHAR:character
+				|	(NumberConst) NUMBER:number;
 
 Type			::= (Type) IDENT:typeName;
 
@@ -185,10 +186,8 @@ Condition		::= (CondExpr) 			Condition OR CondTerm
 CondTerm		::= (CondTermExpr) 		CondTerm AND CondFact
 				|	(CondFactSingle)	CondFact;
 
-CondFact		::= (CondFactExpr)	Expr RelopOpt;
-
-RelopOpt		::= (RelopOptExpr) Relop Expr
-				|	(NoRelop) /* epsilon */;
+CondFact		::= (CondFactRelop)	Expr Relop Expr
+				|	(CondFactNoRelop) Expr;
 
 Relop			::= (EqualRel)		EQUAL 
 				|	(NotEqualRel)	NOTEQ 
@@ -211,7 +210,7 @@ Factor			::= (DesFactor) 		Designator
 				|	(DesFactorPars) 	Designator LPARENT ActParsOpt RPARENT
 				|	(NumFactor) 		NUMBER
 				|	(CharFactor)		CHAR
-				|	(BoolFactor)		BOOL
+				
 				|	(NewArrayFactor)	NEW Type LBRACKET Expr RBRACKET
 				|	(NewFactor)			NEW Type 
 				|	(ExprFactor)		LPARENT Expr RPARENT;

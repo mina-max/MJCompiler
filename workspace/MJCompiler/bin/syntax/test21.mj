@@ -1,5 +1,5 @@
 program mimi
-int a, k;
+const int m = 5;
 class Mina {
 	int b, c, d;
 }
@@ -7,8 +7,11 @@ class Mina {
 void f(char ch, int a, int arg)
 int x;
 {
-x = arg;
-mimimi++;
-return;
+x = a;
+m++;
+}
+void main(int a) 
+{
+arg++;
 }
 }

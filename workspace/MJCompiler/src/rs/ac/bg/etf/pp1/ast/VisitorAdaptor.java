@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/5/2021 19:12:43
+// 25/5/2021 20:13:42
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -59,7 +59,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ExprFactor ExprFactor) { visit(); }
     public void visit(NewFactor NewFactor) { visit(); }
     public void visit(NewArrayFactor NewArrayFactor) { visit(); }
-    public void visit(BoolFactor BoolFactor) { visit(); }
     public void visit(CharFactor CharFactor) { visit(); }
     public void visit(NumFactor NumFactor) { visit(); }
     public void visit(DesFactorPars DesFactorPars) { visit(); }
@@ -77,9 +76,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(GreaterEqRel GreaterEqRel) { visit(); }
     public void visit(NotEqualRel NotEqualRel) { visit(); }
     public void visit(EqualRel EqualRel) { visit(); }
-    public void visit(NoRelop NoRelop) { visit(); }
-    public void visit(RelopOptExpr RelopOptExpr) { visit(); }
-    public void visit(CondFactExpr CondFactExpr) { visit(); }
+    public void visit(CondFactNoRelop CondFactNoRelop) { visit(); }
+    public void visit(CondFactRelop CondFactRelop) { visit(); }
     public void visit(CondFactSingle CondFactSingle) { visit(); }
     public void visit(CondTermExpr CondTermExpr) { visit(); }
     public void visit(CondTermSingle CondTermSingle) { visit(); }
@@ -144,9 +142,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ErrorVarDecl ErrorVarDecl) { visit(); }
     public void visit(VarDeclExpr VarDeclExpr) { visit(); }
     public void visit(Type Type) { visit(); }
-    public void visit(BoolConst BoolConst) { visit(); }
-    public void visit(CharConst CharConst) { visit(); }
     public void visit(NumberConst NumberConst) { visit(); }
+    public void visit(CharConst CharConst) { visit(); }
     public void visit(ConstDeclSingle ConstDeclSingle) { visit(); }
     public void visit(ConstDeclOne ConstDeclOne) { visit(); }
     public void visit(ConstDeclListExpr ConstDeclListExpr) { visit(); }
