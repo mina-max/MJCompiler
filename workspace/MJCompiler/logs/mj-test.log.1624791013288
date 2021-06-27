@@ -1,0 +1,49 @@
+INFO  12:50:11,346 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  12:50:11,449 - #2 program
+INFO  12:50:11,450 - #49 mimi
+INFO  12:50:11,450 - #49 int
+INFO  12:50:11,451 - #49 a
+INFO  12:50:11,452 - #12 ;
+INFO  12:50:11,454 - #20 {
+INFO  12:50:11,454 - #16 void
+INFO  12:50:11,455 - #49 main
+INFO  12:50:11,456 - #24 (
+INFO  12:50:11,457 - #25 )
+INFO  12:50:11,458 - #49 int
+INFO  12:50:11,459 - #49 b
+INFO  12:50:11,460 - #14 ,
+INFO  12:50:11,460 - #49 c
+INFO  12:50:11,460 - #12 ;
+INFO  12:50:11,460 - #20 {
+INFO  12:50:11,460 - #49 b
+INFO  12:50:11,462 - #41 =
+INFO  12:50:11,463 - #46 2
+INFO  12:50:11,464 - #12 ;
+INFO  12:50:11,465 - #49 a
+INFO  12:50:11,465 - #41 =
+INFO  12:50:11,465 - #46 4
+INFO  12:50:11,465 - #12 ;
+INFO  12:50:11,466 - #49 c
+INFO  12:50:11,466 - #41 =
+INFO  12:50:11,466 - #49 a
+INFO  12:50:11,466 - #36 *
+INFO  12:50:11,466 - #46 2
+INFO  12:50:11,467 - #37 /
+INFO  12:50:11,467 - #49 b
+INFO  12:50:11,468 - #36 *
+INFO  12:50:11,468 - #46 2
+INFO  12:50:11,468 - #12 ;
+INFO  12:50:11,469 - #15 print
+INFO  12:50:11,469 - #24 (
+INFO  12:50:11,469 - #49 c
+INFO  12:50:11,469 - #25 )
+INFO  12:50:11,470 - #12 ;
+INFO  12:50:11,470 - #21 }
+INFO  12:50:11,470 - #21 }
+INFO  12:50:11,473 - ===================================
+INFO  12:50:11,484 - Lokalna promenljiva - Pretraga na 7(b), nadjeno Var b: int, 0, 1 
+INFO  12:50:11,484 - Globalna promenljiva - Pretraga na 8(a), nadjeno Var a: int, 0, 0 
+INFO  12:50:11,484 - Lokalna promenljiva - Pretraga na 9(c), nadjeno Var c: int, 1, 1 
+INFO  12:50:11,484 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  12:50:11,484 - Lokalna promenljiva - Pretraga na 9(b), nadjeno Var b: int, 0, 1 
+INFO  12:50:11,484 - Lokalna promenljiva - Pretraga na 10(c), nadjeno Var c: int, 1, 1 

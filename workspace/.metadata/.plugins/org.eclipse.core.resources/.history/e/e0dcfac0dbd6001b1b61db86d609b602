@@ -1,0 +1,11 @@
+program mimi
+const int mina = 2;
+{
+		void main() 
+		{
+			print(5);
+			print(4);
+			print(3);
+			print(mina);
+		}
+}

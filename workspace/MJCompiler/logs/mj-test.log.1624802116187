@@ -1,0 +1,123 @@
+INFO  15:54:54,576 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test301.mj
+INFO  15:54:54,653 - #2 program
+INFO  15:54:54,654 - #49 test301
+INFO  15:54:54,654 - #8 const
+INFO  15:54:54,655 - #49 int
+INFO  15:54:54,656 - #49 nula
+INFO  15:54:54,657 - #41 =
+INFO  15:54:54,657 - #46 0
+INFO  15:54:54,657 - #12 ;
+INFO  15:54:54,658 - #8 const
+INFO  15:54:54,660 - #49 int
+INFO  15:54:54,660 - #49 jedan
+INFO  15:54:54,660 - #41 =
+INFO  15:54:54,660 - #46 1
+INFO  15:54:54,660 - #12 ;
+INFO  15:54:54,660 - #8 const
+INFO  15:54:54,661 - #49 int
+INFO  15:54:54,661 - #49 pet
+INFO  15:54:54,661 - #41 =
+INFO  15:54:54,661 - #46 5
+INFO  15:54:54,661 - #12 ;
+INFO  15:54:54,661 - #49 int
+INFO  15:54:54,661 - #49 niz
+INFO  15:54:54,661 - #22 [
+INFO  15:54:54,662 - #23 ]
+INFO  15:54:54,662 - #12 ;
+INFO  15:54:54,664 - #49 char
+INFO  15:54:54,664 - #49 nizch
+INFO  15:54:54,664 - #22 [
+INFO  15:54:54,664 - #23 ]
+INFO  15:54:54,664 - #12 ;
+INFO  15:54:54,665 - #20 {
+INFO  15:54:54,665 - #16 void
+INFO  15:54:54,666 - #49 main
+INFO  15:54:54,666 - #24 (
+INFO  15:54:54,667 - #25 )
+INFO  15:54:54,668 - #49 int
+INFO  15:54:54,669 - #49 bodovi
+INFO  15:54:54,670 - #12 ;
+INFO  15:54:54,670 - #20 {
+INFO  15:54:54,671 - #49 niz
+INFO  15:54:54,671 - #41 =
+INFO  15:54:54,673 - #7 new
+INFO  15:54:54,675 - #49 int
+INFO  15:54:54,675 - #22 [
+INFO  15:54:54,675 - #46 3
+INFO  15:54:54,675 - #23 ]
+INFO  15:54:54,675 - #12 ;
+INFO  15:54:54,675 - #49 niz
+INFO  15:54:54,676 - #22 [
+INFO  15:54:54,676 - #49 nula
+INFO  15:54:54,676 - #23 ]
+INFO  15:54:54,676 - #41 =
+INFO  15:54:54,676 - #49 jedan
+INFO  15:54:54,676 - #12 ;
+INFO  15:54:54,676 - #49 niz
+INFO  15:54:54,677 - #22 [
+INFO  15:54:54,677 - #46 1
+INFO  15:54:54,677 - #23 ]
+INFO  15:54:54,677 - #41 =
+INFO  15:54:54,677 - #46 2
+INFO  15:54:54,677 - #12 ;
+INFO  15:54:54,677 - #49 niz
+INFO  15:54:54,677 - #22 [
+INFO  15:54:54,677 - #49 niz
+INFO  15:54:54,677 - #22 [
+INFO  15:54:54,678 - #49 jedan
+INFO  15:54:54,678 - #23 ]
+INFO  15:54:54,678 - #23 ]
+INFO  15:54:54,678 - #41 =
+INFO  15:54:54,678 - #49 niz
+INFO  15:54:54,678 - #22 [
+INFO  15:54:54,678 - #49 niz
+INFO  15:54:54,678 - #22 [
+INFO  15:54:54,678 - #46 0
+INFO  15:54:54,678 - #23 ]
+INFO  15:54:54,679 - #23 ]
+INFO  15:54:54,679 - #36 *
+INFO  15:54:54,679 - #46 3
+INFO  15:54:54,680 - #12 ;
+INFO  15:54:54,680 - #49 bodovi
+INFO  15:54:54,680 - #41 =
+INFO  15:54:54,680 - #49 niz
+INFO  15:54:54,681 - #22 [
+INFO  15:54:54,681 - #46 2
+INFO  15:54:54,681 - #23 ]
+INFO  15:54:54,681 - #37 /
+INFO  15:54:54,681 - #49 niz
+INFO  15:54:54,682 - #22 [
+INFO  15:54:54,682 - #46 0
+INFO  15:54:54,682 - #23 ]
+INFO  15:54:54,682 - #12 ;
+INFO  15:54:54,682 - #15 print
+INFO  15:54:54,683 - #24 (
+INFO  15:54:54,683 - #49 bodovi
+INFO  15:54:54,683 - #25 )
+INFO  15:54:54,684 - #12 ;
+INFO  15:54:54,684 - #15 print
+INFO  15:54:54,684 - #24 (
+INFO  15:54:54,684 - #49 niz
+INFO  15:54:54,684 - #22 [
+INFO  15:54:54,684 - #46 2
+INFO  15:54:54,684 - #23 ]
+INFO  15:54:54,684 - #25 )
+INFO  15:54:54,684 - #12 ;
+INFO  15:54:54,685 - #21 }
+INFO  15:54:54,685 - #21 }
+INFO  15:54:54,688 - ===================================
+INFO  15:54:54,697 - Globalna promenljiva - Pretraga na 16(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Simbolicka konstanta - Pretraga na 17(nula), nadjeno Con nula: int, 0, 0 
+INFO  15:54:54,698 - Element niza - Pretraga na 17(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Simbolicka konstanta - Pretraga na 17(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  15:54:54,698 - Element niza - Pretraga na 18(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Simbolicka konstanta - Pretraga na 19(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  15:54:54,698 - Element niza - Pretraga na 19(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Element niza - Pretraga na 19(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Element niza - Pretraga na 19(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Element niza - Pretraga na 19(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,698 - Lokalna promenljiva - Pretraga na 20(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:54:54,699 - Element niza - Pretraga na 20(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,699 - Element niza - Pretraga na 20(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  15:54:54,699 - Lokalna promenljiva - Pretraga na 21(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:54:54,699 - Element niza - Pretraga na 22(niz), nadjeno Var niz: Arr of int, 0, 0 

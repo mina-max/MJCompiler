@@ -1,0 +1,21 @@
+INFO  00:07:18,637 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  00:07:18,746 - #2 program
+INFO  00:07:18,746 - #49 mimi
+INFO  00:07:18,747 - #49 int
+INFO  00:07:18,748 - #49 m
+INFO  00:07:18,749 - #12 ;
+INFO  00:07:18,752 - #20 {
+INFO  00:07:18,752 - #16 void
+INFO  00:07:18,754 - #49 main
+INFO  00:07:18,754 - #24 (
+INFO  00:07:18,755 - #25 )
+INFO  00:07:18,756 - #20 {
+INFO  00:07:18,758 - #15 print
+INFO  00:07:18,760 - #24 (
+INFO  00:07:18,760 - #49 m
+INFO  00:07:18,760 - #25 )
+INFO  00:07:18,763 - #12 ;
+INFO  00:07:18,763 - #21 }
+INFO  00:07:18,764 - #21 }
+INFO  00:07:18,768 - ===================================
+INFO  00:07:18,780 - Globalna promenljiva - Pretraga na 6(m), nadjeno Var m: int, 0, 0 

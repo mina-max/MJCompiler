@@ -1,0 +1,42 @@
+INFO  02:13:13,511 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  02:13:13,614 - #2 program
+INFO  02:13:13,614 - #49 mimi
+INFO  02:13:13,614 - #8 const
+INFO  02:13:13,615 - #49 int
+INFO  02:13:13,616 - #49 mina
+INFO  02:13:13,616 - #41 =
+INFO  02:13:13,617 - #46 2
+INFO  02:13:13,617 - #12 ;
+INFO  02:13:13,618 - #49 int
+INFO  02:13:13,618 - #49 mika
+INFO  02:13:13,619 - #12 ;
+INFO  02:13:13,620 - #20 {
+INFO  02:13:13,621 - #16 void
+INFO  02:13:13,621 - #49 main
+INFO  02:13:13,622 - #24 (
+INFO  02:13:13,623 - #25 )
+INFO  02:13:13,624 - #20 {
+INFO  02:13:13,627 - #15 print
+INFO  02:13:13,628 - #24 (
+INFO  02:13:13,628 - #47 a
+INFO  02:13:13,628 - #25 )
+INFO  02:13:13,629 - #12 ;
+INFO  02:13:13,629 - #15 print
+INFO  02:13:13,629 - #24 (
+INFO  02:13:13,630 - #46 4
+INFO  02:13:13,630 - #25 )
+INFO  02:13:13,630 - #12 ;
+INFO  02:13:13,630 - #15 print
+INFO  02:13:13,630 - #24 (
+INFO  02:13:13,630 - #46 3
+INFO  02:13:13,630 - #25 )
+INFO  02:13:13,630 - #12 ;
+INFO  02:13:13,630 - #15 print
+INFO  02:13:13,630 - #24 (
+INFO  02:13:13,630 - #49 mina
+INFO  02:13:13,630 - #25 )
+INFO  02:13:13,632 - #12 ;
+INFO  02:13:13,632 - #21 }
+INFO  02:13:13,632 - #21 }
+INFO  02:13:13,636 - ===================================
+INFO  02:13:13,645 - Simbolicka konstanta - Pretraga na 10(mina), nadjeno Con mina: int, 2, 0 

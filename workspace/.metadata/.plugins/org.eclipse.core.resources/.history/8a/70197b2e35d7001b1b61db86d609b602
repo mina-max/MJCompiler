@@ -1,0 +1,11 @@
+program mimi
+int a;
+{
+		void main()
+		int b, c;
+		{
+		b = 2;
+		a = 4;
+		c = a + b;
+		}
+}

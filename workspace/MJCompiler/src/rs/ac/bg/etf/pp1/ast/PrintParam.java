@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/5/2021 20:13:42
+// 27/5/2021 23:21:11
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class PrintParam extends PrintParamOpt {
 
-    private Integer N1;
+    private Integer printWidth;
 
-    public PrintParam (Integer N1) {
-        this.N1=N1;
+    public PrintParam (Integer printWidth) {
+        this.printWidth=printWidth;
     }
 
-    public Integer getN1() {
-        return N1;
+    public Integer getPrintWidth() {
+        return printWidth;
     }
 
-    public void setN1(Integer N1) {
-        this.N1=N1;
+    public void setPrintWidth(Integer printWidth) {
+        this.printWidth=printWidth;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class PrintParam extends PrintParamOpt {
         buffer.append(tab);
         buffer.append("PrintParam(\n");
 
-        buffer.append(" "+tab+N1);
+        buffer.append(" "+tab+printWidth);
         buffer.append("\n");
 
         buffer.append(tab);

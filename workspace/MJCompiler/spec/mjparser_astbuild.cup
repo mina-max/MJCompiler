@@ -51,7 +51,7 @@ terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, 
 terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
 terminal Integer NUMBER;
 terminal Character CHAR;
-terminal Boolean BOOL;
+terminal Integer BOOL;
 terminal String IDENT;
 terminal IF, ELSE;
 
@@ -61,7 +61,6 @@ nonterminal Decl Decl;
 nonterminal ConstDecl ConstDecl;
 nonterminal ConstDeclList ConstDeclList;
 nonterminal ConstDeclSingle ConstDeclSingle;
-nonterminal Init Init;
 nonterminal VarDecl VarDecl;
 nonterminal VarDeclList VarDeclList;
 nonterminal VarDeclSingle VarDeclSingle;
@@ -86,7 +85,6 @@ nonterminal ElseOpt ElseOpt;
 nonterminal ActPars ActPars;
 nonterminal CaseList CaseList;
 nonterminal DesList DesList;
-nonterminal DesElement DesElement;
 nonterminal StatementList StatementList;
 nonterminal AddOp AddOp;
 nonterminal MulOp MulOp;
@@ -102,7 +100,7 @@ nonterminal Do Do;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Init, DesElement;
 precedence left ELSE;
 
 Program 		::= (Program) PROGRAM ProgName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
@@ -123,8 +121,9 @@ ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList:C1 COMMA ConstDeclSingle:C2
 
 ConstDeclSingle ::= (ConstDeclSingle) IDENT:constName ASSIGN Init:I1 {: RESULT=new ConstDeclSingle(constName, I1); RESULT.setLine(constNameleft); :};
 
-Init 			::=  	(CharConst)	 CHAR:character {: RESULT=new CharConst(character); RESULT.setLine(characterleft); :}
-				|	(NumberConst) NUMBER:number {: RESULT=new NumberConst(number); RESULT.setLine(numberleft); :};
+Init 			::= (BoolConst)		BOOL:boolVal {: RESULT=new BoolConst(boolVal); RESULT.setLine(boolValleft); :}
+				|	(CharConst)	 	CHAR:character {: RESULT=new CharConst(character); RESULT.setLine(characterleft); :}
+				|	(NumberConst) 	NUMBER:number {: RESULT=new NumberConst(number); RESULT.setLine(numberleft); :};
 
 Type			::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(typeNameleft); :};
 
@@ -178,8 +177,7 @@ FormParsList	::= (FormParsListExpr) 	FormParsList:F1 COMMA FormParsSingle:F2 {: 
 FormParsSingle	::= (FormParsSingle) Type:T1 IDENT:formParName ArrayOpt:A2 {: RESULT=new FormParsSingle(T1, formParName, A2); RESULT.setLine(T1left); :};
 
 Statement		::= (DesignatorStatementExpr) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStatementExpr(D1); RESULT.setLine(D1left); :}
-				|	(IfCondition)		IF ConditionCorrect:C1 Statement:S2 {: RESULT=new IfCondition(C1, S2); RESULT.setLine(C1left); :}
-				|	(IfElseCondition)	IF ConditionCorrect:C1 Statement:S2 ELSE Statement:S3 {: RESULT=new IfElseCondition(C1, S2, S3); RESULT.setLine(C1left); :}
+				|	(IfStatement)		IF ConditionCorrect:C1 Statement:S2 ElseOpt:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :}
 				|	(DoWhileStatement)	Do:D1 Statement:S2 WHILE LPARENT Condition:C3 RPARENT SEMI {: RESULT=new DoWhileStatement(D1, S2, C3); RESULT.setLine(D1left); :}
 				|	(YieldStatement)	YIELD Expr:E1 SEMI {: RESULT=new YieldStatement(E1); RESULT.setLine(E1left); :}
 				|	(BreakStatement)	BREAK SEMI {: RESULT=new BreakStatement(); :}
@@ -199,7 +197,7 @@ DesignatorStatement ::= (AssignDes) Designator:D1 AssignOp:A2 Expr:E3 {: RESULT=
 					|	(IncDes)	Designator:D1 INC {: RESULT=new IncDes(D1); RESULT.setLine(D1left); :}
 					|	(DecDes)	Designator:D1 DEC {: RESULT=new DecDes(D1); RESULT.setLine(D1left); :};
 
-Designator		::= (Designator) IDENT:desName DesList:D1 {: RESULT=new Designator(desName, D1); RESULT.setLine(desNameleft); :};
+Designator		::= (Designator) IDENT:desName DesList:D1 {: RESULT=new Designator(desName, D1); RESULT.setLine(desNameleft); :}; 
 
 DesList			::=	(DesListExpr) DesList:D1 DesElement:D2 {: RESULT=new DesListExpr(D1, D2); RESULT.setLine(D1left); :}
 				| 	(NoDesList) {: RESULT=new NoDesList(); :} /* epsilon */;
@@ -216,11 +214,14 @@ ActPars			::= (ExprList) 	ActPars:A1 COMMA Expr:E2 {: RESULT=new ExprList(A1, E2
 ConditionCorrect::= (CorrectCondition) LPARENT Condition:C1 RPARENT {: RESULT=new CorrectCondition(C1); RESULT.setLine(C1left); :}
 			     |	(ErrorCondition) LPARENT error RPARENT:l
 			     {:parser.report_error("Izvrsen oporavak od greske na liniji " + lleft, null); :} {: RESULT=new ErrorCondition(); :};
+			     
+ElseOpt			::= (ElseStmt) ELSE Statement:S1 {: RESULT=new ElseStmt(S1); RESULT.setLine(S1left); :}
+				|	(NoElseStmt) {: RESULT=new NoElseStmt(); :};
 					
-Condition		::= (CondExpr) 			Condition:C1 OR CondTerm:C2 {: RESULT=new CondExpr(C1, C2); RESULT.setLine(C1left); :}
+Condition		::= (CondOr) 			Condition:C1 OR CondTerm:C2 {: RESULT=new CondOr(C1, C2); RESULT.setLine(C1left); :}
 				| 	(CondTermSingle)	CondTerm:C1 {: RESULT=new CondTermSingle(C1); RESULT.setLine(C1left); :};
 
-CondTerm		::= (CondTermExpr) 		CondTerm:C1 AND CondFact:C2 {: RESULT=new CondTermExpr(C1, C2); RESULT.setLine(C1left); :}
+CondTerm		::= (CondAnd) 			CondTerm:C1 AND CondFact:C2 {: RESULT=new CondAnd(C1, C2); RESULT.setLine(C1left); :}
 				|	(CondFactSingle)	CondFact:C1 {: RESULT=new CondFactSingle(C1); RESULT.setLine(C1left); :};
 
 CondFact		::= (CondFactRelop)	Expr:E1 Relop:R2 Expr:E3 {: RESULT=new CondFactRelop(E1, R2, E3); RESULT.setLine(E1left); :}
@@ -243,11 +244,9 @@ Term			::= (TermExpr)		Term:T1 MulOp:M2 Factor:F3 {: RESULT=new TermExpr(T1, M2,
 ReturnExprOpt	::= (RetExpr) Expr:E1 {: RESULT=new RetExpr(E1); RESULT.setLine(E1left); :}
 				|	(NoExpression) {: RESULT=new NoExpression(); :} /* epsilon */;
 
-Factor			::= (DesFactor) 		Designator:D1 {: RESULT=new DesFactor(D1); RESULT.setLine(D1left); :}
-				|	(DesFactorPars) 	Designator:D1 LPARENT ActParsOpt:A2 RPARENT {: RESULT=new DesFactorPars(D1, A2); RESULT.setLine(D1left); :}
-				|	(NumFactor) 		NUMBER:N1 {: RESULT=new NumFactor(N1); RESULT.setLine(N1left); :}
-				|	(CharFactor)		CHAR:C1 {: RESULT=new CharFactor(C1); RESULT.setLine(C1left); :}
-				
+Factor			::= (VarFactor) 		Designator:D1 {: RESULT=new VarFactor(D1); RESULT.setLine(D1left); :}
+				|	(MethodFactor) 		Designator:D1 LPARENT ActParsOpt:A2 RPARENT {: RESULT=new MethodFactor(D1, A2); RESULT.setLine(D1left); :}
+				|	(ConstFactor) 		Init:I1 {: RESULT=new ConstFactor(I1); RESULT.setLine(I1left); :}
 				|	(NewArrayFactor)	NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new NewArrayFactor(T1, E2); RESULT.setLine(T1left); :}
 				|	(NewFactor)			NEW Type:T1 {: RESULT=new NewFactor(T1); RESULT.setLine(T1left); :} 
 				|	(ExprFactor)		LPARENT Expr:E1 RPARENT {: RESULT=new ExprFactor(E1); RESULT.setLine(E1left); :};
@@ -255,7 +254,7 @@ Factor			::= (DesFactor) 		Designator:D1 {: RESULT=new DesFactor(D1); RESULT.set
 ActParsOpt		::= (ActParsExpr) ActPars:A1 {: RESULT=new ActParsExpr(A1); RESULT.setLine(A1left); :} 
 				|	(NoActPars) {: RESULT=new NoActPars(); :} /* epsilon */;
 
-PrintParamOpt	::= (PrintParam)	COMMA NUMBER:N1 {: RESULT=new PrintParam(N1); RESULT.setLine(N1left); :}
+PrintParamOpt	::= (PrintParam)	COMMA NUMBER:printWidth {: RESULT=new PrintParam(printWidth); RESULT.setLine(printWidthleft); :}
 				|	(NoPrintParam) {: RESULT=new NoPrintParam(); :} /* epsilon */;
 
 AddOp			::= (Plus)  PLUS {: RESULT=new Plus(); :}

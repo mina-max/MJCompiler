@@ -1,0 +1,17 @@
+INFO  01:29:09,899 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  01:29:10,001 - #2 program
+INFO  01:29:10,001 - #49 mimi
+INFO  01:29:10,001 - #20 {
+INFO  01:29:10,003 - #16 void
+INFO  01:29:10,004 - #49 main
+INFO  01:29:10,004 - #24 (
+INFO  01:29:10,005 - #25 )
+INFO  01:29:10,006 - #20 {
+INFO  01:29:10,007 - #15 print
+INFO  01:29:10,008 - #24 (
+INFO  01:29:10,008 - #46 1
+INFO  01:29:10,008 - #25 )
+INFO  01:29:10,009 - #12 ;
+INFO  01:29:10,009 - #21 }
+INFO  01:29:10,010 - #21 }
+INFO  01:29:10,013 - ===================================

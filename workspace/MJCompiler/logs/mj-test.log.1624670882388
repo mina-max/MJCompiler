@@ -1,0 +1,69 @@
+INFO  03:27:10,754 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  03:27:10,821 - #2 program
+INFO  03:27:10,821 - #49 mimi
+INFO  03:27:10,821 - #8 const
+INFO  03:27:10,823 - #49 int
+INFO  03:27:10,823 - #49 m
+INFO  03:27:10,824 - #41 =
+INFO  03:27:10,824 - #46 5
+INFO  03:27:10,825 - #14 ,
+INFO  03:27:10,827 - #49 a
+INFO  03:27:10,827 - #41 =
+INFO  03:27:10,827 - #46 5
+INFO  03:27:10,827 - #12 ;
+INFO  03:27:10,828 - #9 class
+INFO  03:27:10,829 - #49 Mina
+INFO  03:27:10,829 - #20 {
+INFO  03:27:10,831 - #49 int
+INFO  03:27:10,831 - #49 b
+INFO  03:27:10,832 - #14 ,
+INFO  03:27:10,834 - #49 c
+INFO  03:27:10,834 - #14 ,
+INFO  03:27:10,834 - #49 d
+INFO  03:27:10,834 - #12 ;
+INFO  03:27:10,834 - #21 }
+INFO  03:27:10,836 - #20 {
+INFO  03:27:10,837 - #16 void
+INFO  03:27:10,837 - #49 f
+INFO  03:27:10,838 - #24 (
+INFO  03:27:10,839 - #49 char
+INFO  03:27:10,839 - #49 ch
+INFO  03:27:10,840 - #14 ,
+INFO  03:27:10,841 - #49 int
+INFO  03:27:10,841 - #49 a
+INFO  03:27:10,841 - #14 ,
+INFO  03:27:10,841 - #49 int
+INFO  03:27:10,841 - #49 arg
+INFO  03:27:10,841 - #25 )
+INFO  03:27:10,841 - #49 int
+INFO  03:27:10,843 - #49 x
+INFO  03:27:10,843 - #12 ;
+INFO  03:27:10,843 - #20 {
+INFO  03:27:10,843 - #49 x
+INFO  03:27:10,844 - #41 =
+INFO  03:27:10,846 - #49 a
+INFO  03:27:10,847 - #12 ;
+INFO  03:27:10,847 - #49 m
+INFO  03:27:10,848 - #42 ++
+INFO  03:27:10,848 - #12 ;
+INFO  03:27:10,848 - #21 }
+INFO  03:27:10,848 - #16 void
+INFO  03:27:10,850 - #49 main
+INFO  03:27:10,850 - #24 (
+INFO  03:27:10,850 - #49 int
+INFO  03:27:10,850 - #49 a
+INFO  03:27:10,850 - #25 )
+INFO  03:27:10,850 - #20 {
+INFO  03:27:10,850 - #49 arg
+INFO  03:27:10,850 - #42 ++
+INFO  03:27:10,850 - #12 ;
+INFO  03:27:10,850 - #21 }
+INFO  03:27:10,850 - #21 }
+INFO  03:27:10,852 - ===================================
+INFO  03:27:10,861 - Lokalna promenljiva - Pretraga na 10(x), nadjeno Var x: int, 3, 1 
+INFO  03:27:10,862 - Formalni parametar fje - Pretraga na 10(a), nadjeno Var a: int, 1, 1 
+INFO  03:27:10,862 - Simbolicka konstanta - Pretraga na 11(m), nadjeno Con m: int, 5, 0 
+ERROR 03:27:10,862 - IncDesignator mora oznacavati promenljivu, polje ili element niza - Greska na liniji 11
+ERROR 03:27:10,862 - Simbol 'arg' nije definisan - Greska na liniji 15
+ERROR 03:27:10,862 - IncDesignator mora biti tipa integer - Greska na liniji 15
+ERROR 03:27:10,862 - Main metoda ne sme da ima argumente - Greska na liniji 1

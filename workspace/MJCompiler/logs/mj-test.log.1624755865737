@@ -1,0 +1,66 @@
+INFO  02:44:37,716 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  02:44:37,797 - #2 program
+INFO  02:44:37,797 - #49 mimi
+INFO  02:44:37,797 - #8 const
+INFO  02:44:37,799 - #49 int
+INFO  02:44:37,799 - #49 mina
+INFO  02:44:37,801 - #41 =
+INFO  02:44:37,801 - #46 2
+INFO  02:44:37,801 - #12 ;
+INFO  02:44:37,802 - #49 int
+INFO  02:44:37,803 - #49 a
+INFO  02:44:37,803 - #12 ;
+INFO  02:44:37,805 - #49 int
+INFO  02:44:37,805 - #49 mika
+INFO  02:44:37,805 - #12 ;
+INFO  02:44:37,805 - #20 {
+INFO  02:44:37,806 - #16 void
+INFO  02:44:37,807 - #49 main
+INFO  02:44:37,807 - #24 (
+INFO  02:44:37,808 - #25 )
+INFO  02:44:37,809 - #49 int
+INFO  02:44:37,810 - #49 b
+INFO  02:44:37,813 - #12 ;
+INFO  02:44:37,813 - #20 {
+INFO  02:44:37,813 - #49 a
+INFO  02:44:37,814 - #41 =
+INFO  02:44:37,815 - #46 8
+INFO  02:44:37,816 - #12 ;
+INFO  02:44:37,817 - #49 b
+INFO  02:44:37,817 - #41 =
+INFO  02:44:37,818 - #46 4
+INFO  02:44:37,818 - #12 ;
+INFO  02:44:37,818 - #15 print
+INFO  02:44:37,818 - #24 (
+INFO  02:44:37,818 - #49 a
+INFO  02:44:37,818 - #25 )
+INFO  02:44:37,819 - #12 ;
+INFO  02:44:37,819 - #15 print
+INFO  02:44:37,820 - #24 (
+INFO  02:44:37,820 - #49 b
+INFO  02:44:37,820 - #25 )
+INFO  02:44:37,820 - #12 ;
+INFO  02:44:37,820 - #15 print
+INFO  02:44:37,820 - #24 (
+INFO  02:44:37,820 - #46 3
+INFO  02:44:37,820 - #25 )
+INFO  02:44:37,821 - #12 ;
+INFO  02:44:37,821 - #11 read
+INFO  02:44:37,821 - #24 (
+INFO  02:44:37,821 - #49 b
+INFO  02:44:37,821 - #25 )
+INFO  02:44:37,821 - #12 ;
+INFO  02:44:37,821 - #15 print
+INFO  02:44:37,821 - #24 (
+INFO  02:44:37,821 - #49 mina
+INFO  02:44:37,821 - #25 )
+INFO  02:44:37,822 - #12 ;
+INFO  02:44:37,822 - #21 }
+INFO  02:44:37,822 - #21 }
+INFO  02:44:37,825 - ===================================
+INFO  02:44:37,835 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  02:44:37,836 - Lokalna promenljiva - Pretraga na 10(b), nadjeno Var b: int, 0, 1 
+INFO  02:44:37,836 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 
+INFO  02:44:37,836 - Lokalna promenljiva - Pretraga na 12(b), nadjeno Var b: int, 0, 1 
+INFO  02:44:37,836 - Lokalna promenljiva - Pretraga na 14(b), nadjeno Var b: int, 0, 1 
+INFO  02:44:37,836 - Simbolicka konstanta - Pretraga na 15(mina), nadjeno Con mina: int, 2, 0 

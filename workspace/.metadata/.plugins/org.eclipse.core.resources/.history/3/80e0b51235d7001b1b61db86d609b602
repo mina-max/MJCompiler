@@ -1,0 +1,19 @@
+program mimi
+const int mina = 2;
+int a;
+int mika;
+{
+		void main()
+		char b;
+		{
+			a = 8;
+			b = 'a';
+			a--;
+			print(a, 4);
+			print(b, 1);
+			print(3);
+			print(mina);
+			read(a);
+			print(a);
+		}
+}

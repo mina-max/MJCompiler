@@ -1,0 +1,39 @@
+INFO  12:48:08,898 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  12:48:09,003 - #2 program
+INFO  12:48:09,003 - #49 mimi
+INFO  12:48:09,003 - #49 int
+INFO  12:48:09,005 - #49 a
+INFO  12:48:09,006 - #12 ;
+INFO  12:48:09,008 - #20 {
+INFO  12:48:09,008 - #16 void
+INFO  12:48:09,010 - #49 main
+INFO  12:48:09,011 - #24 (
+INFO  12:48:09,012 - #25 )
+INFO  12:48:09,013 - #49 int
+INFO  12:48:09,014 - #49 b
+INFO  12:48:09,014 - #14 ,
+INFO  12:48:09,015 - #49 c
+INFO  12:48:09,015 - #12 ;
+INFO  12:48:09,015 - #20 {
+INFO  12:48:09,015 - #49 b
+INFO  12:48:09,016 - #41 =
+INFO  12:48:09,017 - #46 2
+INFO  12:48:09,019 - #12 ;
+INFO  12:48:09,019 - #49 a
+INFO  12:48:09,019 - #41 =
+INFO  12:48:09,022 - #46 4
+INFO  12:48:09,022 - #12 ;
+INFO  12:48:09,022 - #49 c
+INFO  12:48:09,022 - #41 =
+INFO  12:48:09,022 - #49 a
+INFO  12:48:09,022 - #34 +
+INFO  12:48:09,022 - #49 b
+INFO  12:48:09,024 - #12 ;
+INFO  12:48:09,024 - #21 }
+INFO  12:48:09,024 - #21 }
+INFO  12:48:09,028 - ===================================
+INFO  12:48:09,037 - Lokalna promenljiva - Pretraga na 7(b), nadjeno Var b: int, 0, 1 
+INFO  12:48:09,037 - Globalna promenljiva - Pretraga na 8(a), nadjeno Var a: int, 0, 0 
+INFO  12:48:09,037 - Lokalna promenljiva - Pretraga na 9(c), nadjeno Var c: int, 1, 1 
+INFO  12:48:09,037 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  12:48:09,037 - Lokalna promenljiva - Pretraga na 9(b), nadjeno Var b: int, 0, 1 

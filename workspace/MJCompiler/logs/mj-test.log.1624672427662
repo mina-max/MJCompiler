@@ -1,0 +1,68 @@
+INFO  03:53:21,802 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
+INFO  03:53:21,886 - #2 program
+INFO  03:53:21,886 - #49 mimi
+INFO  03:53:21,886 - #49 int
+INFO  03:53:21,888 - #49 m
+INFO  03:53:21,888 - #14 ,
+INFO  03:53:21,891 - #49 arg
+INFO  03:53:21,891 - #12 ;
+INFO  03:53:21,891 - #8 const
+INFO  03:53:21,891 - #49 bool
+INFO  03:53:21,891 - #49 b
+INFO  03:53:21,891 - #41 =
+INFO  03:53:21,892 - #48 0
+INFO  03:53:21,892 - #12 ;
+INFO  03:53:21,893 - #9 class
+INFO  03:53:21,894 - #49 Mina
+INFO  03:53:21,894 - #20 {
+INFO  03:53:21,895 - #49 int
+INFO  03:53:21,896 - #49 b
+INFO  03:53:21,896 - #14 ,
+INFO  03:53:21,896 - #49 c
+INFO  03:53:21,896 - #14 ,
+INFO  03:53:21,897 - #49 d
+INFO  03:53:21,897 - #12 ;
+INFO  03:53:21,897 - #21 }
+INFO  03:53:21,898 - #20 {
+INFO  03:53:21,899 - #16 void
+INFO  03:53:21,900 - #49 f
+INFO  03:53:21,901 - #24 (
+INFO  03:53:21,902 - #49 char
+INFO  03:53:21,902 - #49 ch
+INFO  03:53:21,902 - #14 ,
+INFO  03:53:21,904 - #49 int
+INFO  03:53:21,904 - #49 a
+INFO  03:53:21,904 - #14 ,
+INFO  03:53:21,904 - #49 int
+INFO  03:53:21,904 - #49 arg
+INFO  03:53:21,904 - #25 )
+INFO  03:53:21,904 - #49 int
+INFO  03:53:21,905 - #49 x
+INFO  03:53:21,906 - #12 ;
+INFO  03:53:21,906 - #20 {
+INFO  03:53:21,906 - #49 x
+INFO  03:53:21,907 - #41 =
+INFO  03:53:21,908 - #49 a
+INFO  03:53:21,910 - #12 ;
+INFO  03:53:21,910 - #49 m
+INFO  03:53:21,910 - #42 ++
+INFO  03:53:21,910 - #12 ;
+INFO  03:53:21,910 - #21 }
+INFO  03:53:21,910 - #16 void
+INFO  03:53:21,912 - #49 main
+INFO  03:53:21,912 - #24 (
+INFO  03:53:21,912 - #49 int
+INFO  03:53:21,913 - #49 a
+INFO  03:53:21,913 - #25 )
+INFO  03:53:21,913 - #20 {
+INFO  03:53:21,913 - #49 arg
+INFO  03:53:21,913 - #42 ++
+INFO  03:53:21,913 - #12 ;
+INFO  03:53:21,913 - #21 }
+INFO  03:53:21,913 - #21 }
+INFO  03:53:21,915 - ===================================
+INFO  03:53:21,924 - Lokalna promenljiva - Pretraga na 11(x), nadjeno Var x: int, 3, 1 
+INFO  03:53:21,924 - Formalni parametar fje - Pretraga na 11(a), nadjeno Var a: int, 1, 1 
+INFO  03:53:21,924 - Globalna promenljiva - Pretraga na 12(m), nadjeno Var m: int, 0, 0 
+INFO  03:53:21,924 - Globalna promenljiva - Pretraga na 16(arg), nadjeno Var arg: int, 1, 0 
+ERROR 03:53:21,924 - Main metoda ne sme da ima argumente - Greska na liniji 1

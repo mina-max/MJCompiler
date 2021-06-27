@@ -1,0 +1,46 @@
+INFO  14:44:44,819 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  14:44:44,922 - #2 program
+INFO  14:44:44,922 - #49 mimi
+INFO  14:44:44,922 - #49 int
+INFO  14:44:44,924 - #49 a
+INFO  14:44:44,925 - #12 ;
+INFO  14:44:44,927 - #49 bool
+INFO  14:44:44,928 - #49 d
+INFO  14:44:44,928 - #12 ;
+INFO  14:44:44,928 - #20 {
+INFO  14:44:44,928 - #16 void
+INFO  14:44:44,929 - #49 main
+INFO  14:44:44,930 - #24 (
+INFO  14:44:44,931 - #25 )
+INFO  14:44:44,932 - #49 int
+INFO  14:44:44,934 - #49 b
+INFO  14:44:44,934 - #14 ,
+INFO  14:44:44,934 - #49 c
+INFO  14:44:44,934 - #12 ;
+INFO  14:44:44,934 - #49 int
+INFO  14:44:44,935 - #49 b
+INFO  14:44:44,935 - #22 [
+INFO  14:44:44,935 - #23 ]
+INFO  14:44:44,935 - #12 ;
+INFO  14:44:44,936 - #20 {
+INFO  14:44:44,936 - #49 b
+INFO  14:44:44,937 - #41 =
+INFO  14:44:44,938 - #7 new
+INFO  14:44:44,939 - #49 int
+INFO  14:44:44,939 - #22 [
+INFO  14:44:44,940 - #46 3
+INFO  14:44:44,940 - #23 ]
+INFO  14:44:44,940 - #12 ;
+INFO  14:44:44,940 - #49 b
+INFO  14:44:44,940 - #22 [
+INFO  14:44:44,940 - #46 0
+INFO  14:44:44,941 - #23 ]
+INFO  14:44:44,941 - #41 =
+INFO  14:44:44,941 - #46 1
+INFO  14:44:44,941 - #12 ;
+INFO  14:44:44,941 - #21 }
+INFO  14:44:44,941 - #21 }
+INFO  14:44:44,944 - ===================================
+ERROR 14:44:44,953 - Vec postoji simbol 'b' - Greska na liniji 7
+INFO  14:44:44,953 - Lokalna promenljiva - Pretraga na 9(b), nadjeno Var b: int, 0, 1 
+INFO  14:44:44,953 - Element niza - Pretraga na 10(b), nadjeno Var b: int, 0, 1 

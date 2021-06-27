@@ -1,0 +1,13 @@
+program mimi
+int a;
+bool d;
+{
+		void main()
+		int c;
+		int b[];
+		{
+		b = new int[3];
+		b[0] = 1;
+		print(b[0]);
+		}
+}

@@ -1,0 +1,70 @@
+INFO  13:18:17,925 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  13:18:18,001 - #2 program
+INFO  13:18:18,002 - #49 mimi
+INFO  13:18:18,002 - #49 int
+INFO  13:18:18,003 - #49 a
+INFO  13:18:18,004 - #12 ;
+INFO  13:18:18,006 - #49 boolean
+INFO  13:18:18,007 - #49 d
+INFO  13:18:18,007 - #12 ;
+INFO  13:18:18,007 - #20 {
+INFO  13:18:18,007 - #16 void
+INFO  13:18:18,008 - #49 main
+INFO  13:18:18,009 - #24 (
+INFO  13:18:18,010 - #25 )
+INFO  13:18:18,011 - #49 int
+INFO  13:18:18,013 - #49 b
+INFO  13:18:18,013 - #14 ,
+INFO  13:18:18,013 - #49 c
+INFO  13:18:18,013 - #12 ;
+INFO  13:18:18,013 - #20 {
+INFO  13:18:18,013 - #49 b
+INFO  13:18:18,014 - #41 =
+INFO  13:18:18,017 - #35 -
+INFO  13:18:18,019 - #46 2
+INFO  13:18:18,019 - #12 ;
+INFO  13:18:18,020 - #49 a
+INFO  13:18:18,020 - #41 =
+INFO  13:18:18,020 - #46 4
+INFO  13:18:18,020 - #12 ;
+INFO  13:18:18,020 - #49 d
+INFO  13:18:18,020 - #41 =
+INFO  13:18:18,020 - #48 1
+INFO  13:18:18,021 - #12 ;
+INFO  13:18:18,021 - #49 c
+INFO  13:18:18,021 - #41 =
+INFO  13:18:18,021 - #24 (
+INFO  13:18:18,021 - #49 a
+INFO  13:18:18,021 - #36 *
+INFO  13:18:18,021 - #46 2
+INFO  13:18:18,023 - #25 )
+INFO  13:18:18,023 - #36 *
+INFO  13:18:18,023 - #24 (
+INFO  13:18:18,023 - #49 b
+INFO  13:18:18,023 - #36 *
+INFO  13:18:18,023 - #46 2
+INFO  13:18:18,023 - #25 )
+INFO  13:18:18,024 - #12 ;
+INFO  13:18:18,024 - #15 print
+INFO  13:18:18,024 - #24 (
+INFO  13:18:18,024 - #49 c
+INFO  13:18:18,024 - #25 )
+INFO  13:18:18,025 - #12 ;
+INFO  13:18:18,025 - #15 print
+INFO  13:18:18,025 - #24 (
+INFO  13:18:18,025 - #49 d
+INFO  13:18:18,025 - #25 )
+INFO  13:18:18,025 - #12 ;
+INFO  13:18:18,025 - #21 }
+INFO  13:18:18,025 - #21 }
+INFO  13:18:18,029 - ===================================
+ERROR 13:18:18,037 - Nije pronadjen tip boolean u tabeli simbola! 
+INFO  13:18:18,038 - Lokalna promenljiva - Pretraga na 8(b), nadjeno Var b: int, 0, 1 
+INFO  13:18:18,038 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  13:18:18,038 - Globalna promenljiva - Pretraga na 10(d), nadjeno Var d: notype, 1, 0 
+INFO  13:18:18,038 - Lokalna promenljiva - Pretraga na 11(c), nadjeno Var c: int, 1, 1 
+INFO  13:18:18,039 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 
+INFO  13:18:18,039 - Lokalna promenljiva - Pretraga na 11(b), nadjeno Var b: int, 0, 1 
+INFO  13:18:18,039 - Lokalna promenljiva - Pretraga na 12(c), nadjeno Var c: int, 1, 1 
+INFO  13:18:18,039 - Globalna promenljiva - Pretraga na 13(d), nadjeno Var d: notype, 1, 0 
+ERROR 13:18:18,039 - Expr u Print Statementu mora biti tipa integer, char ili bool - Greska na liniji 13

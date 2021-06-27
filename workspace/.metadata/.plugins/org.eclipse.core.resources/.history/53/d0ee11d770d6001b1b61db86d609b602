@@ -1,0 +1,24 @@
+program mimi
+int m, arg;
+const bool b = false;
+class Mina {
+	int a, b;
+	{
+		void mina(int b){
+			a = b;
+			a[1] = 2;
+		}
+	}
+}
+{
+	void f(char ch, int a, int arg)
+		int x;
+	{
+		x = a;
+		m++;
+	}
+		void main(int a) 
+		{
+			arg++;
+		}
+}

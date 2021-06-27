@@ -1,0 +1,42 @@
+INFO  02:13:33,018 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  02:13:33,135 - #2 program
+INFO  02:13:33,136 - #49 mimi
+INFO  02:13:33,136 - #8 const
+INFO  02:13:33,138 - #49 int
+INFO  02:13:33,138 - #49 mina
+INFO  02:13:33,139 - #41 =
+INFO  02:13:33,140 - #46 2
+INFO  02:13:33,140 - #12 ;
+INFO  02:13:33,141 - #49 int
+INFO  02:13:33,142 - #49 mika
+INFO  02:13:33,142 - #12 ;
+INFO  02:13:33,145 - #20 {
+INFO  02:13:33,146 - #16 void
+INFO  02:13:33,147 - #49 main
+INFO  02:13:33,148 - #24 (
+INFO  02:13:33,149 - #25 )
+INFO  02:13:33,150 - #20 {
+INFO  02:13:33,153 - #15 print
+INFO  02:13:33,154 - #24 (
+INFO  02:13:33,154 - #47 a
+INFO  02:13:33,154 - #25 )
+INFO  02:13:33,155 - #12 ;
+INFO  02:13:33,156 - #15 print
+INFO  02:13:33,157 - #24 (
+INFO  02:13:33,157 - #46 4
+INFO  02:13:33,157 - #25 )
+INFO  02:13:33,157 - #12 ;
+INFO  02:13:33,157 - #15 print
+INFO  02:13:33,157 - #24 (
+INFO  02:13:33,157 - #46 3
+INFO  02:13:33,158 - #25 )
+INFO  02:13:33,158 - #12 ;
+INFO  02:13:33,158 - #15 print
+INFO  02:13:33,158 - #24 (
+INFO  02:13:33,158 - #49 mina
+INFO  02:13:33,158 - #25 )
+INFO  02:13:33,160 - #12 ;
+INFO  02:13:33,161 - #21 }
+INFO  02:13:33,161 - #21 }
+INFO  02:13:33,165 - ===================================
+INFO  02:13:33,176 - Simbolicka konstanta - Pretraga na 10(mina), nadjeno Con mina: int, 2, 0 

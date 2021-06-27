@@ -1,0 +1,84 @@
+INFO  12:31:15,566 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  12:31:15,670 - #2 program
+INFO  12:31:15,670 - #49 mimi
+INFO  12:31:15,671 - #8 const
+INFO  12:31:15,673 - #49 int
+INFO  12:31:15,674 - #49 mina
+INFO  12:31:15,675 - #41 =
+INFO  12:31:15,675 - #46 2
+INFO  12:31:15,675 - #12 ;
+INFO  12:31:15,676 - #49 int
+INFO  12:31:15,677 - #49 a
+INFO  12:31:15,677 - #12 ;
+INFO  12:31:15,680 - #49 int
+INFO  12:31:15,680 - #49 mika
+INFO  12:31:15,680 - #12 ;
+INFO  12:31:15,680 - #20 {
+INFO  12:31:15,680 - #16 void
+INFO  12:31:15,682 - #49 main
+INFO  12:31:15,683 - #24 (
+INFO  12:31:15,684 - #25 )
+INFO  12:31:15,685 - #49 int
+INFO  12:31:15,687 - #49 b
+INFO  12:31:15,687 - #12 ;
+INFO  12:31:15,688 - #20 {
+INFO  12:31:15,688 - #49 a
+INFO  12:31:15,689 - #41 =
+INFO  12:31:15,691 - #46 8
+INFO  12:31:15,692 - #12 ;
+INFO  12:31:15,692 - #49 b
+INFO  12:31:15,693 - #41 =
+INFO  12:31:15,693 - #46 4
+INFO  12:31:15,693 - #12 ;
+INFO  12:31:15,693 - #49 b
+INFO  12:31:15,693 - #43 --
+INFO  12:31:15,693 - #12 ;
+INFO  12:31:15,693 - #49 a
+INFO  12:31:15,693 - #43 --
+INFO  12:31:15,693 - #12 ;
+INFO  12:31:15,693 - #15 print
+INFO  12:31:15,694 - #24 (
+INFO  12:31:15,694 - #49 a
+INFO  12:31:15,694 - #14 ,
+INFO  12:31:15,694 - #46 4
+INFO  12:31:15,694 - #25 )
+INFO  12:31:15,694 - #12 ;
+INFO  12:31:15,694 - #15 print
+INFO  12:31:15,694 - #24 (
+INFO  12:31:15,695 - #49 b
+INFO  12:31:15,695 - #14 ,
+INFO  12:31:15,695 - #46 1
+INFO  12:31:15,695 - #25 )
+INFO  12:31:15,695 - #12 ;
+INFO  12:31:15,695 - #15 print
+INFO  12:31:15,695 - #24 (
+INFO  12:31:15,695 - #46 3
+INFO  12:31:15,695 - #25 )
+INFO  12:31:15,696 - #12 ;
+INFO  12:31:15,696 - #15 print
+INFO  12:31:15,696 - #24 (
+INFO  12:31:15,697 - #49 mina
+INFO  12:31:15,697 - #25 )
+INFO  12:31:15,697 - #12 ;
+INFO  12:31:15,697 - #11 read
+INFO  12:31:15,697 - #24 (
+INFO  12:31:15,697 - #49 a
+INFO  12:31:15,697 - #25 )
+INFO  12:31:15,697 - #12 ;
+INFO  12:31:15,697 - #15 print
+INFO  12:31:15,698 - #24 (
+INFO  12:31:15,698 - #49 a
+INFO  12:31:15,698 - #25 )
+INFO  12:31:15,698 - #12 ;
+INFO  12:31:15,698 - #21 }
+INFO  12:31:15,698 - #21 }
+INFO  12:31:15,701 - ===================================
+INFO  12:31:15,710 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  12:31:15,710 - Lokalna promenljiva - Pretraga na 10(b), nadjeno Var b: int, 0, 1 
+INFO  12:31:15,710 - Lokalna promenljiva - Pretraga na 11(b), nadjeno Var b: int, 0, 1 
+INFO  12:31:15,711 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 
+INFO  12:31:15,711 - Globalna promenljiva - Pretraga na 12(a), nadjeno Var a: int, 0, 0 
+INFO  12:31:15,711 - Lokalna promenljiva - Pretraga na 13(b), nadjeno Var b: int, 0, 1 
+INFO  12:31:15,711 - Simbolicka konstanta - Pretraga na 15(mina), nadjeno Con mina: int, 2, 0 
+INFO  12:31:15,711 - Globalna promenljiva - Pretraga na 16(a), nadjeno Var a: int, 0, 0 
+INFO  12:31:15,711 - Globalna promenljiva - Pretraga na 17(a), nadjeno Var a: int, 0, 0 

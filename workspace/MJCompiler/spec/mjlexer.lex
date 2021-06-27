@@ -91,10 +91,12 @@ import rs.ac.bg.etf.pp1.test.CompilerError;
 <COMMENT> .      { yybegin(COMMENT); }
 <COMMENT> "\r\n" { yybegin(YYINITIAL); }
 
+true							{ return new_symbol(sym.BOOL, new Integer(1)); }
+false							{ return new_symbol(sym.BOOL, new Integer(0)); }
+
 "'"[\040-\176]"'" 				{ return new_symbol (sym.CHAR, new Character (yytext().charAt(1)));}
 [0-9]+  						{ return new_symbol(sym.NUMBER, new Integer (yytext())); }
-"true"							{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
-"false"							{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
+
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{ return new_symbol(sym.IDENT, yytext()); }
 
 

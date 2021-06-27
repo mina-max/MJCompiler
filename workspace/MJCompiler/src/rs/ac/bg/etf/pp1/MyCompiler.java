@@ -3,6 +3,7 @@ package rs.ac.bg.etf.pp1;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -16,6 +17,7 @@ import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.test.Compiler;
 import rs.ac.bg.etf.pp1.test.CompilerError;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
+import rs.etf.pp1.mj.runtime.Code;
 
 public class MyCompiler implements Compiler {
 	
@@ -30,7 +32,7 @@ public class MyCompiler implements Compiler {
 
 		Reader br = null;
 		try {
-			File sourceCode = new File("test/syntax/test21.mj");
+			File sourceCode = new File("test/test301.mj");
 			log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 
 			br = new BufferedReader(new FileReader(sourceCode));
@@ -50,6 +52,20 @@ public class MyCompiler implements Compiler {
 			SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
 			prog.traverseBottomUp(semanticAnalyzer);
 			MySymbolTable.dump();
+			
+			if(semanticAnalyzer.passed()) {
+				System.out.println("Parsiranje je uspesno zavrseno!");
+				System.out.println("======================CODE GENERATION========================");	
+				CodeGenerator codeGenerator = new CodeGenerator();
+				prog.traverseBottomUp(codeGenerator);
+				Code.dataSize = SemanticAnalyzer.nVars;
+				Code.mainPc = codeGenerator.getMainPc();
+				File objFile = new File("test/program.obj");
+                if (objFile.exists()) objFile.delete();
+                Code.write(new FileOutputStream(objFile));
+			} else {
+				System.out.println("Parsiranje NIJE uspesno zavrseno!");
+			}
 			
 
 		} catch (FileNotFoundException e) {

@@ -1,0 +1,138 @@
+INFO  15:19:48,880 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test301.mj
+INFO  15:19:48,984 - #2 program
+INFO  15:19:48,984 - #49 test301
+INFO  15:19:48,984 - #8 const
+INFO  15:19:48,986 - #49 int
+INFO  15:19:48,986 - #49 nula
+INFO  15:19:48,987 - #41 =
+INFO  15:19:48,988 - #46 0
+INFO  15:19:48,988 - #12 ;
+INFO  15:19:48,989 - #8 const
+INFO  15:19:48,990 - #49 int
+INFO  15:19:48,990 - #49 jedan
+INFO  15:19:48,990 - #41 =
+INFO  15:19:48,990 - #46 1
+INFO  15:19:48,990 - #12 ;
+INFO  15:19:48,991 - #8 const
+INFO  15:19:48,991 - #49 int
+INFO  15:19:48,991 - #49 pet
+INFO  15:19:48,991 - #41 =
+INFO  15:19:48,991 - #46 5
+INFO  15:19:48,991 - #12 ;
+INFO  15:19:48,992 - #49 int
+INFO  15:19:48,992 - #49 niz
+INFO  15:19:48,992 - #22 [
+INFO  15:19:48,993 - #23 ]
+INFO  15:19:48,994 - #12 ;
+INFO  15:19:48,999 - #49 char
+INFO  15:19:48,999 - #49 nizch
+INFO  15:19:48,999 - #22 [
+INFO  15:19:48,999 - #23 ]
+INFO  15:19:49,000 - #12 ;
+INFO  15:19:49,000 - #20 {
+INFO  15:19:49,001 - #16 void
+INFO  15:19:49,002 - #49 main
+INFO  15:19:49,004 - #24 (
+INFO  15:19:49,005 - #25 )
+INFO  15:19:49,006 - #49 int
+INFO  15:19:49,009 - #49 bodovi
+INFO  15:19:49,009 - #12 ;
+INFO  15:19:49,011 - #20 {
+INFO  15:19:49,012 - #49 bodovi
+INFO  15:19:49,013 - #41 =
+INFO  15:19:49,016 - #46 0
+INFO  15:19:49,018 - #12 ;
+INFO  15:19:49,019 - #49 bodovi
+INFO  15:19:49,019 - #42 ++
+INFO  15:19:49,019 - #12 ;
+INFO  15:19:49,020 - #49 bodovi
+INFO  15:19:49,020 - #41 =
+INFO  15:19:49,020 - #49 bodovi
+INFO  15:19:49,020 - #34 +
+INFO  15:19:49,020 - #49 jedan
+INFO  15:19:49,023 - #12 ;
+INFO  15:19:49,024 - #49 bodovi
+INFO  15:19:49,024 - #41 =
+INFO  15:19:49,024 - #49 bodovi
+INFO  15:19:49,024 - #36 *
+INFO  15:19:49,024 - #49 pet
+INFO  15:19:49,027 - #12 ;
+INFO  15:19:49,028 - #49 bodovi
+INFO  15:19:49,028 - #43 --
+INFO  15:19:49,028 - #12 ;
+INFO  15:19:49,028 - #15 print
+INFO  15:19:49,028 - #24 (
+INFO  15:19:49,029 - #49 bodovi
+INFO  15:19:49,029 - #25 )
+INFO  15:19:49,030 - #12 ;
+INFO  15:19:49,030 - #49 nizch
+INFO  15:19:49,030 - #41 =
+INFO  15:19:49,030 - #7 new
+INFO  15:19:49,031 - #49 char
+INFO  15:19:49,031 - #22 [
+INFO  15:19:49,031 - #46 3
+INFO  15:19:49,031 - #23 ]
+INFO  15:19:49,031 - #12 ;
+INFO  15:19:49,031 - #49 nizch
+INFO  15:19:49,031 - #22 [
+INFO  15:19:49,032 - #46 0
+INFO  15:19:49,032 - #23 ]
+INFO  15:19:49,032 - #41 =
+INFO  15:19:49,032 - #47 a
+INFO  15:19:49,032 - #12 ;
+INFO  15:19:49,032 - #49 nizch
+INFO  15:19:49,033 - #22 [
+INFO  15:19:49,033 - #49 jedan
+INFO  15:19:49,035 - #23 ]
+INFO  15:19:49,035 - #41 =
+INFO  15:19:49,035 - #47 b
+INFO  15:19:49,035 - #12 ;
+INFO  15:19:49,035 - #49 nizch
+INFO  15:19:49,036 - #22 [
+INFO  15:19:49,036 - #49 pet
+INFO  15:19:49,036 - #35 -
+INFO  15:19:49,037 - #46 3
+INFO  15:19:49,038 - #23 ]
+INFO  15:19:49,039 - #41 =
+INFO  15:19:49,039 - #47 c
+INFO  15:19:49,039 - #12 ;
+INFO  15:19:49,039 - #15 print
+INFO  15:19:49,039 - #24 (
+INFO  15:19:49,039 - #49 nizch
+INFO  15:19:49,039 - #22 [
+INFO  15:19:49,039 - #46 1
+INFO  15:19:49,039 - #23 ]
+INFO  15:19:49,039 - #25 )
+INFO  15:19:49,039 - #12 ;
+INFO  15:19:49,039 - #15 print
+INFO  15:19:49,039 - #24 (
+INFO  15:19:49,040 - #49 nizch
+INFO  15:19:49,040 - #22 [
+INFO  15:19:49,040 - #49 jedan
+INFO  15:19:49,040 - #36 *
+INFO  15:19:49,040 - #46 2
+INFO  15:19:49,040 - #23 ]
+INFO  15:19:49,040 - #25 )
+INFO  15:19:49,040 - #12 ;
+INFO  15:19:49,040 - #21 }
+INFO  15:19:49,040 - #21 }
+INFO  15:19:49,046 - ===================================
+INFO  15:19:49,058 - Lokalna promenljiva - Pretraga na 16(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,058 - Lokalna promenljiva - Pretraga na 17(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,058 - Lokalna promenljiva - Pretraga na 18(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,058 - Lokalna promenljiva - Pretraga na 18(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,058 - Simbolicka konstanta - Pretraga na 18(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  15:19:49,058 - Lokalna promenljiva - Pretraga na 19(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,059 - Lokalna promenljiva - Pretraga na 19(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,059 - Simbolicka konstanta - Pretraga na 19(pet), nadjeno Con pet: int, 5, 0 
+INFO  15:19:49,059 - Lokalna promenljiva - Pretraga na 20(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,059 - Lokalna promenljiva - Pretraga na 21(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  15:19:49,059 - Globalna promenljiva - Pretraga na 23(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  15:19:49,059 - Element niza - Pretraga na 24(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  15:19:49,059 - Simbolicka konstanta - Pretraga na 25(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  15:19:49,059 - Element niza - Pretraga na 25(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  15:19:49,060 - Simbolicka konstanta - Pretraga na 26(pet), nadjeno Con pet: int, 5, 0 
+INFO  15:19:49,061 - Element niza - Pretraga na 26(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  15:19:49,061 - Element niza - Pretraga na 27(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  15:19:49,061 - Simbolicka konstanta - Pretraga na 28(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  15:19:49,061 - Element niza - Pretraga na 28(nizch), nadjeno Var nizch: Arr of char, 1, 0 

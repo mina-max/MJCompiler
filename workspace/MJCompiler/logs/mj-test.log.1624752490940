@@ -1,0 +1,39 @@
+INFO  02:00:10,057 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  02:00:10,165 - #2 program
+INFO  02:00:10,165 - #49 mimi
+INFO  02:00:10,166 - #8 const
+INFO  02:00:10,167 - #49 int
+INFO  02:00:10,168 - #49 mina
+INFO  02:00:10,169 - #41 =
+INFO  02:00:10,169 - #46 2
+INFO  02:00:10,169 - #12 ;
+INFO  02:00:10,170 - #20 {
+INFO  02:00:10,172 - #16 void
+INFO  02:00:10,173 - #49 main
+INFO  02:00:10,176 - #24 (
+INFO  02:00:10,177 - #25 )
+INFO  02:00:10,178 - #20 {
+INFO  02:00:10,180 - #15 print
+INFO  02:00:10,181 - #24 (
+INFO  02:00:10,182 - #46 5
+INFO  02:00:10,182 - #25 )
+INFO  02:00:10,183 - #12 ;
+INFO  02:00:10,183 - #15 print
+INFO  02:00:10,184 - #24 (
+INFO  02:00:10,184 - #46 4
+INFO  02:00:10,184 - #25 )
+INFO  02:00:10,185 - #12 ;
+INFO  02:00:10,185 - #15 print
+INFO  02:00:10,185 - #24 (
+INFO  02:00:10,185 - #46 3
+INFO  02:00:10,185 - #25 )
+INFO  02:00:10,185 - #12 ;
+INFO  02:00:10,185 - #15 print
+INFO  02:00:10,185 - #24 (
+INFO  02:00:10,186 - #49 mina
+INFO  02:00:10,186 - #25 )
+INFO  02:00:10,187 - #12 ;
+INFO  02:00:10,188 - #21 }
+INFO  02:00:10,188 - #21 }
+INFO  02:00:10,193 - ===================================
+INFO  02:00:10,209 - Simbolicka konstanta - Pretraga na 9(mina), nadjeno Con mina: int, 2, 0 

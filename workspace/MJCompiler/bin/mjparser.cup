@@ -51,21 +51,21 @@ terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, 
 terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
 terminal Integer NUMBER;
 terminal Character CHAR;
-terminal Boolean BOOL;
+terminal Integer BOOL;
 terminal String IDENT;
 terminal IF, ELSE;
 
-nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle, Init;
+nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle;
 nonterminal VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
 nonterminal MethodDeclList, MethodDecl, ReturnType, FormPars, FormParsList, FormParsSingle;
 nonterminal Statement, DesignatorStatement, DesOperators, AssignOp;
 nonterminal CondTerm, CondFact, RelopOpt, Relop, ElseOpt, ActPars;
-nonterminal CaseList, DesList, DesElement, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
+nonterminal CaseList, DesList, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
 nonterminal FormParsOpt, ActParsOpt, PrintParamOpt, ConditionCorrect, MethodBody, MethodSign, Do;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Init, DesElement;
 precedence left ELSE;
 
 Program 		::= (Program) PROGRAM ProgName DeclList LBRACE MethodDeclList RBRACE;
@@ -86,8 +86,9 @@ ConstDeclList 	::= (ConstDeclListExpr) ConstDeclList COMMA ConstDeclSingle
 
 ConstDeclSingle ::= (ConstDeclSingle) IDENT:constName ASSIGN Init;
 
-Init 			::=  	(CharConst)	 CHAR:character
-				|	(NumberConst) NUMBER:number;
+Init 			::= (BoolConst)		BOOL:boolVal
+				|	(CharConst)	 	CHAR:character
+				|	(NumberConst) 	NUMBER:number;
 
 Type			::= (Type) IDENT:typeName;
 
@@ -141,8 +142,7 @@ FormParsList	::= (FormParsListExpr) 	FormParsList COMMA FormParsSingle
 FormParsSingle	::= (FormParsSingle) Type IDENT:formParName ArrayOpt;
 
 Statement		::= (DesignatorStatementExpr) DesignatorStatement SEMI
-				|	(IfCondition)		IF ConditionCorrect Statement
-				|	(IfElseCondition)	IF ConditionCorrect Statement ELSE Statement
+				|	(IfStatement)		IF ConditionCorrect Statement ElseOpt
 				|	(DoWhileStatement)	Do Statement WHILE LPARENT Condition RPARENT SEMI
 				|	(YieldStatement)	YIELD Expr SEMI
 				|	(BreakStatement)	BREAK SEMI
@@ -162,7 +162,7 @@ DesignatorStatement ::= (AssignDes) Designator AssignOp Expr
 					|	(IncDes)	Designator INC
 					|	(DecDes)	Designator DEC;
 
-Designator		::= (Designator) IDENT:desName DesList;
+Designator		::= (Designator) IDENT:desName DesList; 
 
 DesList			::=	(DesListExpr) DesList DesElement
 				| 	(NoDesList) /* epsilon */;
@@ -179,11 +179,14 @@ ActPars			::= (ExprList) 	ActPars COMMA Expr
 ConditionCorrect::= (CorrectCondition) LPARENT Condition RPARENT
 			     |	(ErrorCondition) LPARENT error RPARENT:l
 			     {:parser.report_error("Izvrsen oporavak od greske na liniji " + lleft, null); :};
+			     
+ElseOpt			::= (ElseStmt) ELSE Statement
+				|	(NoElseStmt);
 					
-Condition		::= (CondExpr) 			Condition OR CondTerm
+Condition		::= (CondOr) 			Condition OR CondTerm
 				| 	(CondTermSingle)	CondTerm;
 
-CondTerm		::= (CondTermExpr) 		CondTerm AND CondFact
+CondTerm		::= (CondAnd) 			CondTerm AND CondFact
 				|	(CondFactSingle)	CondFact;
 
 CondFact		::= (CondFactRelop)	Expr Relop Expr
@@ -206,11 +209,9 @@ Term			::= (TermExpr)		Term MulOp Factor
 ReturnExprOpt	::= (RetExpr) Expr
 				|	(NoExpression) /* epsilon */;
 
-Factor			::= (DesFactor) 		Designator
-				|	(DesFactorPars) 	Designator LPARENT ActParsOpt RPARENT
-				|	(NumFactor) 		NUMBER
-				|	(CharFactor)		CHAR
-				
+Factor			::= (VarFactor) 		Designator
+				|	(MethodFactor) 		Designator LPARENT ActParsOpt RPARENT
+				|	(ConstFactor) 		Init
 				|	(NewArrayFactor)	NEW Type LBRACKET Expr RBRACKET
 				|	(NewFactor)			NEW Type 
 				|	(ExprFactor)		LPARENT Expr RPARENT;
@@ -218,7 +219,7 @@ Factor			::= (DesFactor) 		Designator
 ActParsOpt		::= (ActParsExpr) ActPars 
 				|	(NoActPars) /* epsilon */;
 
-PrintParamOpt	::= (PrintParam)	COMMA NUMBER
+PrintParamOpt	::= (PrintParam)	COMMA NUMBER:printWidth
 				|	(NoPrintParam) /* epsilon */;
 
 AddOp			::= (Plus)  PLUS

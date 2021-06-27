@@ -2,6 +2,5 @@ INDEX VERSION 1.131+C:\Users\rm170154d\Desktop\PP-projekat\workspace\.metadata\.
 3883950653.index
 3737080911.index
 2937555005.index
-2063763519.index
 3876658027.index
 1217801931.index

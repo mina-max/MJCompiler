@@ -1,0 +1,7 @@
+program mimi
+{
+		void main() 
+		{
+			print(1);
+		}
+}

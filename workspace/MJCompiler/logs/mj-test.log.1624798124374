@@ -1,0 +1,80 @@
+INFO  14:48:40,733 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test301.mj
+INFO  14:48:40,839 - #2 program
+INFO  14:48:40,839 - #49 test301
+INFO  14:48:40,839 - #8 const
+INFO  14:48:40,841 - #49 int
+INFO  14:48:40,841 - #49 nula
+INFO  14:48:40,842 - #41 =
+INFO  14:48:40,842 - #46 0
+INFO  14:48:40,842 - #12 ;
+INFO  14:48:40,843 - #8 const
+INFO  14:48:40,844 - #49 int
+INFO  14:48:40,844 - #49 jedan
+INFO  14:48:40,844 - #41 =
+INFO  14:48:40,844 - #46 1
+INFO  14:48:40,845 - #12 ;
+INFO  14:48:40,845 - #8 const
+INFO  14:48:40,845 - #49 int
+INFO  14:48:40,845 - #49 pet
+INFO  14:48:40,845 - #41 =
+INFO  14:48:40,845 - #46 5
+INFO  14:48:40,845 - #12 ;
+INFO  14:48:40,845 - #49 int
+INFO  14:48:40,846 - #49 niz
+INFO  14:48:40,846 - #22 [
+INFO  14:48:40,846 - #23 ]
+INFO  14:48:40,846 - #12 ;
+INFO  14:48:40,849 - #49 char
+INFO  14:48:40,849 - #49 nizch
+INFO  14:48:40,849 - #22 [
+INFO  14:48:40,849 - #23 ]
+INFO  14:48:40,849 - #12 ;
+INFO  14:48:40,850 - #20 {
+INFO  14:48:40,850 - #16 void
+INFO  14:48:40,851 - #49 main
+INFO  14:48:40,851 - #24 (
+INFO  14:48:40,852 - #25 )
+INFO  14:48:40,853 - #49 int
+INFO  14:48:40,854 - #49 bodovi
+INFO  14:48:40,855 - #12 ;
+INFO  14:48:40,855 - #20 {
+INFO  14:48:40,856 - #49 bodovi
+INFO  14:48:40,857 - #41 =
+INFO  14:48:40,858 - #46 0
+INFO  14:48:40,859 - #12 ;
+INFO  14:48:40,860 - #49 bodovi
+INFO  14:48:40,860 - #42 ++
+INFO  14:48:40,860 - #12 ;
+INFO  14:48:40,860 - #49 bodovi
+INFO  14:48:40,860 - #41 =
+INFO  14:48:40,860 - #49 bodovi
+INFO  14:48:40,861 - #34 +
+INFO  14:48:40,861 - #49 jedan
+INFO  14:48:40,862 - #12 ;
+INFO  14:48:40,862 - #49 bodovi
+INFO  14:48:40,862 - #41 =
+INFO  14:48:40,863 - #49 bodovi
+INFO  14:48:40,863 - #36 *
+INFO  14:48:40,863 - #49 pet
+INFO  14:48:40,864 - #12 ;
+INFO  14:48:40,864 - #49 bodovi
+INFO  14:48:40,864 - #43 --
+INFO  14:48:40,864 - #12 ;
+INFO  14:48:40,864 - #15 print
+INFO  14:48:40,864 - #24 (
+INFO  14:48:40,865 - #49 bodovi
+INFO  14:48:40,865 - #25 )
+INFO  14:48:40,865 - #12 ;
+INFO  14:48:40,866 - #21 }
+INFO  14:48:40,866 - #21 }
+INFO  14:48:40,870 - ===================================
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 16(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 17(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 18(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 18(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,879 - Simbolicka konstanta - Pretraga na 18(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 19(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 19(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,879 - Simbolicka konstanta - Pretraga na 19(pet), nadjeno Con pet: int, 5, 0 
+INFO  14:48:40,879 - Lokalna promenljiva - Pretraga na 20(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  14:48:40,880 - Lokalna promenljiva - Pretraga na 21(bodovi), nadjeno Var bodovi: int, 0, 1 

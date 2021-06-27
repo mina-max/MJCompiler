@@ -1,12 +1,13 @@
 package rs.ac.bg.etf.pp1;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 
 import rs.ac.bg.etf.pp1.ast.*;
-import rs.ac.bg.etf.pp1.ast.VisitorAdaptor;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.*;
 import rs.etf.pp1.symboltable.visitors.DumpSymbolTableVisitor;
@@ -22,8 +23,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	private static Obj currentMethod = null;
 	Logger log = Logger.getLogger(getClass());
 	private static int doWhileCnt = 0;
+	public static int nVars;
 
 	private static Map<String, Obj> currentMethodFormParams = new HashMap<String, Obj>();
+	private static List<Struct> arrayStructs = new LinkedList<Struct>();
 
 	public void report_error(String message, SyntaxNode info) {
 		errorDetected = true;
@@ -41,23 +44,27 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			msg.append(" na liniji").append(line);
 		log.info(msg.toString());
 	}
-	
-	public void report_found(Obj obj, SyntaxNode node) {
-		StringBuilder msg = new StringBuilder();
+
+	public void report_found(String message, Obj obj, SyntaxNode node) {
+		StringBuilder msg = new StringBuilder(message);
 		int line = (node == null) ? 0 : node.getLine();
 		DumpSymbolTableVisitor stv = new DumpSymbolTableVisitor();
 		if (line != 0) {
 			msg.append("Pretraga na ").append(line).append("(").append(obj.getName()).append("), ");
 			stv.visitObjNode(obj);
-			msg.append("nadjeno ").append(stv.getOutput()); 
+			msg.append("nadjeno ").append(stv.getOutput());
 		}
-			
+
 		log.info(msg.toString());
 	}
 
+	public boolean passed() {
+		return !errorDetected;
+	}
 	public boolean symbolExists(SyntaxNode varDecl, String varName) {
 		Obj sym = MySymbolTable.find(varName);
 		if (sym != MySymbolTable.noObj && sym.getLevel() == currentLevel) {
+			report_error("Vec postoji simbol '" + varName + "'", varDecl);
 			return true;
 		}
 		return false;
@@ -65,7 +72,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(ProgName progName) {
-				
+
 		progName.obj = MySymbolTable.insert(Obj.Prog, progName.getProgName(), MySymbolTable.noType);
 		MySymbolTable.openScope();
 		System.out.println("Visited progName");
@@ -73,15 +80,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	public void visit(Program program) {
 		Obj mainMethodObj = MySymbolTable.find("main");
-		if(mainMethodObj == MySymbolTable.noObj)
+		if (mainMethodObj == MySymbolTable.noObj)
 			report_error("Program mora imati main metodu", program);
 		else {
-			if(!mainMethodObj.getType().equals(MySymbolTable.noType))
+			if (!mainMethodObj.getType().equals(MySymbolTable.noType))
 				report_error("Povratna vrednost main metode mora biti void", program);
-			if(mainMethodObj.getLevel() > 0) 
+			if (mainMethodObj.getLevel() > 0)
 				report_error("Main metoda ne sme da ima argumente", program);
 		}
-			
+		nVars = MySymbolTable.currentScope.getnVars();
 		MySymbolTable.chainLocalSymbols(program.getProgName().obj);
 		MySymbolTable.closeScope();
 	}
@@ -117,6 +124,17 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			objKind = Obj.Var;
 
 		if (isArray) {
+			Struct newStruct = null;
+			if (!arrayStructs.contains(currentType)) {
+				newStruct = new Struct(Struct.Array, currentType);
+				arrayStructs.add(newStruct);
+
+			} else {
+				int i = arrayStructs.lastIndexOf(currentType);
+				newStruct = arrayStructs.get(i);
+			}
+
+			MySymbolTable.insert(objKind, varDecl.getVarName(), newStruct);
 
 		} else {
 			MySymbolTable.insert(objKind, varDecl.getVarName(), currentType);
@@ -135,8 +153,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			int constType = Struct.None;
 			if (constDecl.getInit() instanceof CharConst) {
 				constType = Struct.Char;
-			//} else if (constDecl.getInit() instanceof BooleanConstant) {
-				//constType = Struct.Bool;
+			} else if (constDecl.getInit() instanceof BoolConst) {
+				constType = Struct.Bool;
 			} else
 				constType = Struct.Int;
 
@@ -144,11 +162,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 				Obj objConst = MySymbolTable.insert(Obj.Con, constDecl.getConstName(), currentType);
 				int val = 0;
 				if (constDecl.getInit() instanceof CharConst) {
-					val = ((CharConst)constDecl.getInit()).getCharacter();
-				//} else if (constDecl.getInit() instanceof BooleanConstant) {
-					//val = ((BooleanConstant)constDecl.getInit()).getBoolConst();					
+					val = ((CharConst) constDecl.getInit()).getCharacter();
+				} else if (constDecl.getInit() instanceof BoolConst) {
+					val = ((BoolConst) constDecl.getInit()).getBoolVal();
 				} else if (constDecl.getInit() instanceof NumberConst) {
-					val = ((NumberConst)constDecl.getInit()).getNumber();
+					val = ((NumberConst) constDecl.getInit()).getNumber();
 				}
 				objConst.setAdr(val);
 			} else {
@@ -161,7 +179,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(ClassName className) {
-		
+
 		if (MySymbolTable.find(className.getClassName()) != MySymbolTable.noObj) {
 			report_error("Vec postoji simbol: " + className.getClassName(), className);
 			return;
@@ -170,12 +188,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		Struct classStruct = new Struct(Struct.Class);
 		currentClass = MySymbolTable.insert(Obj.Type, className.getClassName(), classStruct);
 		MySymbolTable.openScope();
-
+		currentLevel++;
 	}
 
 	public void visit(ClassDecl classDecl) {
 		MySymbolTable.chainLocalSymbols(currentClass.getType());
 		MySymbolTable.closeScope();
+		currentLevel--;
 		classDefinition = false;
 		currentClass = null;
 	}
@@ -186,7 +205,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		currentMethod = methodName.obj;
 
 		MySymbolTable.openScope();
-
+		currentLevel++;
 		if (classDefinition) {
 			Obj objThis = MySymbolTable.insert(Obj.Var, "this", currentClass.getType());
 			currentMethodFormParams.put("this", objThis);
@@ -197,11 +216,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		MySymbolTable.chainLocalSymbols(currentMethod);
 		currentMethod.setLevel(currentMethodFormParams.size());
 		MySymbolTable.closeScope();
+		currentLevel--;
 		currentMethod = null;
 		currentMethodFormParams.clear();
 	}
 
-	public void visit(ReturnTypeExpr returnType) {	
+	public void visit(ReturnTypeExpr returnType) {
 		currentMethodReturnType = currentType;
 	}
 
@@ -222,8 +242,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(AssignDes assignDes) {
-		if (!(assignDes.getDesignator().obj.getKind() == Obj.Var || assignDes.getDesignator().obj.getKind() == Obj.Fld
-				|| assignDes.getDesignator().obj.getKind() == Obj.Elem)) {
+		Obj obj = MySymbolTable.find(assignDes.getDesignator().getDesName());
+
+		if (!(obj.getKind() == Obj.Var || obj.getKind() == Obj.Fld || obj.getKind() == Obj.Elem)) {
 			report_error("Designator mora oznacavati promenljivu, polje ili element niza", assignDes);
 		}
 		// IS ASSIGNABLE DODATI
@@ -250,30 +271,43 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(Designator des) {
-		Obj obj = MySymbolTable.find(des.getDesName());
-
-		if (obj == Tab.noObj) {
-			report_error("Simbol '" + des.getDesName() + "' nije definisan", des);
-		};
+		String symbolName = des.getDesName();
+		Obj obj = MySymbolTable.find(symbolName);
 		des.obj = obj;
-		if(obj.getKind() == Obj.Con || obj.getKind() == Obj.Var)
-			report_found(obj,des);
+		if (des.getDesList() instanceof DesListExpr) {
+			if (((DesListExpr) des.getDesList()).getDesElement() instanceof ArrayIdent) {
+				report_found("Element niza - ", obj, des);
+				//((DesListExpr) des.getDesList()).getDesElement().struct = obj.getType().getElemType();
+			}
+				
+		} else if (obj != Tab.noObj) {
 
+			if (obj.getKind() == Obj.Con)
+				report_found("Simbolicka konstanta - ", obj, des);
+			else if (obj.getKind() == Obj.Var) {
+				if (obj.getLevel() == 0)
+					report_found("Globalna promenljiva - ", obj, des);
+				else if (currentMethodFormParams.containsKey(symbolName))
+					report_found("Formalni parametar fje - ", obj, des);
+				else
+					report_found("Lokalna promenljiva - ", obj, des);
+			}
+		} else
+			report_error("Simbol '" + symbolName + "' nije definisan", des);
 	}
 
 	public void visit(FuncDes funcDes) {
 		String methodName = funcDes.getDesignator().getDesName();
-		if(MySymbolTable.find(methodName).getKind() != Obj.Meth)
+		if (MySymbolTable.find(methodName).getKind() != Obj.Meth)
 			report_error("Pogresno ime kod poziva funkcije", funcDes);
-		
+
 		if (funcDes.getActParsOpt() instanceof NoActPars) {
 			if (MySymbolTable.find(methodName).getLevel() > 0)
 				report_error("Prosledjen broj parametara fji ne odgovara deklaraciji", funcDes);
-		} //FALI JOS MNOGO
+		} // FALI JOS MNOGO
 
 	}
-	
-	
+
 	public void visit(DoStatement doStatement) {
 		doWhileCnt++;
 	}
@@ -340,64 +374,119 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	public void visit(CondFactRelop condFact) {
 		Struct expr1Type = condFact.getExpr().struct;
 		Struct expr2Type = condFact.getExpr1().struct;
-		
-		if(!expr1Type.compatibleWith(expr2Type)) 
+
+		if (!expr1Type.compatibleWith(expr2Type))
 			report_error("Tip izraza kod relacionog operatora se ne poklapa", condFact);
-		
-		if((expr1Type.getKind() == Struct.Array && expr2Type.getKind() == Struct.Array 
-				&& !(condFact.getRelop() instanceof EqualRel || 
-						condFact.getRelop() instanceof NotEqualRel)))
+
+		if ((expr1Type.getKind() == Struct.Array && expr2Type.getKind() == Struct.Array
+				&& !(condFact.getRelop() instanceof EqualRel || condFact.getRelop() instanceof NotEqualRel)))
 			report_error("Tip relacionog operatora nije odgovarajuci za ove tipove podataka", condFact);
-		
-		if((expr1Type.getKind() == Struct.Class && expr2Type.getKind() == Struct.Class 
-				&& !(condFact.getRelop() instanceof EqualRel || 
-						condFact.getRelop() instanceof NotEqualRel)))
+
+		if ((expr1Type.getKind() == Struct.Class && expr2Type.getKind() == Struct.Class
+				&& !(condFact.getRelop() instanceof EqualRel || condFact.getRelop() instanceof NotEqualRel)))
 			report_error("Tip relacionog operatora nije odgovarajuci za ove tipove podataka", condFact);
 	}
-	
-	public void visit(NegativeTerm term) {
-		if(term.getTerm().struct.getKind() != Struct.Int)
-			report_error("Znak '-' mora da se nalazi ispred integera", term);
+
+	public void visit(NegativeTerm expr) {
+		expr.struct = expr.getTerm().struct;
+		if (expr.getTerm().struct.getKind() != Struct.Int)
+			report_error("Znak '-' mora da se nalazi ispred integera", expr);
 	}
-	
-	public void visit(NotFirstTerm term) {
-		Struct exprType = term.getExpr().struct;
-		Struct termType = term.getTerm().struct;
-		
-		if(!exprType.compatibleWith(termType)) 
-			report_error("Tipovi moraju biti kompatibilni", term);
-		
-		if(exprType.getKind() != Struct.Int || termType.getKind() != Struct.Int)
-			report_error("Tip podatka kod sabiranja mora biti integer", term);
-		
+
+	public void visit(NotFirstTerm expr) {
+		Struct exprType = expr.getExpr().struct;
+		Struct termType = expr.getTerm().struct;
+
+		expr.struct = expr.getTerm().struct;
+
+		if (!exprType.compatibleWith(termType))
+			report_error("Tipovi moraju biti kompatibilni", expr);
+
+		if (exprType.getKind() != Struct.Int || termType.getKind() != Struct.Int)
+			report_error("Tip podatka kod sabiranja mora biti integer", expr);
+
 	}
-	
+
 	public void visit(TermExpr term) {
 		Struct factorType = term.getFactor().struct;
 		Struct termType = term.getTerm().struct;
-		if(factorType.getKind() != Struct.Int || termType.getKind() != Struct.Int)
-			report_error("Tip podatka kod sabiranja mora biti integer", term);
+
+		term.struct = term.getFactor().struct;
+
+		if (factorType.getKind() != Struct.Int || termType.getKind() != Struct.Int) {
+				report_error("Tip podatka kod matematickih operacija mora biti integer", term);
+		}
+			
 	}
-	
-	public void visit(NewArrayFactor newArray) {
-		if(newArray.getExpr().struct.getKind() != Struct.Int)
-			report_error("Tip podatka kod operatora new[] mora biti integer", newArray);
+
+	public void visit(TermFactor term) {
+		term.struct = term.getFactor().struct;
 	}
-	
-	public void visit(ArrayIdent array) {
-		Struct arrayIdType = array.getExpr().struct;
-		
-		if(arrayIdType.getKind() != Struct.Int)
-			report_error("Pristupanje elementu niza moze samo pomocu integera", array);
-		
-	}
-	
-	
-	
-	
-	
 	
 	
 
-	
+	public void visit(NewArrayFactor newArray) {
+		// proveri
+		newArray.struct = newArray.getType().struct;
+		if (newArray.getExpr().struct.getKind() != Struct.Int)
+			report_error("Tip podatka kod operatora new[] mora biti integer", newArray);
+
+	}
+
+	public void visit(ArrayIdent array) {
+		Struct arrayIdType = null;
+		//if(array.getExpr().struct.getKind() == Struct.Array) {
+			//arrayIdType = array.getExpr().struct.getElemType();
+			//array.getExpr().struct = array.getExpr().struct.getElemType();
+		//}
+			
+		//else
+			arrayIdType = array.getExpr().struct;
+		
+		int typeExpr = arrayIdType.getKind();
+
+		if (typeExpr != Struct.Int) {
+			if (typeExpr == Struct.Array && arrayIdType.getElemType().getKind() == Struct.Int)
+				return;
+			else
+				report_error("Pristupanje elementu niza moze samo pomocu integera", array);
+		}
+
+	}
+
+	public void visit(PositiveTerm expr) {
+		expr.struct = expr.getTerm().struct;
+	}
+
+	public void visit(VarFactor varFactor) {
+		if(varFactor.getDesignator().obj.getType().getKind() == Struct.Array)
+			varFactor.struct = varFactor.getDesignator().obj.getType().getElemType();
+		else varFactor.struct = varFactor.getDesignator().obj.getType();
+	}
+
+	public void visit(MethodFactor methFactor) {
+		methFactor.struct = methFactor.getDesignator().obj.getType();
+	}
+
+	public void visit(ExprFactor exprFactor) {
+		exprFactor.struct = exprFactor.getExpr().struct;
+	}
+
+	public void visit(ConstFactor constFactor) {
+
+		Init constInit = constFactor.getInit();
+		Obj typeNode = MySymbolTable.noObj;
+		if (constInit instanceof BoolConst) {
+			typeNode = MySymbolTable.find("bool");
+			constInit.struct = typeNode.getType();
+		} else if (constInit instanceof CharConst) {
+			typeNode = MySymbolTable.find("char");
+			constInit.struct = typeNode.getType();
+		} else if (constInit instanceof NumberConst) {
+			typeNode = MySymbolTable.find("int");
+			constInit.struct = typeNode.getType();
+		}
+		constFactor.struct = constInit.struct;
+	}
+
 }
