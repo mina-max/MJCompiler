@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -20,7 +21,7 @@ import rs.ac.bg.etf.pp1.util.Log4JUtils;
 import rs.etf.pp1.mj.runtime.Code;
 
 public class MyCompiler implements Compiler {
-	
+	public static List<CompilerError> errors = new LinkedList<CompilerError>();
 	static {
 		DOMConfigurator.configure(Log4JUtils.instance().findLoggerConfigFile());
 		Log4JUtils.instance().prepareLogFile(Logger.getRootLogger());
@@ -29,7 +30,7 @@ public class MyCompiler implements Compiler {
 	public List<CompilerError> compile(String sourceFilePath, String outputFilePath) {
 		// TODO Auto-generated method stub
 		Logger log = Logger.getLogger(MyCompiler.class);
-
+		
 		Reader br = null;
 		try {
 			File sourceCode = new File("test/test301.mj");
@@ -66,7 +67,7 @@ public class MyCompiler implements Compiler {
 			} else {
 				System.out.println("Parsiranje NIJE uspesno zavrseno!");
 			}
-			
+			return errors;
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

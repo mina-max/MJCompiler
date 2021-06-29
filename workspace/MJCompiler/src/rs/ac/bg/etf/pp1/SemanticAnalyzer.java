@@ -8,6 +8,8 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.test.CompilerError;
+import rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.*;
 import rs.etf.pp1.symboltable.visitors.DumpSymbolTableVisitor;
@@ -29,12 +31,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	private static List<Struct> arrayStructs = new LinkedList<Struct>();
 
 	public void report_error(String message, SyntaxNode info) {
+		
 		errorDetected = true;
 		StringBuilder msg = new StringBuilder(message);
 		int line = (info == null) ? 0 : info.getLine();
 		if (line != 0)
 			msg.append(" - Greska na liniji ").append(line);
 		log.error(msg.toString());
+		MyCompiler.errors.add(new CompilerError(line, msg.toString(), CompilerErrorType.SEMANTIC_ERROR));
 	}
 
 	public void report_info(String message, SyntaxNode info) {
@@ -248,6 +252,23 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Designator mora oznacavati promenljivu, polje ili element niza", assignDes);
 		}
 		// IS ASSIGNABLE DODATI
+		
+		if(assignDes.getExpr().struct.getKind() == Struct.Array) {
+			if(!(assignDes.getExpr().struct.getElemType().assignableTo(obj.getType()))) {
+				report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
+			}
+			return;
+		}
+		
+		if(obj.getType().getKind() == Struct.Array) {
+			if(!(assignDes.getExpr().struct.assignableTo(obj.getType().getElemType()))) {
+				report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
+			}
+			return;
+		}
+		if(!(assignDes.getExpr().struct.assignableTo(obj.getType()))) {
+			report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
+		}
 	}
 
 	public void visit(IncDes incDes) {
@@ -366,15 +387,33 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 	}
 
-	public void visit(Condition cond) {
+	public void visit(CondOr cond) {
+		cond.struct = cond.getCondTerm().struct;
 		if (cond.struct.getKind() != Struct.Bool)
 			report_error("Tip Condition-a mora biti Bool", cond);
+	}
+	
+	public void visit(CondTermSingle cond) {
+		cond.struct = cond.getCondTerm().struct;
+		if (cond.struct.getKind() != Struct.Bool)
+			report_error("Tip Condition-a mora biti Bool", cond);
+	}
+	
+	public void visit(CondAnd cond) {
+		cond.struct = cond.getCondFact().obj.getType();
+		
+	}
+	
+	public void visit(CondFactSingle cond) {
+		cond.struct = cond.getCondFact().obj.getType();
+		
+		
 	}
 
 	public void visit(CondFactRelop condFact) {
 		Struct expr1Type = condFact.getExpr().struct;
 		Struct expr2Type = condFact.getExpr1().struct;
-
+		condFact.obj = new Obj(0,"", MySymbolTable.boolType);
 		if (!expr1Type.compatibleWith(expr2Type))
 			report_error("Tip izraza kod relacionog operatora se ne poklapa", condFact);
 
@@ -385,6 +424,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if ((expr1Type.getKind() == Struct.Class && expr2Type.getKind() == Struct.Class
 				&& !(condFact.getRelop() instanceof EqualRel || condFact.getRelop() instanceof NotEqualRel)))
 			report_error("Tip relacionog operatora nije odgovarajuci za ove tipove podataka", condFact);
+	}
+	
+	public void visit(CondFactNoRelop cond) {
+		Struct expr1Type = cond.getExpr().struct;
+		cond.obj = new Obj(0,"", expr1Type);
+		if (expr1Type !=MySymbolTable.boolType)
+			report_error("Tip Condition-a mora biti Bool", cond);
 	}
 
 	public void visit(NegativeTerm expr) {

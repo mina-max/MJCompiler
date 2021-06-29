@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/5/2021 23:21:11
+// 29/5/2021 14:18:47
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,15 +10,16 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ReturnType ReturnType) { }
     public void visit(FormParsOpt FormParsOpt) { }
     public void visit(RelopOpt RelopOpt) { }
-    public void visit(ActParsOpt ActParsOpt) { }
     public void visit(DesList DesList) { }
     public void visit(Relop Relop) { }
+    public void visit(ActParsOpt ActParsOpt) { }
     public void visit(MethodDeclListOpt MethodDeclListOpt) { }
     public void visit(PrintParamOpt PrintParamOpt) { }
+    public void visit(Else Else) { }
     public void visit(StatementList StatementList) { }
     public void visit(Factor Factor) { }
-    public void visit(ReturnExprOpt ReturnExprOpt) { }
     public void visit(CondTerm CondTerm) { }
+    public void visit(ReturnExprOpt ReturnExprOpt) { }
     public void visit(DesElement DesElement) { }
     public void visit(ConditionCorrect ConditionCorrect) { }
     public void visit(DeclList DeclList) { }
@@ -35,6 +36,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Do Do) { }
     public void visit(VarDeclList VarDeclList) { }
     public void visit(Expr Expr) { }
+    public void visit(ThenStatement ThenStatement) { }
     public void visit(ActPars ActPars) { }
     public void visit(AddOp AddOp) { }
     public void visit(DesignatorStatement DesignatorStatement) { }
@@ -81,6 +83,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondAnd CondAnd) { visit(); }
     public void visit(CondTermSingle CondTermSingle) { visit(); }
     public void visit(CondOr CondOr) { visit(); }
+    public void visit(ElseKeyword ElseKeyword) { visit(); }
     public void visit(NoElseStmt NoElseStmt) { visit(); }
     public void visit(ElseStmt ElseStmt) { visit(); }
     public void visit(ErrorCondition ErrorCondition) { visit(); }
@@ -101,6 +104,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DoStatement DoStatement) { visit(); }
     public void visit(NoStatement NoStatement) { visit(); }
     public void visit(StatementListExpr StatementListExpr) { visit(); }
+    public void visit(ThenStmt ThenStmt) { visit(); }
     public void visit(ListStatement ListStatement) { visit(); }
     public void visit(PrintStatement PrintStatement) { visit(); }
     public void visit(ReadStatement ReadStatement) { visit(); }

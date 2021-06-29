@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/5/2021 23:21:11
+// 29/5/2021 14:18:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class CorrectCondition extends ConditionCorrect {
 
-    private Condition Condition;
+    private CondFact CondFact;
 
-    public CorrectCondition (Condition Condition) {
-        this.Condition=Condition;
-        if(Condition!=null) Condition.setParent(this);
+    public CorrectCondition (CondFact CondFact) {
+        this.CondFact=CondFact;
+        if(CondFact!=null) CondFact.setParent(this);
     }
 
-    public Condition getCondition() {
-        return Condition;
+    public CondFact getCondFact() {
+        return CondFact;
     }
 
-    public void setCondition(Condition Condition) {
-        this.Condition=Condition;
+    public void setCondFact(CondFact CondFact) {
+        this.CondFact=CondFact;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class CorrectCondition extends ConditionCorrect {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Condition!=null) Condition.accept(visitor);
+        if(CondFact!=null) CondFact.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Condition!=null) Condition.traverseTopDown(visitor);
+        if(CondFact!=null) CondFact.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Condition!=null) Condition.traverseBottomUp(visitor);
+        if(CondFact!=null) CondFact.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class CorrectCondition extends ConditionCorrect {
         buffer.append(tab);
         buffer.append("CorrectCondition(\n");
 
-        if(Condition!=null)
-            buffer.append(Condition.toString("  "+tab));
+        if(CondFact!=null)
+            buffer.append(CondFact.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

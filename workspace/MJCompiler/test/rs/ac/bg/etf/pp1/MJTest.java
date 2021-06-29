@@ -18,7 +18,8 @@ public class MJTest {
 		
 		String sourceFilePath = "test/syntax/test21.mj";
 		String outputFilePath = "";
-		compiler.compile(sourceFilePath, outputFilePath );
+		System.out.println("Lista gresaka:\n");
+		System.out.println((compiler.compile(sourceFilePath, outputFilePath )).toString());
 
 	}
 

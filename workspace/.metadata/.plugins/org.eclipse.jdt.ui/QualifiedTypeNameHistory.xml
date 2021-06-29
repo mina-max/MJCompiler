@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="rs.etf.pp1.mj.runtime.Code"/>
+    <fullyQualifiedTypeName name="rs.etf.pp1.symboltable.concepts.Obj"/>
+    <fullyQualifiedTypeName name="java.nio.charset.CoderResult"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.ConcurrentLinkedDeque"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.CodeGenerator.relopCodes"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.CodeGenerator"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.ast.CondFactRelop"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.MyCompiler"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.test.CompilerError"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.MySymbolTable"/>
+    <fullyQualifiedTypeName name="rs.etf.pp1.symboltable.concepts.Struct"/>
+</qualifiedTypeNameHistroy>

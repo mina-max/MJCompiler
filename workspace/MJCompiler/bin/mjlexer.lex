@@ -2,6 +2,8 @@ package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.Symbol;
 import rs.ac.bg.etf.pp1.test.CompilerError;
+import rs.ac.bg.etf.pp1.MyCompiler;
+import rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType;
 
 %%
 
@@ -15,6 +17,10 @@ import rs.ac.bg.etf.pp1.test.CompilerError;
 	// ukljucivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type, Object value) {
 		return new Symbol(type, yyline+1, yycolumn, value);
+	}
+	
+	private void report_err(int yyline) {
+		MyCompiler.errors.add(new CompilerError(yyline, "Leksicka greska", CompilerErrorType.LEXICAL_ERROR));
 	}
 
 
@@ -100,6 +106,6 @@ false							{ return new_symbol(sym.BOOL, new Integer(0)); }
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{ return new_symbol(sym.IDENT, yytext()); }
 
 
-. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
+. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); report_err(yyline);}
 
 

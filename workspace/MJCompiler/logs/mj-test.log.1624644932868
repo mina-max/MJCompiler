@@ -1,6 +1,0 @@
-INFO  20:15:22,050 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\syntax\test21.mj
-INFO  20:15:22,138 - #2 program
-INFO  20:15:22,139 - #49 mimi
-ERROR 20:15:22,139 - 
-Sintaksna greska na liniji 2
-ERROR 20:15:22,139 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 2

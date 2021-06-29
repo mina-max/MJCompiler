@@ -4,6 +4,9 @@ import java_cup.runtime.*;
 import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
 
+import rs.ac.bg.etf.pp1.test.CompilerError;
+import rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType;
+import rs.ac.bg.etf.pp1.MyCompiler;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
@@ -17,6 +20,7 @@ parser code {:
     }
   
     public void syntax_error(Symbol cur_token) {
+    	
         report_error("\nSintaksna greska", cur_token);
     }
   
@@ -25,6 +29,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    MyCompiler.errors.add(new CompilerError(((Symbol)info).left, "Sintaksna greska", CompilerErrorType.SYNTAX_ERROR));
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -77,11 +82,8 @@ nonterminal Statement Statement;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal DesOperators DesOperators;
 nonterminal AssignOp AssignOp;
-nonterminal CondTerm CondTerm;
-nonterminal CondFact CondFact;
 nonterminal RelopOpt RelopOpt;
 nonterminal Relop Relop;
-nonterminal ElseOpt ElseOpt;
 nonterminal ActPars ActPars;
 nonterminal CaseList CaseList;
 nonterminal DesList DesList;
@@ -93,13 +95,12 @@ nonterminal VarDeclOnly VarDeclOnly;
 nonterminal FormParsOpt FormParsOpt;
 nonterminal ActParsOpt ActParsOpt;
 nonterminal PrintParamOpt PrintParamOpt;
-nonterminal ConditionCorrect ConditionCorrect;
 nonterminal MethodBody MethodBody;
 nonterminal MethodSign MethodSign;
 nonterminal Do Do;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator, CondFact, ThenStatement, ElseOpt, ConditionCorrect, Else;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term, CondTerm;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Init, DesElement;
 precedence left ELSE;
 
@@ -177,7 +178,7 @@ FormParsList	::= (FormParsListExpr) 	FormParsList:F1 COMMA FormParsSingle:F2 {: 
 FormParsSingle	::= (FormParsSingle) Type:T1 IDENT:formParName ArrayOpt:A2 {: RESULT=new FormParsSingle(T1, formParName, A2); RESULT.setLine(T1left); :};
 
 Statement		::= (DesignatorStatementExpr) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStatementExpr(D1); RESULT.setLine(D1left); :}
-				|	(IfStatement)		IF ConditionCorrect:C1 Statement:S2 ElseOpt:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :}
+				|	(IfStatement)		IF ConditionCorrect:C1 ThenStatement:T2 ElseOpt:E3 {: RESULT=new IfStatement(C1, T2, E3); RESULT.setLine(C1left); :}
 				|	(DoWhileStatement)	Do:D1 Statement:S2 WHILE LPARENT Condition:C3 RPARENT SEMI {: RESULT=new DoWhileStatement(D1, S2, C3); RESULT.setLine(D1left); :}
 				|	(YieldStatement)	YIELD Expr:E1 SEMI {: RESULT=new YieldStatement(E1); RESULT.setLine(E1left); :}
 				|	(BreakStatement)	BREAK SEMI {: RESULT=new BreakStatement(); :}
@@ -186,6 +187,8 @@ Statement		::= (DesignatorStatementExpr) DesignatorStatement:D1 SEMI {: RESULT=n
 				|	(ReadStatement)		READ LPARENT Designator:D1 RPARENT SEMI {: RESULT=new ReadStatement(D1); RESULT.setLine(D1left); :}
 				|	(PrintStatement)	PRINT LPARENT Expr:E1 PrintParamOpt:P2 RPARENT SEMI {: RESULT=new PrintStatement(E1, P2); RESULT.setLine(E1left); :}
 				| 	(ListStatement)		LBRACE StatementList:S1 RBRACE {: RESULT=new ListStatement(S1); RESULT.setLine(S1left); :};
+
+ThenStatement	::= (ThenStmt) Statement:S1 {: RESULT=new ThenStmt(S1); RESULT.setLine(S1left); :};
 
 StatementList	::= (StatementListExpr) StatementList:S1 Statement:S2 {: RESULT=new StatementListExpr(S1, S2); RESULT.setLine(S1left); :}
 				| 	(NoStatement) {: RESULT=new NoStatement(); :} /* epsilon */;
@@ -211,12 +214,14 @@ AssignOp		::= (AssignOperator) 	ASSIGN {: RESULT=new AssignOperator(); :}
 ActPars			::= (ExprList) 	ActPars:A1 COMMA Expr:E2 {: RESULT=new ExprList(A1, E2); RESULT.setLine(A1left); :}
 				|	(ExprPar) 		Expr:E1 {: RESULT=new ExprPar(E1); RESULT.setLine(E1left); :};
 				
-ConditionCorrect::= (CorrectCondition) LPARENT Condition:C1 RPARENT {: RESULT=new CorrectCondition(C1); RESULT.setLine(C1left); :}
+ConditionCorrect::= (CorrectCondition) LPARENT CondFact:C1 RPARENT {: RESULT=new CorrectCondition(C1); RESULT.setLine(C1left); :}
 			     |	(ErrorCondition) LPARENT error RPARENT:l
 			     {:parser.report_error("Izvrsen oporavak od greske na liniji " + lleft, null); :} {: RESULT=new ErrorCondition(); :};
 			     
-ElseOpt			::= (ElseStmt) ELSE Statement:S1 {: RESULT=new ElseStmt(S1); RESULT.setLine(S1left); :}
+ElseOpt			::= (ElseStmt) Else:E1 Statement:S2 {: RESULT=new ElseStmt(E1, S2); RESULT.setLine(E1left); :}
 				|	(NoElseStmt) {: RESULT=new NoElseStmt(); :};
+
+Else			::= (ElseKeyword) ELSE {: RESULT=new ElseKeyword(); :};
 					
 Condition		::= (CondOr) 			Condition:C1 OR CondTerm:C2 {: RESULT=new CondOr(C1, C2); RESULT.setLine(C1left); :}
 				| 	(CondTermSingle)	CondTerm:C1 {: RESULT=new CondTermSingle(C1); RESULT.setLine(C1left); :};

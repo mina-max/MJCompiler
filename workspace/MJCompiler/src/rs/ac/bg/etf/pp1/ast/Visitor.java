@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/5/2021 23:21:11
+// 29/5/2021 14:18:47
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,15 +10,16 @@ public interface Visitor {
     public void visit(ReturnType ReturnType);
     public void visit(FormParsOpt FormParsOpt);
     public void visit(RelopOpt RelopOpt);
-    public void visit(ActParsOpt ActParsOpt);
     public void visit(DesList DesList);
     public void visit(Relop Relop);
+    public void visit(ActParsOpt ActParsOpt);
     public void visit(MethodDeclListOpt MethodDeclListOpt);
     public void visit(PrintParamOpt PrintParamOpt);
+    public void visit(Else Else);
     public void visit(StatementList StatementList);
     public void visit(Factor Factor);
-    public void visit(ReturnExprOpt ReturnExprOpt);
     public void visit(CondTerm CondTerm);
+    public void visit(ReturnExprOpt ReturnExprOpt);
     public void visit(DesElement DesElement);
     public void visit(ConditionCorrect ConditionCorrect);
     public void visit(DeclList DeclList);
@@ -35,6 +36,7 @@ public interface Visitor {
     public void visit(Do Do);
     public void visit(VarDeclList VarDeclList);
     public void visit(Expr Expr);
+    public void visit(ThenStatement ThenStatement);
     public void visit(ActPars ActPars);
     public void visit(AddOp AddOp);
     public void visit(DesignatorStatement DesignatorStatement);
@@ -81,6 +83,7 @@ public interface Visitor {
     public void visit(CondAnd CondAnd);
     public void visit(CondTermSingle CondTermSingle);
     public void visit(CondOr CondOr);
+    public void visit(ElseKeyword ElseKeyword);
     public void visit(NoElseStmt NoElseStmt);
     public void visit(ElseStmt ElseStmt);
     public void visit(ErrorCondition ErrorCondition);
@@ -101,6 +104,7 @@ public interface Visitor {
     public void visit(DoStatement DoStatement);
     public void visit(NoStatement NoStatement);
     public void visit(StatementListExpr StatementListExpr);
+    public void visit(ThenStmt ThenStmt);
     public void visit(ListStatement ListStatement);
     public void visit(PrintStatement PrintStatement);
     public void visit(ReadStatement ReadStatement);

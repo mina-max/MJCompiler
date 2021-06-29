@@ -1,0 +1,16 @@
+// Test301
+
+program test301
+{
+	void main()	
+	int a, b, c;
+	{
+		a = 1; b = 3; c = 1; 
+		if(a) then b++;
+	
+		
+		print(4);
+	}
+}
+
+
