@@ -1,0 +1,298 @@
+INFO  17:38:09,026 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test301.mj
+INFO  17:38:09,103 - #2 program
+INFO  17:38:09,103 - #49 test301
+INFO  17:38:09,103 - #8 const
+INFO  17:38:09,105 - #49 int
+INFO  17:38:09,105 - #49 nula
+INFO  17:38:09,106 - #41 =
+INFO  17:38:09,106 - #46 0
+INFO  17:38:09,106 - #12 ;
+INFO  17:38:09,107 - #8 const
+INFO  17:38:09,108 - #49 int
+INFO  17:38:09,108 - #49 jedan
+INFO  17:38:09,108 - #41 =
+INFO  17:38:09,108 - #46 1
+INFO  17:38:09,108 - #12 ;
+INFO  17:38:09,109 - #8 const
+INFO  17:38:09,109 - #49 int
+INFO  17:38:09,109 - #49 pet
+INFO  17:38:09,109 - #41 =
+INFO  17:38:09,109 - #46 5
+INFO  17:38:09,109 - #12 ;
+INFO  17:38:09,109 - #49 int
+INFO  17:38:09,110 - #49 niz
+INFO  17:38:09,110 - #22 [
+INFO  17:38:09,110 - #23 ]
+INFO  17:38:09,110 - #12 ;
+INFO  17:38:09,112 - #49 char
+INFO  17:38:09,112 - #49 nizch
+INFO  17:38:09,112 - #22 [
+INFO  17:38:09,113 - #23 ]
+INFO  17:38:09,113 - #12 ;
+INFO  17:38:09,113 - #20 {
+INFO  17:38:09,113 - #16 void
+INFO  17:38:09,114 - #49 main
+INFO  17:38:09,115 - #24 (
+INFO  17:38:09,116 - #25 )
+INFO  17:38:09,118 - #49 int
+INFO  17:38:09,119 - #49 bodovi
+INFO  17:38:09,120 - #12 ;
+INFO  17:38:09,120 - #20 {
+INFO  17:38:09,121 - #49 bodovi
+INFO  17:38:09,122 - #41 =
+INFO  17:38:09,123 - #46 0
+INFO  17:38:09,125 - #12 ;
+INFO  17:38:09,126 - #49 bodovi
+INFO  17:38:09,127 - #42 ++
+INFO  17:38:09,127 - #12 ;
+INFO  17:38:09,127 - #49 bodovi
+INFO  17:38:09,127 - #41 =
+INFO  17:38:09,128 - #49 bodovi
+INFO  17:38:09,128 - #34 +
+INFO  17:38:09,128 - #49 jedan
+INFO  17:38:09,130 - #12 ;
+INFO  17:38:09,130 - #49 bodovi
+INFO  17:38:09,130 - #41 =
+INFO  17:38:09,130 - #49 bodovi
+INFO  17:38:09,130 - #36 *
+INFO  17:38:09,130 - #49 pet
+INFO  17:38:09,132 - #12 ;
+INFO  17:38:09,132 - #49 bodovi
+INFO  17:38:09,132 - #43 --
+INFO  17:38:09,132 - #12 ;
+INFO  17:38:09,133 - #15 print
+INFO  17:38:09,133 - #24 (
+INFO  17:38:09,133 - #49 bodovi
+INFO  17:38:09,133 - #25 )
+INFO  17:38:09,135 - #12 ;
+INFO  17:38:09,135 - #49 niz
+INFO  17:38:09,135 - #41 =
+INFO  17:38:09,135 - #7 new
+INFO  17:38:09,135 - #49 int
+INFO  17:38:09,135 - #22 [
+INFO  17:38:09,135 - #46 3
+INFO  17:38:09,135 - #23 ]
+INFO  17:38:09,135 - #12 ;
+INFO  17:38:09,135 - #49 niz
+INFO  17:38:09,136 - #22 [
+INFO  17:38:09,136 - #49 nula
+INFO  17:38:09,136 - #23 ]
+INFO  17:38:09,136 - #41 =
+INFO  17:38:09,136 - #47 a
+INFO  17:38:09,136 - #12 ;
+INFO  17:38:09,136 - #49 niz
+INFO  17:38:09,136 - #22 [
+INFO  17:38:09,137 - #46 1
+INFO  17:38:09,138 - #23 ]
+INFO  17:38:09,138 - #41 =
+INFO  17:38:09,139 - #46 2
+INFO  17:38:09,139 - #12 ;
+INFO  17:38:09,139 - #49 niz
+INFO  17:38:09,139 - #22 [
+INFO  17:38:09,139 - #49 niz
+INFO  17:38:09,139 - #22 [
+INFO  17:38:09,139 - #49 jedan
+INFO  17:38:09,139 - #23 ]
+INFO  17:38:09,140 - #23 ]
+INFO  17:38:09,140 - #41 =
+INFO  17:38:09,140 - #49 niz
+INFO  17:38:09,140 - #22 [
+INFO  17:38:09,140 - #49 niz
+INFO  17:38:09,140 - #22 [
+INFO  17:38:09,140 - #46 0
+INFO  17:38:09,140 - #23 ]
+INFO  17:38:09,141 - #23 ]
+INFO  17:38:09,141 - #36 *
+INFO  17:38:09,141 - #46 3
+INFO  17:38:09,141 - #12 ;
+INFO  17:38:09,141 - #49 bodovi
+INFO  17:38:09,141 - #41 =
+INFO  17:38:09,141 - #49 niz
+INFO  17:38:09,142 - #22 [
+INFO  17:38:09,142 - #46 2
+INFO  17:38:09,142 - #23 ]
+INFO  17:38:09,142 - #37 /
+INFO  17:38:09,142 - #49 niz
+INFO  17:38:09,143 - #22 [
+INFO  17:38:09,143 - #46 0
+INFO  17:38:09,143 - #23 ]
+INFO  17:38:09,143 - #12 ;
+INFO  17:38:09,143 - #15 print
+INFO  17:38:09,144 - #24 (
+INFO  17:38:09,144 - #49 bodovi
+INFO  17:38:09,144 - #25 )
+INFO  17:38:09,144 - #12 ;
+INFO  17:38:09,144 - #15 print
+INFO  17:38:09,144 - #24 (
+INFO  17:38:09,144 - #49 niz
+INFO  17:38:09,144 - #22 [
+INFO  17:38:09,144 - #46 2
+INFO  17:38:09,144 - #23 ]
+INFO  17:38:09,144 - #25 )
+INFO  17:38:09,144 - #12 ;
+INFO  17:38:09,145 - #49 nizch
+INFO  17:38:09,145 - #41 =
+INFO  17:38:09,145 - #7 new
+INFO  17:38:09,145 - #49 char
+INFO  17:38:09,145 - #22 [
+INFO  17:38:09,145 - #46 3
+INFO  17:38:09,145 - #23 ]
+INFO  17:38:09,145 - #12 ;
+INFO  17:38:09,145 - #49 nizch
+INFO  17:38:09,145 - #22 [
+INFO  17:38:09,145 - #46 0
+INFO  17:38:09,146 - #23 ]
+INFO  17:38:09,146 - #41 =
+INFO  17:38:09,146 - #46 1
+INFO  17:38:09,146 - #12 ;
+INFO  17:38:09,146 - #49 nizch
+INFO  17:38:09,146 - #22 [
+INFO  17:38:09,146 - #49 jedan
+INFO  17:38:09,146 - #23 ]
+INFO  17:38:09,146 - #41 =
+INFO  17:38:09,146 - #47 b
+INFO  17:38:09,146 - #12 ;
+INFO  17:38:09,146 - #49 nizch
+INFO  17:38:09,147 - #22 [
+INFO  17:38:09,147 - #49 pet
+INFO  17:38:09,147 - #35 -
+INFO  17:38:09,147 - #46 3
+INFO  17:38:09,148 - #23 ]
+INFO  17:38:09,148 - #41 =
+INFO  17:38:09,148 - #47 c
+INFO  17:38:09,148 - #12 ;
+INFO  17:38:09,148 - #15 print
+INFO  17:38:09,148 - #24 (
+INFO  17:38:09,148 - #49 nizch
+INFO  17:38:09,149 - #22 [
+INFO  17:38:09,149 - #46 1
+INFO  17:38:09,149 - #23 ]
+INFO  17:38:09,149 - #25 )
+INFO  17:38:09,149 - #12 ;
+INFO  17:38:09,149 - #15 print
+INFO  17:38:09,149 - #24 (
+INFO  17:38:09,149 - #49 nizch
+INFO  17:38:09,149 - #22 [
+INFO  17:38:09,149 - #49 jedan
+INFO  17:38:09,150 - #36 *
+INFO  17:38:09,150 - #46 2
+INFO  17:38:09,150 - #23 ]
+INFO  17:38:09,150 - #25 )
+INFO  17:38:09,150 - #12 ;
+INFO  17:38:09,150 - #49 bodovi
+INFO  17:38:09,150 - #41 =
+INFO  17:38:09,150 - #49 bodovi
+INFO  17:38:09,150 - #34 +
+INFO  17:38:09,151 - #24 (
+INFO  17:38:09,151 - #49 pet
+INFO  17:38:09,151 - #36 *
+INFO  17:38:09,151 - #49 jedan
+INFO  17:38:09,151 - #35 -
+INFO  17:38:09,151 - #46 1
+INFO  17:38:09,151 - #25 )
+INFO  17:38:09,151 - #36 *
+INFO  17:38:09,152 - #49 bodovi
+INFO  17:38:09,152 - #35 -
+INFO  17:38:09,152 - #24 (
+INFO  17:38:09,152 - #46 3
+INFO  17:38:09,152 - #38 %
+INFO  17:38:09,152 - #46 2
+INFO  17:38:09,153 - #34 +
+INFO  17:38:09,153 - #46 3
+INFO  17:38:09,153 - #36 *
+INFO  17:38:09,153 - #46 2
+INFO  17:38:09,153 - #35 -
+INFO  17:38:09,153 - #46 3
+INFO  17:38:09,153 - #25 )
+INFO  17:38:09,153 - #12 ;
+INFO  17:38:09,153 - #15 print
+INFO  17:38:09,154 - #24 (
+INFO  17:38:09,157 - #49 bodovi
+INFO  17:38:09,157 - #25 )
+INFO  17:38:09,157 - #12 ;
+INFO  17:38:09,157 - #11 read
+INFO  17:38:09,157 - #24 (
+INFO  17:38:09,158 - #49 bodovi
+INFO  17:38:09,158 - #25 )
+INFO  17:38:09,158 - #12 ;
+INFO  17:38:09,158 - #50 if
+INFO  17:38:09,158 - #24 (
+INFO  17:38:09,158 - #49 bodovi
+INFO  17:38:09,158 - #38 %
+INFO  17:38:09,159 - #46 2
+INFO  17:38:09,159 - #28 ==
+INFO  17:38:09,159 - #46 0
+INFO  17:38:09,161 - #25 )
+INFO  17:38:09,161 - #49 bodovi
+INFO  17:38:09,161 - #41 =
+INFO  17:38:09,161 - #49 bodovi
+INFO  17:38:09,162 - #34 +
+INFO  17:38:09,162 - #46 10
+INFO  17:38:09,162 - #12 ;
+INFO  17:38:09,162 - #50 if
+INFO  17:38:09,163 - #24 (
+INFO  17:38:09,163 - #48 0
+INFO  17:38:09,163 - #25 )
+INFO  17:38:09,164 - #15 print
+INFO  17:38:09,164 - #24 (
+INFO  17:38:09,164 - #49 bodovi
+INFO  17:38:09,164 - #34 +
+INFO  17:38:09,164 - #46 20
+INFO  17:38:09,164 - #25 )
+INFO  17:38:09,164 - #12 ;
+INFO  17:38:09,164 - #51 else
+INFO  17:38:09,164 - #15 print
+INFO  17:38:09,166 - #24 (
+INFO  17:38:09,166 - #49 bodovi
+INFO  17:38:09,167 - #25 )
+INFO  17:38:09,167 - #12 ;
+INFO  17:38:09,167 - #21 }
+INFO  17:38:09,167 - #21 }
+INFO  17:38:09,187 - ===================================
+INFO  17:38:09,204 - Lokalna promenljiva - Pretraga na 16(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,204 - Lokalna promenljiva - Pretraga na 17(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,205 - Lokalna promenljiva - Pretraga na 18(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,205 - Lokalna promenljiva - Pretraga na 18(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,205 - Simbolicka konstanta - Pretraga na 18(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  17:38:09,205 - Lokalna promenljiva - Pretraga na 19(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,206 - Lokalna promenljiva - Pretraga na 19(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,206 - Simbolicka konstanta - Pretraga na 19(pet), nadjeno Con pet: int, 5, 0 
+INFO  17:38:09,206 - Lokalna promenljiva - Pretraga na 20(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,206 - Lokalna promenljiva - Pretraga na 21(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,206 - Globalna promenljiva - Pretraga na 24(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,206 - Simbolicka konstanta - Pretraga na 25(nula), nadjeno Con nula: int, 0, 0 
+INFO  17:38:09,207 - Element niza - Pretraga na 25(niz), nadjeno Var niz: Arr of int, 0, 0 
+ERROR 17:38:09,207 - Ne moze se dodeliti ova vrednost ovoj promenljivoj - Greska na liniji 25
+INFO  17:38:09,208 - Element niza - Pretraga na 26(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Simbolicka konstanta - Pretraga na 27(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  17:38:09,209 - Element niza - Pretraga na 27(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Element niza - Pretraga na 27(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Element niza - Pretraga na 27(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Element niza - Pretraga na 27(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Lokalna promenljiva - Pretraga na 28(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,209 - Element niza - Pretraga na 28(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Element niza - Pretraga na 28(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,209 - Lokalna promenljiva - Pretraga na 29(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,214 - Element niza - Pretraga na 30(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  17:38:09,214 - Globalna promenljiva - Pretraga na 33(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  17:38:09,215 - Element niza - Pretraga na 34(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+ERROR 17:38:09,215 - Ne moze se dodeliti ova vrednost ovoj promenljivoj - Greska na liniji 34
+INFO  17:38:09,215 - Simbolicka konstanta - Pretraga na 35(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  17:38:09,215 - Element niza - Pretraga na 35(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  17:38:09,215 - Simbolicka konstanta - Pretraga na 36(pet), nadjeno Con pet: int, 5, 0 
+INFO  17:38:09,215 - Element niza - Pretraga na 36(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  17:38:09,215 - Element niza - Pretraga na 37(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  17:38:09,222 - Simbolicka konstanta - Pretraga na 38(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  17:38:09,223 - Element niza - Pretraga na 38(nizch), nadjeno Var nizch: Arr of char, 1, 0 
+INFO  17:38:09,223 - Lokalna promenljiva - Pretraga na 41(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,223 - Lokalna promenljiva - Pretraga na 41(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,223 - Simbolicka konstanta - Pretraga na 41(pet), nadjeno Con pet: int, 5, 0 
+INFO  17:38:09,223 - Simbolicka konstanta - Pretraga na 41(jedan), nadjeno Con jedan: int, 1, 0 
+INFO  17:38:09,223 - Lokalna promenljiva - Pretraga na 41(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 42(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 44(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 45(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 45(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 45(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 46(bodovi), nadjeno Var bodovi: int, 0, 1 
+INFO  17:38:09,224 - Lokalna promenljiva - Pretraga na 47(bodovi), nadjeno Var bodovi: int, 0, 1 

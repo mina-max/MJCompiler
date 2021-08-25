@@ -1,0 +1,32 @@
+INFO  17:40:06,233 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  17:40:06,304 - #2 program
+INFO  17:40:06,304 - #49 test301
+INFO  17:40:06,304 - #49 int
+INFO  17:40:06,305 - #49 a
+INFO  17:40:06,306 - #12 ;
+INFO  17:40:06,308 - #8 const
+INFO  17:40:06,309 - #49 int
+INFO  17:40:06,309 - #49 b
+INFO  17:40:06,309 - #41 =
+INFO  17:40:06,309 - #46 1
+INFO  17:40:06,309 - #12 ;
+INFO  17:40:06,310 - #20 {
+INFO  17:40:06,311 - #16 void
+INFO  17:40:06,312 - #49 main
+INFO  17:40:06,312 - #24 (
+INFO  17:40:06,313 - #25 )
+INFO  17:40:06,314 - #49 char
+INFO  17:40:06,316 - #49 d
+INFO  17:40:06,316 - #12 ;
+INFO  17:40:06,316 - #20 {
+INFO  17:40:06,316 - #49 a
+INFO  17:40:06,318 - #42 ++
+INFO  17:40:06,320 - #12 ;
+INFO  17:40:06,320 - #49 a
+INFO  17:40:06,320 - #43 --
+INFO  17:40:06,320 - #12 ;
+INFO  17:40:06,321 - #21 }
+INFO  17:40:06,321 - #21 }
+INFO  17:40:06,324 - ===================================
+INFO  17:40:06,331 - Globalna promenljiva - Pretraga na 10(a), nadjeno Var a: int, 0, 0 
+INFO  17:40:06,331 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 

@@ -20,7 +20,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	private static int currentLevel = 0;
 	private static boolean classDefinition = false;
 	private static boolean methodDefinition = false;
-	private static boolean errorDetected = false;
+	public static boolean errorDetected = false;
 	private static Obj currentClass = null;
 	private static Obj currentMethod = null;
 	Logger log = Logger.getLogger(getClass());
@@ -253,22 +253,31 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 		// IS ASSIGNABLE DODATI
 		
-		if(assignDes.getExpr().struct.getKind() == Struct.Array) {
-			if(!(assignDes.getExpr().struct.getElemType().assignableTo(obj.getType()))) {
+		if(assignDes.getAssignExpr() instanceof AssignExpression) {
+			Expr expr = ((AssignExpression)assignDes.getAssignExpr()).getExpr();
+			if(expr.struct.getKind() == Struct.Array) {
+				if(!(expr.struct.getElemType().assignableTo(obj.getType()))) {
+					report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
+				}
+				return;
+			}
+			
+			if(obj.getType().getKind() == Struct.Array) {
+				if(!(expr.struct.assignableTo(obj.getType().getElemType()))) {
+					report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
+				}
+				return;
+			}
+			if(!(expr.struct.assignableTo(obj.getType()))) {
 				report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
 			}
-			return;
+			
+			
 		}
 		
-		if(obj.getType().getKind() == Struct.Array) {
-			if(!(assignDes.getExpr().struct.assignableTo(obj.getType().getElemType()))) {
-				report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
-			}
-			return;
-		}
-		if(!(assignDes.getExpr().struct.assignableTo(obj.getType()))) {
-			report_error("Ne moze se dodeliti ova vrednost ovoj promenljivoj", assignDes);
-		}
+		
+		
+		
 	}
 
 	public void visit(IncDes incDes) {
@@ -329,7 +338,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	}
 
-	public void visit(DoStatement doStatement) {
+	/*public void visit(DoStatement doStatement) {
 		doWhileCnt++;
 	}
 
@@ -347,7 +356,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	public void visit(ContinueStatement cont) {
 		if (doWhileCnt == 0)
 			report_error("Continue moze da se koristi samo unutar Do-While petlje", cont);
-	}
+	}*/
 
 	public void visit(ReadStatement readStatement) {
 		if (!(readStatement.getDesignator().obj.getKind() == Obj.Var

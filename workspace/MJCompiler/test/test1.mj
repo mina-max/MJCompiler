@@ -1,0 +1,23 @@
+program test1
+int a;
+const int b = 1;
+{
+	void main()
+	char d;
+	bool c;
+	{
+		a = 5;
+		a++;
+		a--;
+		d = 'm';
+		c = true;
+		if( c ){
+			print(a);
+			print(b);
+			print(d);
+		}
+		
+	}
+}
+
+

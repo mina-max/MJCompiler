@@ -33,7 +33,7 @@ public class MyCompiler implements Compiler {
 		
 		Reader br = null;
 		try {
-			File sourceCode = new File("test/test301.mj");
+			File sourceCode = new File(sourceFilePath);
 			log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 
 			br = new BufferedReader(new FileReader(sourceCode));
@@ -61,7 +61,7 @@ public class MyCompiler implements Compiler {
 				prog.traverseBottomUp(codeGenerator);
 				Code.dataSize = SemanticAnalyzer.nVars;
 				Code.mainPc = codeGenerator.getMainPc();
-				File objFile = new File("test/program.obj");
+				File objFile = new File(outputFilePath);
                 if (objFile.exists()) objFile.delete();
                 Code.write(new FileOutputStream(objFile));
 			} else {

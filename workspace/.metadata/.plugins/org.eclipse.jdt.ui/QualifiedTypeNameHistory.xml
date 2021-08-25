@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
     <fullyQualifiedTypeName name="rs.etf.pp1.mj.runtime.Code"/>
     <fullyQualifiedTypeName name="rs.etf.pp1.symboltable.concepts.Obj"/>
@@ -11,8 +10,12 @@
     <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.ast.CondFactRelop"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.MyCompiler"/>
-    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.test.CompilerError"/>
     <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType"/>
     <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.MySymbolTable"/>
     <fullyQualifiedTypeName name="rs.etf.pp1.symboltable.concepts.Struct"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.test.CompilerError"/>
+    <fullyQualifiedTypeName name="java.util.Stack"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="rs.ac.bg.etf.pp1.ast.IfStatement"/>
 </qualifiedTypeNameHistroy>

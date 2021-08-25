@@ -1,0 +1,78 @@
+INFO  13:57:01,684 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test1.mj
+INFO  13:57:01,766 - #2 program
+INFO  13:57:01,766 - #49 test1
+INFO  13:57:01,766 - #49 int
+INFO  13:57:01,768 - #49 a
+INFO  13:57:01,769 - #12 ;
+INFO  13:57:01,771 - #8 const
+INFO  13:57:01,772 - #49 int
+INFO  13:57:01,772 - #49 b
+INFO  13:57:01,772 - #41 =
+INFO  13:57:01,772 - #46 1
+INFO  13:57:01,772 - #12 ;
+INFO  13:57:01,774 - #20 {
+INFO  13:57:01,775 - #16 void
+INFO  13:57:01,776 - #49 main
+INFO  13:57:01,777 - #24 (
+INFO  13:57:01,778 - #25 )
+INFO  13:57:01,779 - #49 char
+INFO  13:57:01,780 - #49 d
+INFO  13:57:01,780 - #12 ;
+INFO  13:57:01,780 - #49 bool
+INFO  13:57:01,780 - #49 c
+INFO  13:57:01,781 - #12 ;
+INFO  13:57:01,781 - #20 {
+INFO  13:57:01,781 - #49 a
+INFO  13:57:01,782 - #41 =
+INFO  13:57:01,783 - #46 5
+INFO  13:57:01,784 - #12 ;
+INFO  13:57:01,784 - #49 a
+INFO  13:57:01,784 - #42 ++
+INFO  13:57:01,785 - #12 ;
+INFO  13:57:01,785 - #49 a
+INFO  13:57:01,785 - #43 --
+INFO  13:57:01,785 - #12 ;
+INFO  13:57:01,785 - #49 d
+INFO  13:57:01,785 - #31 >
+ERROR 13:57:01,787 - 
+Sintaksna greska na liniji 12
+INFO  13:57:01,787 - #46 1
+INFO  13:57:01,787 - #12 ;
+INFO  13:57:01,787 - #49 c
+INFO  13:57:01,787 - #41 =
+INFO  13:57:01,788 - #48 1
+INFO  13:57:01,788 - #12 ;
+INFO  13:57:01,789 - #50 if
+INFO  13:57:01,789 - #24 (
+INFO  13:57:01,789 - #49 c
+INFO  13:57:01,789 - #25 )
+INFO  13:57:01,790 - #20 {
+INFO  13:57:01,790 - #15 print
+INFO  13:57:01,790 - #24 (
+INFO  13:57:01,790 - #49 a
+INFO  13:57:01,790 - #25 )
+INFO  13:57:01,791 - #12 ;
+INFO  13:57:01,791 - #15 print
+INFO  13:57:01,791 - #24 (
+INFO  13:57:01,791 - #49 b
+INFO  13:57:01,791 - #25 )
+INFO  13:57:01,792 - #12 ;
+INFO  13:57:01,792 - #15 print
+INFO  13:57:01,792 - #24 (
+INFO  13:57:01,792 - #49 d
+INFO  13:57:01,792 - #25 )
+INFO  13:57:01,792 - #12 ;
+INFO  13:57:01,792 - #21 }
+INFO  13:57:01,792 - #21 }
+INFO  13:57:01,793 - #21 }
+INFO  13:57:01,797 - ===================================
+INFO  13:57:01,806 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  13:57:01,806 - Globalna promenljiva - Pretraga na 10(a), nadjeno Var a: int, 0, 0 
+INFO  13:57:01,806 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 
+INFO  13:57:01,806 - Lokalna promenljiva - Pretraga na 12(d), nadjeno Var d: char, 0, 1 
+ERROR 13:57:01,806 - Ne moze se dodeliti ova vrednost ovoj promenljivoj - Greska na liniji 12
+INFO  13:57:01,806 - Lokalna promenljiva - Pretraga na 13(c), nadjeno Var c: , 1, 1 
+INFO  13:57:01,806 - Lokalna promenljiva - Pretraga na 14(c), nadjeno Var c: , 1, 1 
+INFO  13:57:01,806 - Globalna promenljiva - Pretraga na 15(a), nadjeno Var a: int, 0, 0 
+INFO  13:57:01,806 - Simbolicka konstanta - Pretraga na 16(b), nadjeno Con b: int, 1, 0 
+INFO  13:57:01,807 - Lokalna promenljiva - Pretraga na 17(d), nadjeno Var d: char, 0, 1 

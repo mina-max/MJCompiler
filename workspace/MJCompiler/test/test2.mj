@@ -1,0 +1,21 @@
+program test2
+int a;
+const int b = 1;
+{
+	int main(int f)
+	char d;
+	{
+		a = 5;
+		b++;
+		a--;
+		d = 'd';
+		c = true;
+		if(a){
+			print(a);
+			print(b);
+			print(d);
+		}
+	}
+}
+
+

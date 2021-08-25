@@ -1,8 +1,0 @@
-program mimi
-{
-		void main() 
-		{
-			print(5);
-			print(4);
-		}
-}

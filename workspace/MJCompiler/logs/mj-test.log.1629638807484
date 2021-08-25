@@ -1,0 +1,77 @@
+INFO  15:20:58,242 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test1.mj
+INFO  15:20:58,329 - #2 program
+INFO  15:20:58,330 - #49 test1
+INFO  15:20:58,330 - #49 int
+INFO  15:20:58,332 - #49 a
+INFO  15:20:58,332 - #12 ;
+INFO  15:20:58,335 - #8 const
+INFO  15:20:58,335 - #49 int
+INFO  15:20:58,335 - #49 b
+INFO  15:20:58,335 - #41 =
+INFO  15:20:58,335 - #46 1
+INFO  15:20:58,335 - #12 ;
+INFO  15:20:58,336 - #20 {
+INFO  15:20:58,337 - #16 void
+INFO  15:20:58,339 - #49 main
+INFO  15:20:58,339 - #24 (
+INFO  15:20:58,340 - #25 )
+INFO  15:20:58,342 - #49 char
+INFO  15:20:58,343 - #49 d
+INFO  15:20:58,343 - #12 ;
+INFO  15:20:58,344 - #49 bool
+INFO  15:20:58,344 - #49 c
+INFO  15:20:58,344 - #12 ;
+INFO  15:20:58,344 - #20 {
+INFO  15:20:58,344 - #49 a
+INFO  15:20:58,345 - #41 =
+INFO  15:20:58,347 - #46 5
+INFO  15:20:58,347 - #12 ;
+INFO  15:20:58,347 - #49 a
+INFO  15:20:58,347 - #42 ++
+INFO  15:20:58,347 - #12 ;
+INFO  15:20:58,347 - #49 a
+INFO  15:20:58,348 - #43 --
+INFO  15:20:58,348 - #12 ;
+INFO  15:20:58,348 - #49 d
+INFO  15:20:58,348 - #41 =
+INFO  15:20:58,348 - #12 ;
+ERROR 15:20:58,356 - 
+Sintaksna greska na liniji 12
+INFO  15:20:58,356 - #49 c
+INFO  15:20:58,356 - #41 =
+INFO  15:20:58,356 - #48 1
+INFO  15:20:58,358 - #12 ;
+INFO  15:20:58,358 - #50 if
+INFO  15:20:58,358 - #24 (
+INFO  15:20:58,358 - #42 ++
+ERROR 15:20:58,359 - 
+Sintaksna greska na liniji 14
+INFO  15:20:58,359 - #25 )
+INFO  15:20:58,359 - #20 {
+INFO  15:20:58,359 - #15 print
+INFO  15:20:58,359 - #24 (
+INFO  15:20:58,360 - #49 a
+INFO  15:20:58,360 - #25 )
+INFO  15:20:58,361 - #12 ;
+INFO  15:20:58,361 - #15 print
+INFO  15:20:58,361 - #24 (
+INFO  15:20:58,361 - #49 b
+INFO  15:20:58,361 - #25 )
+INFO  15:20:58,361 - #12 ;
+INFO  15:20:58,361 - #15 print
+INFO  15:20:58,361 - #24 (
+INFO  15:20:58,362 - #49 d
+INFO  15:20:58,362 - #25 )
+INFO  15:20:58,362 - #12 ;
+INFO  15:20:58,362 - #21 }
+INFO  15:20:58,362 - #21 }
+INFO  15:20:58,363 - #21 }
+INFO  15:20:58,368 - ===================================
+INFO  15:20:58,371 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  15:20:58,372 - Globalna promenljiva - Pretraga na 10(a), nadjeno Var a: int, 0, 0 
+INFO  15:20:58,372 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 
+INFO  15:20:58,372 - Lokalna promenljiva - Pretraga na 12(d), nadjeno Var d: char, 0, 1 
+INFO  15:20:58,372 - Lokalna promenljiva - Pretraga na 13(c), nadjeno Var c: , 1, 1 
+INFO  15:20:58,372 - Globalna promenljiva - Pretraga na 15(a), nadjeno Var a: int, 0, 0 
+INFO  15:20:58,372 - Simbolicka konstanta - Pretraga na 16(b), nadjeno Con b: int, 1, 0 
+INFO  15:20:58,372 - Lokalna promenljiva - Pretraga na 17(d), nadjeno Var d: char, 0, 1 

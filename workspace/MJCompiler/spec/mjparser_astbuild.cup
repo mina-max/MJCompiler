@@ -7,6 +7,7 @@ import rs.ac.bg.etf.pp1.ast.*;
 import rs.ac.bg.etf.pp1.test.CompilerError;
 import rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType;
 import rs.ac.bg.etf.pp1.MyCompiler;
+import rs.ac.bg.etf.pp1.SemanticAnalyzer;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
@@ -29,6 +30,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    SemanticAnalyzer.errorDetected = true;
     MyCompiler.errors.add(new CompilerError(((Symbol)info).left, "Sintaksna greska", CompilerErrorType.SYNTAX_ERROR));
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
@@ -53,7 +55,7 @@ terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
 terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
 terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
-terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
+terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD, SWAP;
 terminal Integer NUMBER;
 terminal Character CHAR;
 terminal Integer BOOL;
@@ -81,7 +83,7 @@ nonterminal FormParsSingle FormParsSingle;
 nonterminal Statement Statement;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal DesOperators DesOperators;
-nonterminal AssignOp AssignOp;
+nonterminal AssignExpr AssignExpr;
 nonterminal RelopOpt RelopOpt;
 nonterminal Relop Relop;
 nonterminal ActPars ActPars;
@@ -98,6 +100,9 @@ nonterminal PrintParamOpt PrintParamOpt;
 nonterminal MethodBody MethodBody;
 nonterminal MethodSign MethodSign;
 nonterminal Do Do;
+nonterminal IfStart IfStart;
+nonterminal IfEnd IfEnd;
+nonterminal OrOp OrOp;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator, CondFact, ThenStatement, ElseOpt, ConditionCorrect, Else;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term, CondTerm;
@@ -130,6 +135,7 @@ Type			::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(ty
 
 VarDecl 		::= (VarDeclExpr) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDeclExpr(T1, V2); RESULT.setLine(T1left); :}
 				|	(ErrorVarDecl) error {: RESULT=new ErrorVarDecl(); :};
+
 
 VarDeclList 	::= (VarDeclListExpr) 	VarDeclList:V1 COMMA VarDeclSingle:V2 {: RESULT=new VarDeclListExpr(V1, V2); RESULT.setLine(V1left); :}
 				| 	(VarDeclOne) 	VarDeclSingle:V1 {: RESULT=new VarDeclOne(V1); RESULT.setLine(V1left); :}
@@ -195,7 +201,7 @@ StatementList	::= (StatementListExpr) StatementList:S1 Statement:S2 {: RESULT=ne
 				
 Do				::= (DoStatement)	DO {: RESULT=new DoStatement(); :};
 
-DesignatorStatement ::= (AssignDes) Designator:D1 AssignOp:A2 Expr:E3 {: RESULT=new AssignDes(D1, A2, E3); RESULT.setLine(D1left); :}
+DesignatorStatement ::= (AssignDes) Designator:D1 ASSIGN AssignExpr:A2 {: RESULT=new AssignDes(D1, A2); RESULT.setLine(D1left); :}
 					| 	(FuncDes)	Designator:D1 LPARENT ActParsOpt:A2 RPARENT {: RESULT=new FuncDes(D1, A2); RESULT.setLine(D1left); :}
 					|	(IncDes)	Designator:D1 INC {: RESULT=new IncDes(D1); RESULT.setLine(D1left); :}
 					|	(DecDes)	Designator:D1 DEC {: RESULT=new DecDes(D1); RESULT.setLine(D1left); :};
@@ -208,23 +214,27 @@ DesList			::=	(DesListExpr) DesList:D1 DesElement:D2 {: RESULT=new DesListExpr(D
 DesElement		::= (FieldIdent) DOT IDENT:I1 {: RESULT=new FieldIdent(I1); RESULT.setLine(I1left); :}
 				|	(ArrayIdent) LBRACKET Expr:E1 RBRACKET {: RESULT=new ArrayIdent(E1); RESULT.setLine(E1left); :};		
 
-AssignOp		::= (AssignOperator) 	ASSIGN {: RESULT=new AssignOperator(); :}
+AssignExpr		::= (AssignExpression) 	Expr:E1 {: RESULT=new AssignExpression(E1); RESULT.setLine(E1left); :}
 				|	(AssignError)		error {: RESULT=new AssignError(); :};
-
+				
 ActPars			::= (ExprList) 	ActPars:A1 COMMA Expr:E2 {: RESULT=new ExprList(A1, E2); RESULT.setLine(A1left); :}
 				|	(ExprPar) 		Expr:E1 {: RESULT=new ExprPar(E1); RESULT.setLine(E1left); :};
 				
-ConditionCorrect::= (CorrectCondition) LPARENT CondFact:C1 RPARENT {: RESULT=new CorrectCondition(C1); RESULT.setLine(C1left); :}
-			     |	(ErrorCondition) LPARENT error RPARENT:l
-			     {:parser.report_error("Izvrsen oporavak od greske na liniji " + lleft, null); :} {: RESULT=new ErrorCondition(); :};
+ConditionCorrect::= (CorrectCondition) IfStart:I1 Condition:C2 IfEnd:I3 {: RESULT=new CorrectCondition(I1, C2, I3); RESULT.setLine(I1left); :}
+			     |	(ErrorCondition) LPARENT error RPARENT {: RESULT=new ErrorCondition(); :};
+
+IfStart			::= (IfStartStmt) LPARENT {: RESULT=new IfStartStmt(); :};
+IfEnd			::= (IfEndStmt) RPARENT {: RESULT=new IfEndStmt(); :};				
 			     
 ElseOpt			::= (ElseStmt) Else:E1 Statement:S2 {: RESULT=new ElseStmt(E1, S2); RESULT.setLine(E1left); :}
 				|	(NoElseStmt) {: RESULT=new NoElseStmt(); :};
 
 Else			::= (ElseKeyword) ELSE {: RESULT=new ElseKeyword(); :};
 					
-Condition		::= (CondOr) 			Condition:C1 OR CondTerm:C2 {: RESULT=new CondOr(C1, C2); RESULT.setLine(C1left); :}
+Condition		::= (CondOr) 			Condition:C1 OrOp:O2 CondTerm:C3 {: RESULT=new CondOr(C1, O2, C3); RESULT.setLine(C1left); :}
 				| 	(CondTermSingle)	CondTerm:C1 {: RESULT=new CondTermSingle(C1); RESULT.setLine(C1left); :};
+
+OrOp		::= (OrOperator)		OR {: RESULT=new OrOperator(); :};
 
 CondTerm		::= (CondAnd) 			CondTerm:C1 AND CondFact:C2 {: RESULT=new CondAnd(C1, C2); RESULT.setLine(C1left); :}
 				|	(CondFactSingle)	CondFact:C1 {: RESULT=new CondFactSingle(C1); RESULT.setLine(C1left); :};

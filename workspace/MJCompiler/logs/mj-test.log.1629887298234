@@ -1,0 +1,94 @@
+INFO  12:27:53,551 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test301.mj
+INFO  12:27:53,626 - #2 program
+INFO  12:27:53,626 - #50 test301
+INFO  12:27:53,626 - #8 const
+INFO  12:27:53,628 - #50 int
+INFO  12:27:53,629 - #50 nula
+INFO  12:27:53,629 - #41 =
+INFO  12:27:53,630 - #47 0
+INFO  12:27:53,630 - #12 ;
+INFO  12:27:53,631 - #8 const
+INFO  12:27:53,632 - #50 int
+INFO  12:27:53,632 - #50 jedan
+INFO  12:27:53,632 - #41 =
+INFO  12:27:53,632 - #47 1
+INFO  12:27:53,632 - #12 ;
+INFO  12:27:53,632 - #8 const
+INFO  12:27:53,632 - #50 int
+INFO  12:27:53,632 - #50 pet
+INFO  12:27:53,632 - #41 =
+INFO  12:27:53,632 - #47 5
+INFO  12:27:53,633 - #12 ;
+INFO  12:27:53,633 - #50 int
+INFO  12:27:53,633 - #50 niz
+INFO  12:27:53,633 - #22 [
+INFO  12:27:53,633 - #23 ]
+INFO  12:27:53,633 - #12 ;
+INFO  12:27:53,636 - #50 char
+INFO  12:27:53,636 - #50 nizch
+INFO  12:27:53,636 - #22 [
+INFO  12:27:53,636 - #23 ]
+INFO  12:27:53,636 - #12 ;
+INFO  12:27:53,636 - #20 {
+INFO  12:27:53,636 - #16 void
+INFO  12:27:53,637 - #50 main
+INFO  12:27:53,638 - #24 (
+INFO  12:27:53,639 - #25 )
+INFO  12:27:53,640 - #50 int
+INFO  12:27:53,641 - #50 bodovi
+INFO  12:27:53,641 - #12 ;
+INFO  12:27:53,642 - #20 {
+INFO  12:27:53,642 - #50 niz
+INFO  12:27:53,643 - #41 =
+INFO  12:27:53,645 - #7 new
+INFO  12:27:53,645 - #50 int
+INFO  12:27:53,645 - #22 [
+INFO  12:27:53,645 - #47 5
+INFO  12:27:53,645 - #23 ]
+INFO  12:27:53,645 - #12 ;
+INFO  12:27:53,647 - #50 niz
+INFO  12:27:53,648 - #22 [
+INFO  12:27:53,649 - #47 1
+INFO  12:27:53,649 - #23 ]
+INFO  12:27:53,650 - #41 =
+INFO  12:27:53,651 - #47 6
+INFO  12:27:53,651 - #12 ;
+INFO  12:27:53,651 - #50 niz
+INFO  12:27:53,651 - #22 [
+INFO  12:27:53,652 - #47 3
+INFO  12:27:53,652 - #23 ]
+INFO  12:27:53,652 - #41 =
+INFO  12:27:53,652 - #47 11
+INFO  12:27:53,652 - #12 ;
+INFO  12:27:53,652 - #50 niz
+INFO  12:27:53,653 - #46 ~
+INFO  12:27:53,653 - #47 0
+INFO  12:27:53,653 - #14 ,
+INFO  12:27:53,653 - #47 2
+INFO  12:27:53,653 - #46 ~
+INFO  12:27:53,653 - #12 ;
+INFO  12:27:53,654 - #15 print
+INFO  12:27:53,654 - #24 (
+INFO  12:27:53,654 - #50 niz
+INFO  12:27:53,654 - #22 [
+INFO  12:27:53,654 - #47 0
+INFO  12:27:53,654 - #23 ]
+INFO  12:27:53,654 - #25 )
+INFO  12:27:53,655 - #12 ;
+INFO  12:27:53,656 - #15 print
+INFO  12:27:53,656 - #24 (
+INFO  12:27:53,656 - #50 niz
+INFO  12:27:53,656 - #22 [
+INFO  12:27:53,656 - #47 2
+INFO  12:27:53,656 - #23 ]
+INFO  12:27:53,656 - #25 )
+INFO  12:27:53,656 - #12 ;
+INFO  12:27:53,658 - #21 }
+INFO  12:27:53,658 - #21 }
+INFO  12:27:53,665 - ===================================
+INFO  12:27:53,675 - Globalna promenljiva - Pretraga na 16(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  12:27:53,675 - Element niza - Pretraga na 17(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  12:27:53,675 - Element niza - Pretraga na 18(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  12:27:53,675 - Globalna promenljiva - Pretraga na 19(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  12:27:53,675 - Element niza - Pretraga na 20(niz), nadjeno Var niz: Arr of int, 0, 0 
+INFO  12:27:53,675 - Element niza - Pretraga na 21(niz), nadjeno Var niz: Arr of int, 0, 0 

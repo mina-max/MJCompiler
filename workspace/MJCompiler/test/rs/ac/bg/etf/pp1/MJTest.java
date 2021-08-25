@@ -1,8 +1,11 @@
 package rs.ac.bg.etf.pp1;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
+import rs.ac.bg.etf.pp1.test.CompilerError;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
 
 public class MJTest {
@@ -16,10 +19,12 @@ public class MJTest {
 
 		MyCompiler compiler = new MyCompiler();
 		
-		String sourceFilePath = "test/syntax/test21.mj";
-		String outputFilePath = "";
+		String sourceFilePath = args[0];
+		String outputFilePath = args[1];
+		
+		List<CompilerError> err = compiler.compile(sourceFilePath, outputFilePath);
 		System.out.println("Lista gresaka:\n");
-		System.out.println((compiler.compile(sourceFilePath, outputFilePath )).toString());
+		System.out.println(err.toString());
 
 	}
 

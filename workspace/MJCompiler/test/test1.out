@@ -1,0 +1,364 @@
+Could not rename log file!
+Could not rename log file!
+INFO  18:01:31,955 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test1.mj
+INFO  18:01:32,043 - #2 program
+INFO  18:01:32,043 - #49 test1
+INFO  18:01:32,043 - #49 int
+INFO  18:01:32,045 - #49 a
+INFO  18:01:32,046 - #12 ;
+INFO  18:01:32,048 - #8 const
+INFO  18:01:32,048 - #49 int
+INFO  18:01:32,049 - #49 b
+INFO  18:01:32,049 - #41 =
+INFO  18:01:32,049 - #46 1
+INFO  18:01:32,049 - #12 ;
+INFO  18:01:32,050 - #20 {
+INFO  18:01:32,051 - #16 void
+INFO  18:01:32,051 - #49 main
+INFO  18:01:32,052 - #24 (
+INFO  18:01:32,053 - #25 )
+INFO  18:01:32,054 - #49 char
+INFO  18:01:32,055 - #49 d
+INFO  18:01:32,055 - #12 ;
+INFO  18:01:32,055 - #49 bool
+INFO  18:01:32,056 - #49 c
+INFO  18:01:32,056 - #12 ;
+INFO  18:01:32,056 - #20 {
+INFO  18:01:32,056 - #49 a
+INFO  18:01:32,057 - #41 =
+INFO  18:01:32,058 - #46 5
+INFO  18:01:32,059 - #12 ;
+INFO  18:01:32,059 - #49 a
+INFO  18:01:32,060 - #42 ++
+INFO  18:01:32,060 - #12 ;
+INFO  18:01:32,060 - #49 a
+INFO  18:01:32,060 - #43 --
+INFO  18:01:32,060 - #12 ;
+INFO  18:01:32,060 - #49 d
+INFO  18:01:32,060 - #41 =
+INFO  18:01:32,060 - #47 d
+INFO  18:01:32,060 - #12 ;
+INFO  18:01:32,061 - #49 c
+INFO  18:01:32,061 - #41 =
+INFO  18:01:32,061 - #48 1
+INFO  18:01:32,061 - #12 ;
+INFO  18:01:32,061 - #50 if
+INFO  18:01:32,061 - #24 (
+INFO  18:01:32,061 - #49 c
+INFO  18:01:32,061 - #25 )
+INFO  18:01:32,062 - #20 {
+INFO  18:01:32,062 - #15 print
+INFO  18:01:32,062 - #24 (
+INFO  18:01:32,062 - #49 a
+INFO  18:01:32,062 - #25 )
+INFO  18:01:32,063 - #12 ;
+INFO  18:01:32,063 - #15 print
+INFO  18:01:32,064 - #24 (
+INFO  18:01:32,064 - #49 b
+INFO  18:01:32,064 - #25 )
+INFO  18:01:32,064 - #12 ;
+INFO  18:01:32,064 - #15 print
+INFO  18:01:32,064 - #24 (
+INFO  18:01:32,064 - #49 d
+INFO  18:01:32,064 - #25 )
+INFO  18:01:32,064 - #12 ;
+INFO  18:01:32,064 - #21 }
+INFO  18:01:32,064 - #21 }
+INFO  18:01:32,066 - #21 }
+==================SYNTAX TREE==================
+Program(
+  ProgName(
+   test1
+  ) [ProgName]
+  Declarations(
+    Declarations(
+      NoDecl(
+      ) [NoDecl]
+      VarDeclaration(
+        VarDeclExpr(
+          Type(
+           int
+          ) [Type]
+          VarDeclOne(
+            VarDeclSingle(
+             a
+              NotArray(
+              ) [NotArray]
+            ) [VarDeclSingle]
+          ) [VarDeclOne]
+        ) [VarDeclExpr]
+      ) [VarDeclaration]
+    ) [Declarations]
+    ConstDeclaration(
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        ConstDeclOne(
+          ConstDeclSingle(
+           b
+            NumberConst(
+             1
+            ) [NumberConst]
+          ) [ConstDeclSingle]
+        ) [ConstDeclOne]
+      ) [ConstDecl]
+    ) [ConstDeclaration]
+  ) [Declarations]
+  MethodDeclListExpr(
+    NoMethodDeclList(
+    ) [NoMethodDeclList]
+    MethodDecl(
+      ReturnVoid(
+      ) [ReturnVoid]
+      MethodSign(
+        MethodName(
+         main
+        ) [MethodName]
+        NoFormPars(
+        ) [NoFormPars]
+      ) [MethodSign]
+      MethodBody(
+        VarDeclOnlyExpr(
+          VarDeclOnlyExpr(
+            NoVars(
+            ) [NoVars]
+            VarDeclExpr(
+              Type(
+               char
+              ) [Type]
+              VarDeclOne(
+                VarDeclSingle(
+                 d
+                  NotArray(
+                  ) [NotArray]
+                ) [VarDeclSingle]
+              ) [VarDeclOne]
+            ) [VarDeclExpr]
+          ) [VarDeclOnlyExpr]
+          VarDeclExpr(
+            Type(
+             bool
+            ) [Type]
+            VarDeclOne(
+              VarDeclSingle(
+               c
+                NotArray(
+                ) [NotArray]
+              ) [VarDeclSingle]
+            ) [VarDeclOne]
+          ) [VarDeclExpr]
+        ) [VarDeclOnlyExpr]
+        StatementListExpr(
+          StatementListExpr(
+            StatementListExpr(
+              StatementListExpr(
+                StatementListExpr(
+                  StatementListExpr(
+                    NoStatement(
+                    ) [NoStatement]
+                    DesignatorStatementExpr(
+                      AssignDes(
+                        Designator(
+                         a
+                          NoDesList(
+                          ) [NoDesList]
+                        ) [Designator]
+                        AssignOperator(
+                        ) [AssignOperator]
+                        PositiveTerm(
+                          TermFactor(
+                            ConstFactor(
+                              NumberConst(
+                               5
+                              ) [NumberConst]
+                            ) [ConstFactor]
+                          ) [TermFactor]
+                        ) [PositiveTerm]
+                      ) [AssignDes]
+                    ) [DesignatorStatementExpr]
+                  ) [StatementListExpr]
+                  DesignatorStatementExpr(
+                    IncDes(
+                      Designator(
+                       a
+                        NoDesList(
+                        ) [NoDesList]
+                      ) [Designator]
+                    ) [IncDes]
+                  ) [DesignatorStatementExpr]
+                ) [StatementListExpr]
+                DesignatorStatementExpr(
+                  DecDes(
+                    Designator(
+                     a
+                      NoDesList(
+                      ) [NoDesList]
+                    ) [Designator]
+                  ) [DecDes]
+                ) [DesignatorStatementExpr]
+              ) [StatementListExpr]
+              DesignatorStatementExpr(
+                AssignDes(
+                  Designator(
+                   d
+                    NoDesList(
+                    ) [NoDesList]
+                  ) [Designator]
+                  AssignOperator(
+                  ) [AssignOperator]
+                  PositiveTerm(
+                    TermFactor(
+                      ConstFactor(
+                        CharConst(
+                         d
+                        ) [CharConst]
+                      ) [ConstFactor]
+                    ) [TermFactor]
+                  ) [PositiveTerm]
+                ) [AssignDes]
+              ) [DesignatorStatementExpr]
+            ) [StatementListExpr]
+            DesignatorStatementExpr(
+              AssignDes(
+                Designator(
+                 c
+                  NoDesList(
+                  ) [NoDesList]
+                ) [Designator]
+                AssignOperator(
+                ) [AssignOperator]
+                PositiveTerm(
+                  TermFactor(
+                    ConstFactor(
+                      BoolConst(
+                       1
+                      ) [BoolConst]
+                    ) [ConstFactor]
+                  ) [TermFactor]
+                ) [PositiveTerm]
+              ) [AssignDes]
+            ) [DesignatorStatementExpr]
+          ) [StatementListExpr]
+          IfStatement(
+            CorrectCondition(
+              CondFactNoRelop(
+                PositiveTerm(
+                  TermFactor(
+                    VarFactor(
+                      Designator(
+                       c
+                        NoDesList(
+                        ) [NoDesList]
+                      ) [Designator]
+                    ) [VarFactor]
+                  ) [TermFactor]
+                ) [PositiveTerm]
+              ) [CondFactNoRelop]
+            ) [CorrectCondition]
+            ThenStmt(
+              ListStatement(
+                StatementListExpr(
+                  StatementListExpr(
+                    StatementListExpr(
+                      NoStatement(
+                      ) [NoStatement]
+                      PrintStatement(
+                        PositiveTerm(
+                          TermFactor(
+                            VarFactor(
+                              Designator(
+                               a
+                                NoDesList(
+                                ) [NoDesList]
+                              ) [Designator]
+                            ) [VarFactor]
+                          ) [TermFactor]
+                        ) [PositiveTerm]
+                        NoPrintParam(
+                        ) [NoPrintParam]
+                      ) [PrintStatement]
+                    ) [StatementListExpr]
+                    PrintStatement(
+                      PositiveTerm(
+                        TermFactor(
+                          VarFactor(
+                            Designator(
+                             b
+                              NoDesList(
+                              ) [NoDesList]
+                            ) [Designator]
+                          ) [VarFactor]
+                        ) [TermFactor]
+                      ) [PositiveTerm]
+                      NoPrintParam(
+                      ) [NoPrintParam]
+                    ) [PrintStatement]
+                  ) [StatementListExpr]
+                  PrintStatement(
+                    PositiveTerm(
+                      TermFactor(
+                        VarFactor(
+                          Designator(
+                           d
+                            NoDesList(
+                            ) [NoDesList]
+                          ) [Designator]
+                        ) [VarFactor]
+                      ) [TermFactor]
+                    ) [PositiveTerm]
+                    NoPrintParam(
+                    ) [NoPrintParam]
+                  ) [PrintStatement]
+                ) [StatementListExpr]
+              ) [ListStatement]
+            ) [ThenStmt]
+            NoElseStmt(
+            ) [NoElseStmt]
+          ) [IfStatement]
+        ) [StatementListExpr]
+      ) [MethodBody]
+    ) [MethodDecl]
+  ) [MethodDeclListExpr]
+) [Program]
+INFO  18:01:32,069 - ===================================
+======================SEMANTIC ANALYSIS========================
+Visited progName
+INFO  18:01:32,076 - Globalna promenljiva - Pretraga na 9(a), nadjeno Var a: int, 0, 0 
+INFO  18:01:32,077 - Globalna promenljiva - Pretraga na 10(a), nadjeno Var a: int, 0, 0 
+INFO  18:01:32,077 - Globalna promenljiva - Pretraga na 11(a), nadjeno Var a: int, 0, 0 
+INFO  18:01:32,077 - Lokalna promenljiva - Pretraga na 12(d), nadjeno Var d: char, 0, 1 
+INFO  18:01:32,077 - Lokalna promenljiva - Pretraga na 13(c), nadjeno Var c: , 1, 1 
+INFO  18:01:32,077 - Lokalna promenljiva - Pretraga na 14(c), nadjeno Var c: , 1, 1 
+INFO  18:01:32,077 - Globalna promenljiva - Pretraga na 15(a), nadjeno Var a: int, 0, 0 
+INFO  18:01:32,077 - Simbolicka konstanta - Pretraga na 16(b), nadjeno Con b: int, 1, 0 
+INFO  18:01:32,077 - Lokalna promenljiva - Pretraga na 17(d), nadjeno Var d: char, 0, 1 
+=====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class [], 0, 0 
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 0, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 0, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: , -1, -1 
+Prog test1: notype, 0, 1 
+   Var a: int, 0, 0 
+   Con b: int, 1, 0 
+   Meth main: notype, 0, 0 
+      Var d: char, 0, 1 
+      Var c: , 1, 1 
+
+
+
+Parsiranje je uspesno zavrseno!
+======================CODE GENERATION========================
+Lista gresaka:
+
+[]

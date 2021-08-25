@@ -1,0 +1,77 @@
+INFO  17:38:57,750 - Compiling source file: C:\Users\rm170154d\Desktop\PP-projekat\workspace\MJCompiler\test\test21.mj
+INFO  17:38:57,816 - #2 program
+INFO  17:38:57,816 - #49 test301
+INFO  17:38:57,816 - #49 int
+INFO  17:38:57,818 - #49 a
+INFO  17:38:57,819 - #12 ;
+INFO  17:38:57,821 - #8 const
+INFO  17:38:57,821 - #49 int
+INFO  17:38:57,821 - #49 b
+INFO  17:38:57,821 - #41 =
+INFO  17:38:57,821 - #46 1
+INFO  17:38:57,821 - #12 ;
+INFO  17:38:57,822 - #20 {
+INFO  17:38:57,823 - #16 void
+INFO  17:38:57,824 - #49 main
+INFO  17:38:57,825 - #24 (
+INFO  17:38:57,826 - #25 )
+INFO  17:38:57,827 - #49 char
+INFO  17:38:57,829 - #49 c
+INFO  17:38:57,829 - #14 ,
+INFO  17:38:57,829 - #49 bool
+INFO  17:38:57,829 - #49 d
+ERROR 17:38:57,835 - 
+Sintaksna greska na liniji 8
+INFO  17:38:57,835 - #12 ;
+INFO  17:38:57,836 - #20 {
+INFO  17:38:57,836 - #49 a
+INFO  17:38:57,838 - #42 ++
+INFO  17:38:57,845 - #12 ;
+INFO  17:38:57,845 - #49 b
+INFO  17:38:57,846 - #43 --
+INFO  17:38:57,846 - #12 ;
+INFO  17:38:57,846 - #49 c
+INFO  17:38:57,847 - #41 =
+INFO  17:38:57,847 - #47 a
+INFO  17:38:57,849 - #12 ;
+INFO  17:38:57,850 - #49 d
+INFO  17:38:57,850 - #41 =
+INFO  17:38:57,850 - #48 0
+INFO  17:38:57,851 - #12 ;
+INFO  17:38:57,851 - #50 if
+INFO  17:38:57,851 - #24 (
+INFO  17:38:57,851 - #49 d
+INFO  17:38:57,851 - #25 )
+INFO  17:38:57,852 - #20 {
+INFO  17:38:57,852 - #15 print
+INFO  17:38:57,852 - #24 (
+INFO  17:38:57,852 - #49 a
+INFO  17:38:57,853 - #25 )
+INFO  17:38:57,854 - #12 ;
+INFO  17:38:57,854 - #15 print
+INFO  17:38:57,854 - #24 (
+INFO  17:38:57,854 - #49 b
+INFO  17:38:57,855 - #25 )
+INFO  17:38:57,855 - #12 ;
+INFO  17:38:57,855 - #15 print
+INFO  17:38:57,855 - #24 (
+INFO  17:38:57,855 - #49 c
+INFO  17:38:57,855 - #25 )
+INFO  17:38:57,855 - #12 ;
+INFO  17:38:57,855 - #21 }
+INFO  17:38:57,855 - #21 }
+INFO  17:38:57,857 - #21 }
+INFO  17:38:57,862 - ===================================
+INFO  17:38:57,875 - Globalna promenljiva - Pretraga na 10(a), nadjeno Var a: int, 0, 0 
+INFO  17:38:57,875 - Simbolicka konstanta - Pretraga na 11(b), nadjeno Con b: int, 1, 0 
+ERROR 17:38:57,875 - DecDesignator mora oznacavati promenljivu, polje ili element niza - Greska na liniji 11
+ERROR 17:38:57,876 - Simbol 'c' nije definisan - Greska na liniji 12
+ERROR 17:38:57,876 - Ne moze se dodeliti ova vrednost ovoj promenljivoj - Greska na liniji 12
+ERROR 17:38:57,876 - Simbol 'd' nije definisan - Greska na liniji 13
+ERROR 17:38:57,876 - Ne moze se dodeliti ova vrednost ovoj promenljivoj - Greska na liniji 13
+ERROR 17:38:57,876 - Simbol 'd' nije definisan - Greska na liniji 14
+ERROR 17:38:57,876 - Tip Condition-a mora biti Bool - Greska na liniji 14
+INFO  17:38:57,876 - Globalna promenljiva - Pretraga na 15(a), nadjeno Var a: int, 0, 0 
+INFO  17:38:57,876 - Simbolicka konstanta - Pretraga na 16(b), nadjeno Con b: int, 1, 0 
+ERROR 17:38:57,876 - Simbol 'c' nije definisan - Greska na liniji 17
+ERROR 17:38:57,876 - Expr u Print Statementu mora biti tipa integer, char ili bool - Greska na liniji 17

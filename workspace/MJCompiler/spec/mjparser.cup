@@ -7,6 +7,7 @@ import rs.ac.bg.etf.pp1.ast.*;
 import rs.ac.bg.etf.pp1.test.CompilerError;
 import rs.ac.bg.etf.pp1.test.CompilerError.CompilerErrorType;
 import rs.ac.bg.etf.pp1.MyCompiler;
+import rs.ac.bg.etf.pp1.SemanticAnalyzer;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
@@ -29,6 +30,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    SemanticAnalyzer.errorDetected = true;
     MyCompiler.errors.add(new CompilerError(((Symbol)info).left, "Sintaksna greska", CompilerErrorType.SYNTAX_ERROR));
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
@@ -53,7 +55,7 @@ terminal PROGRAM, BREAK, ENUM, DO, WHILE, NEW, CONST, CLASS, EXTENDS, READ;
 terminal SEMI, RETURN, COMMA, PRINT, VOID, CONTINUE,  SWITCH, CASE;
 terminal LBRACE, RBRACE, LBRACKET, RBRACKET, LPARENT, RPARENT, COLON, QUESTION;
 terminal EQUAL, NOTEQ, GREATEREQ, GREATER, LESSEQ, LESS, PLUS, MINUS, MUL, DIV, MOD;
-terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD;
+terminal AND, OR, ASSIGN, INC, DEC, DOT, YIELD, SWAP;
 terminal Integer NUMBER;
 terminal Character CHAR;
 terminal Integer BOOL;
@@ -63,10 +65,10 @@ terminal IF, ELSE;
 nonterminal Program, DeclList, Decl, ConstDecl, ConstDeclList, ConstDeclSingle;
 nonterminal VarDecl, VarDeclList, VarDeclSingle, ArrayOpt, ClassDecl, ExtendsOpt;
 nonterminal MethodDeclList, MethodDecl, ReturnType, FormPars, FormParsList, FormParsSingle;
-nonterminal Statement, DesignatorStatement, DesOperators, AssignOp;
+nonterminal Statement, DesignatorStatement, DesOperators, AssignExpr;
 nonterminal RelopOpt, Relop, ActPars;
 nonterminal CaseList, DesList, StatementList, AddOp, MulOp, MethodDeclListOpt, VarDeclOnly;
-nonterminal FormParsOpt, ActParsOpt, PrintParamOpt, MethodBody, MethodSign, Do;
+nonterminal FormParsOpt, ActParsOpt, PrintParamOpt, MethodBody, MethodSign, Do, IfStart, IfEnd, OrOp;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, ClassName, MethodName, Designator, CondFact, ThenStatement, ElseOpt, ConditionCorrect, Else;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ReturnExprOpt, Expr, Condition, Term, CondTerm;
@@ -99,6 +101,7 @@ Type			::= (Type) IDENT:typeName;
 
 VarDecl 		::= (VarDeclExpr) Type VarDeclList SEMI
 				|	(ErrorVarDecl) error;
+
 
 VarDeclList 	::= (VarDeclListExpr) 	VarDeclList COMMA VarDeclSingle
 				| 	(VarDeclOne) 	VarDeclSingle
@@ -164,7 +167,7 @@ StatementList	::= (StatementListExpr) StatementList Statement
 				
 Do				::= (DoStatement)	DO;
 
-DesignatorStatement ::= (AssignDes) Designator AssignOp Expr
+DesignatorStatement ::= (AssignDes) Designator ASSIGN AssignExpr
 					| 	(FuncDes)	Designator LPARENT ActParsOpt RPARENT
 					|	(IncDes)	Designator INC
 					|	(DecDes)	Designator DEC;
@@ -177,23 +180,27 @@ DesList			::=	(DesListExpr) DesList DesElement
 DesElement		::= (FieldIdent) DOT IDENT
 				|	(ArrayIdent) LBRACKET Expr RBRACKET;		
 
-AssignOp		::= (AssignOperator) 	ASSIGN
+AssignExpr		::= (AssignExpression) 	Expr
 				|	(AssignError)		error;
-
+				
 ActPars			::= (ExprList) 	ActPars COMMA Expr
 				|	(ExprPar) 		Expr;
 				
-ConditionCorrect::= (CorrectCondition) LPARENT CondFact RPARENT
-			     |	(ErrorCondition) LPARENT error RPARENT:l
-			     {:parser.report_error("Izvrsen oporavak od greske na liniji " + lleft, null); :};
+ConditionCorrect::= (CorrectCondition) IfStart Condition IfEnd
+			     |	(ErrorCondition) LPARENT error RPARENT;
+
+IfStart			::= (IfStartStmt) LPARENT;
+IfEnd			::= (IfEndStmt) RPARENT;				
 			     
 ElseOpt			::= (ElseStmt) Else Statement
 				|	(NoElseStmt);
 
 Else			::= (ElseKeyword) ELSE;
 					
-Condition		::= (CondOr) 			Condition OR CondTerm
+Condition		::= (CondOr) 			Condition OrOp CondTerm
 				| 	(CondTermSingle)	CondTerm;
+
+OrOp		::= (OrOperator)		OR;
 
 CondTerm		::= (CondAnd) 			CondTerm AND CondFact
 				|	(CondFactSingle)	CondFact;
